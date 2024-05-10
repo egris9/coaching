@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     {% comment %}local links{% endcomment %}
     <link rel="stylesheet" href="{% static 'coach/index.css' %}" />
@@ -19,7 +20,7 @@
   </head>
 
   <body>
-    {% include 'coach/nav.html' %}
+    {% include 'coach/componants/nav.html' %}
 
     <main class="w-full">
       <section class="relative w-full overflow-hidden  ">
@@ -36,7 +37,8 @@
           </div>
         </div>
       </section>
-
+      {% include 'coach/componants/categorie.html' %}
+      {% include 'coach/componants/cta.html' %}
       <section class="w-full my-10 max-w-[1200px] mx-auto">
         <div class="flex justify-between items-center w-full">
           <h1 class="text-5xl font-header text-gradient w-fit">Browse by category</h1>
@@ -50,7 +52,7 @@
           <a 		data-tilt data-tilt-glare data-tilt-max-glare="0.2"
 						data-tilt-max="10"
 						data-tilt-speed="750" href="{% url 'coach:home' %}?filter=protein" class="group bg-neutral-800 border-2 border-neutral-700 py-5 rounded-xl">
-            <img class="rounded-lg w-52 hover:scale-105 duration-300" src="{% static 'img/products/my_protein_buddy.webp' %}" />
+            <img class="rounded-lg w-52 hover:scale-105 duration-300" src="{% static 'img/coach007.jpg' %}}" />
             <p class="text-center mt-2 group-hover:text-primary-hover ">Protein</p>
           </a>
           <a 		data-tilt data-tilt-glare data-tilt-max-glare="0.2"
@@ -186,7 +188,7 @@
         </form>
       </section>
 
-      {% include 'coach/footer.html' %}
+      {% include 'coach/componants/footer.html' %}
     </main>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
