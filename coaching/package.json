@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./coach/static/coach/tailwind.css -o ./coach/static/coach/global.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "plugins": "^0.4.2"
+  }
+}

@@ -1,0 +1,56 @@
+<nav class="nav fixed w-full bg-neutral-950/50 backdrop-blur-sm top-0 z-10">
+    <div class="text-red-500 font-medium">
+        <a href="{% url 'coach:home' %}">
+            <div id="logo"><p class="capitalize">conquer</p></div>
+        </a>
+    </div>
+    <div class="text-slate-50">
+      <ul class="nav_links items-center flex justify-between"> 
+
+        
+        <li><a href="/" class="here">home</a></li>
+        
+        {% if page == "home" %}     
+        <li><a href="{% url 'coach:home' %}#aboutUs" >about us</a></li>          
+        <li><a href="{% url 'coach:home' %}#contactUs" >contact us</a> </li> 
+        {% endif  %}
+        {% if user.is_authenticated %} 
+        <li class="relative">
+            <button data-nav-dropdown-btn class="group font-semibold inline-flex justify-center items-center gap-x-1  bg-white/5 p-1 py-2 rounded-lg">
+                <span class="material-symbols-outlined group-hover:text-red-500 transition-colors duration-300 text-lg leading-none"> account_circle</span>
+                <span class="material-symbols-outlined group-hover:text-red-500 transition-colors duration-300 text-lg leading-none">expand_more</span>
+            </button>
+
+            <ul  data-nav-dropDown-list class="invisible opacity-0  w-fit transition-opacity duration-200 top-[calc(100%+1.5rem)] rounded-lg left-1/2 -translate-x-1/2 text-neutral-50 absolute bg-neutral-800 shadow-md">
+                <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
+                    <a class="flex items-center justify-between  gap-x-2 w-full" href="{% url 'coach:cart' %}" >cart
+                        <span class="material-symbols-outlined  text-lg  leading-none">
+                            shopping_cart
+                            </span></a>
+                </li>
+                <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
+                    <a class="flex items-center justify-between  gap-x-2 w-full" href="{% url 'coach:profile' %}" >profile
+                        <span class="material-symbols-outlined  text-lg  leading-none"> account_circle</span>
+                        </a>
+                </li>
+                <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
+                    <a class="flex items-center  justify-between gap-x-2 w-full" href="{% url 'coach:signout' %}" >sign out
+                        <span class="material-symbols-outlined  text-lg leading-none ">account_circle</span>
+                    
+                        </a>
+                </li>
+            </ul>
+        </li>
+
+        {% else  %}
+        <li>
+            <a class="flex items-center gap-x-2" href="{% url 'coach:login' %}" >sign in
+            <span class="material-symbols-outlined  text-lg ">account_circle</span>
+        
+            </a>
+        </li>
+        {% endif  %} 
+        
+        
+    </div>
+</nav>

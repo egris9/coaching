@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'ecom/index.css' %}">
+    <link rel="stylesheet" href="{% static 'ecom/global.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-brand flex flex-col">
+  
+	<main class="w-full my-auto">
+    
+		<!-- sign up -->
+		<section class="w-[90%] m-auto my-8 flex flex-col items-center justify-center">
+			<form method="POST" action="/signup" id="signup-form" class="bg-gradient-to-r from-red-600 to-pink-500 py-8 px-8 rounded-2xl border border-neutral-800">
+				{% csrf_token %}
+				<div>
+					<h1 class="font-logo text-5xl my-4 text-center text-black font-header">Apostel {{message}}</h1>
+
+
+					<h2 class=" text-center mt-2 font-header leading-7 text-black text-3xl">Sign up to your account</h2>
+					{% if error_global %}
+                        <p
+                            id="signup-msg"
+                            class="text-sm mt-2 col-[1/2] font-medium text-center text-black"
+                        >
+                            <i class="text-sm text-center mr-1 ri-error-warning-fill"></i
+                            >{{error_global}}
+                        </p>
+                        {% endif %}
+
+
+					<div class="mt-4 grid grid-cols-[320px,_320px] gap-x-6 gap-y-4 max-w-4xl">
+						<!-- first name -->
+						<div class="col-[1/2]">
+							<label for="first-name" class="block text-xl font-header leading-6 text-black">First name</label>
+							<div class="mt-2">
+								<input placeholder="your first name" type="text" name="firstname" id="first-name" autocomplete="given-name" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+							</div>
+							{% if errors and 'firstname' in errors%}
+                                <p
+                                    id="first-name-msg"
+                                    class="text-xs mt-1 font-medium"
+                                >
+                                    <i class="text-sm mr-1 ri-error-warning-fill"></i>
+										{{ errors.firstname }}
+                                </p>
+                                {% endif %}
+						</div>
+
+						<!-- last name -->
+						<div class="col-[2/3]">
+							<label for="last-name" class="block text-xl font-header leading-6 text-black">Last name</label>
+							<div class="mt-2">
+								<input placeholder="your last name" type="text" name="lastname" id="last-name" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+							</div>
+							{% if errors and 'lastname' in errors%}
+                                <p
+                                    id="last-name-msg"
+                                    class="text-xs mt-1 font-medium"
+                                >
+                                    <i class="text-sm mr-1 ri-error-warning-fill"></i>
+                                    {{errors.lastname }}
+                                </p>
+                                {% endif %}
+						</div>
+
+						<!-- email -->
+						<div class="col-[1/2]">
+							<label for="email" class="block text-xl font-header leading-6 text-black">Email</label>
+							<div class="mt-2">
+								<input placeholder="your email" type="email" name="email" id="email" class="  h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+							</div>
+							{% if errors and 'email' in errors%}
+                                <p
+                                    id="email-msg"
+                                    class="text-xs mt-1 font-medium"
+                                >
+                                    <i class="text-sm mr-1 ri-error-warning-fill"></i>
+                                    {{errors.email }}
+                                </p>
+                                {% endif %}
+						</div>
+
+						<!-- password -->
+						<div class="col-[2/3]">
+							<label for="password" class="block text-xl font-header leading-6 text-black">Password</label>
+							<div class="mt-2">
+								<input placeholder="your password" type="password" name="password" id="password" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+							</div>
+							{% if errors and 'password1' in errors or 'password2' in errors %}
+                                <p
+                                    id="password-msg"
+                                    class="text-xs mt-1 font-medium"
+                                >
+                                    <i class="text-sm mr-1 ri-error-warning-fill"></i>
+                                    {{errors.password1}}
+									{{errors.password2}}
+                                </p>
+                                {% endif %}
+						</div>
+					</div>
+
+					<div class="mt-5 col-[1/3] flex flex-col justify-center items-center gap-y-2">
+						<!-- button -->
+						<button type="submit" class="transition-colors w-full rounded-xl shadow-sm px-24 py-2 font-header text-white bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+							Sign up
+						</button>
+						<div class="w-full flex justify-center gap-x-1 gap-y-8 items-center">
+							<div class="w-full bg-neutral-400 h-[1px] rounded">
+
+							</div>
+							<p class="text-sm font-header relative ">OR</p>
+							<div class="w-full bg-neutral-400 h-[1px] rounded">
+
+							</div>
+
+						</div>
+						<a href="http://localhost:8000/login" class="py-2 w-full transition-colors text-center font-header leading-6 shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-neutral-800 hover:bg-black rounded-xl text-white">Sign in</a>
+					</div>
+
+          <!--hover:border-green-600 leave it-->
+
+				</div>
+			</form>
+		</section>
+		{% include "ecom/footer.html" %}
+	</main>
+    
+  
+
+	
+</body>
+</html>

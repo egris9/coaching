@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	@apply h-full w-full scroll-smooth;
+}
+
+body {
+	@apply min-h-full w-full bg-background text-foreground font-body scroll-smooth;
+}
+.btn-gradient {
+	background: linear-gradient(90deg, #dc2626 0%, #ed3275 100%);
+}
+.text-gradient {
+	background: linear-gradient(90deg, #dd2828 0%, #f871a2 104.22%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.custom-input {
+	@apply px-5 py-2 rounded-md focus:outline-none ring border-2 border-neutral-700 ring-transparent bg-[#404040] placeholder:text-neutral-500 focus:border-rose-600  focus:ring-rose-600;
+}
+
+.custom-input12 {
+	@apply px-40 py-36 rounded-md focus:outline-none ring border-2 border-neutral-700 ring-transparent bg-[#404040] placeholder:text-neutral-500 focus:border-rose-600  focus:ring-rose-600;
+}
+
+.gradient-border {
+	transform-style: preserve-3d;
+}
+.gradient-border::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: calc(100% + 6px);
+	height: calc(100% + 6px);
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, -1px);
+	border-radius: inherit;
+	background: linear-gradient(to bottom right, #f87171, #f472b6);
+}
+.gradient-border:hover {
+	box-shadow: 0px 0px 50px 8px rgba(252, 135, 177, 0.5),
+		0px 0px 30px 2px rgba(255, 4, 4, 0.2);
+}
+.embla {
+	overflow: hidden;
+}
+.embla__container {
+	display: flex;
+}
+.embla__slide {
+	flex: 0 0 auto;
+	min-width: 0;
+}
