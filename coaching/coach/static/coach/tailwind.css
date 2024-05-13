@@ -55,3 +55,7 @@ body {
 	flex: 0 0 auto;
 	min-width: 0;
 }
+
+.thick-font {
+	font-family: 'Clash Display', sans-serif;
+}
