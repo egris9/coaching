@@ -41,6 +41,8 @@
       {% include 'coach/componants/cta.html' %}
       {% include 'coach/componants/weekly_popular_sessions.html' %}
 
+      {% include 'coach/componants/reviews.html' %}
+
       <section class="w-full my-10 max-w-[1200px] mx-auto">
         <div class="flex justify-between items-center w-full">
           <h1 class="text-5xl font-header text-gradient w-fit">Browse by category</h1>
@@ -122,25 +124,6 @@
           <h1 class="text-5xl font-header text-gradient w-fit">Popular products</h1>
         </div>
 
-        <!-- slider -->
-        <div class="py-7 h-fit embla after:pointer-events-none before:pointer-events-none relative after:absolute after:right-0 after:top-0 after:h-full after:w-11 after:bg-gradient-to-l after:from-neutral-950 after:to-transparent before:absolute before:left-0 before:top-0 before:h-full before:w-11 before:bg-gradient-to-l before:from-transparent before:z-10 before:to-neutral-950">
-          <!-- slider container -->
-          <div class="embla__container flex">
-            <!-- product -->
-            {% for p in products %}
-              <a 		data-tilt data-tilt-glare data-tilt-max-glare="0.2"
-              data-tilt-max="10"
-              data-tilt-speed="750" href="{% url 'coach:product' id=p.id%}" class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-fit relative transition-shadow ease-in gradient-border group bg-neutral-800 rounded-2xl">
-                <img class="rounded-lg w-52 mt-12 mx-8" src="{{ MEDIA_URL }}{{ p.url }}" />
-                <div class="w-full my-4 px-4 gap-y-1 flex flex-col justify-between items-start">
-                  <p class="font-medium">{{ p.name }}</p>
-                  <p class="font-medium">{{ p.price }} DH</p>
-                </div>
-                <span class="material-symbols-outlined text-neutral-600 absolute top-3 group-hover:text-primary-hover right-3 text-2xl">arrow_outward</span>
-              </a>
-            {% endfor %}
-          </div>
-
           <div class="flex items-center gap-x-4 my-6 cursor-pointer">
             <div class="embla__button--prev relative hover:bg-neutral-50 hover:text-neutral-900 duration-300 transition-colors z-10 bg-neutral-700 px-6 py-2 rounded-full flex items-center">
               <span class="material-symbols-outlined">arrow_back_ios</span>
@@ -194,7 +177,8 @@
     </main>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-    <script  src="{% static 'coach/products/slider.js' %}"></script>
+    <script src="./node_modules/preline/dist/preline.js"></script>
+    <script  src="{% static 'coach/slider.js' %}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="{% static 'coach/navDropDown.js' %}"></script>
     <script src="{% static 'coach/dropDown.js' %}"></script>

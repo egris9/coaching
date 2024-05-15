@@ -6,7 +6,9 @@ module.exports = {
 	
 		"./coach/static/**/*.js",
 		"./coach/static/**/*.mjs",
+		'node_modules/preline/dist/*.js',
 	],
+	
 	theme: {
 		extend: {
 
@@ -42,5 +44,9 @@ module.exports = {
 			success: "#a3e635",
 			},
 	},
-	plugins: [require("@tailwindcss/forms")],
+	
+	plugins: [require("@tailwindcss/forms"),
+	require('preline/plugin')
+	],
+	
 }};
