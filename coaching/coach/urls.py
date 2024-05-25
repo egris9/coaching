@@ -14,6 +14,9 @@ urlpatterns = [
     path("session", views.session, name="session"),
     path("shop", views.shop, name="shop"),
     path("products", views.products, name="products"),
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("session_creation", views.session_creation, name="session_creation"),
+
 ]
 
 
