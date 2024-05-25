@@ -7,26 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="{% static 'ecom/index.css' %}">
-    <link rel="stylesheet" href="{% static 'ecom/global.css' %}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
 </head>
-<body class="font-brand flex flex-col">
-  
-	<main class="w-full my-auto">
-    
+<body class="font-brand flex flex-col mt-20 bg-gray-300">
+	{% include 'coach/componants/nav.html' %}
+	<main class="w-full ">
 		<!-- sign up -->
-		<section class="w-[90%] m-auto my-8 flex flex-col items-center justify-center">
-			<form method="POST" action="/signup" id="signup-form" class="bg-gradient-to-r from-red-600 to-pink-500 py-8 px-8 rounded-2xl border border-neutral-800">
+		<section class="w-[90%] mx-auto flex flex-col items-center justify-center mt-4">
+			<form method="POST" action="/signup" id="signup-form" class="bg-gradient-to-r bg-green-950 py-14 px-14 rounded-2xl border border-neutral-800 ">
 				{% csrf_token %}
 				<div>
-					<h1 class="font-logo text-5xl my-4 text-center text-black font-header">Apostel {{message}}</h1>
+					<h1 class="font-logo text-5xl my-6 text-center text-white font-extrabold">Conquer {{message}}</h1>
 
 
-					<h2 class=" text-center mt-2 font-header leading-7 text-black text-3xl">Sign up to your account</h2>
+					<h2 class=" text-center mt-2 my-7 font-extrabold leading-7 text-white text-3xl">Sign up to your account</h2>
 					{% if error_global %}
                         <p
                             id="signup-msg"
@@ -41,9 +46,9 @@
 					<div class="mt-4 grid grid-cols-[320px,_320px] gap-x-6 gap-y-4 max-w-4xl">
 						<!-- first name -->
 						<div class="col-[1/2]">
-							<label for="first-name" class="block text-xl font-header leading-6 text-black">First name</label>
+							<label for="first-name" class="block text-xl font-extrabold leading-6 text-white">First name</label>
 							<div class="mt-2">
-								<input placeholder="your first name" type="text" name="firstname" id="first-name" autocomplete="given-name" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+								<input placeholder="your first name" type="text" name="firstname" id="first-name" autocomplete="given-name" class=" px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent ">
 							</div>
 							{% if errors and 'firstname' in errors%}
                                 <p
@@ -58,9 +63,9 @@
 
 						<!-- last name -->
 						<div class="col-[2/3]">
-							<label for="last-name" class="block text-xl font-header leading-6 text-black">Last name</label>
+							<label for="last-name" class="block text-xl font-extrabold leading-6 text-white">Last name</label>
 							<div class="mt-2">
-								<input placeholder="your last name" type="text" name="lastname" id="last-name" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+								<input placeholder="your last name" type="text" name="lastname" id="last-name" class=" px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent">
 							</div>
 							{% if errors and 'lastname' in errors%}
                                 <p
@@ -75,9 +80,9 @@
 
 						<!-- email -->
 						<div class="col-[1/2]">
-							<label for="email" class="block text-xl font-header leading-6 text-black">Email</label>
+							<label for="email" class="block text-xl font-extrabold leading-6 text-white">Email</label>
 							<div class="mt-2">
-								<input placeholder="your email" type="email" name="email" id="email" class="  h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+								<input placeholder="your email" type="email" name="email" id="email" class=" px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent">
 							</div>
 							{% if errors and 'email' in errors%}
                                 <p
@@ -92,9 +97,9 @@
 
 						<!-- password -->
 						<div class="col-[2/3]">
-							<label for="password" class="block text-xl font-header leading-6 text-black">Password</label>
+							<label for="password" class="block text-xl font-extrabold leading-6 text-white">Password</label>
 							<div class="mt-2">
-								<input placeholder="your password" type="password" name="password" id="password" class=" h-10  block w-full rounded-xl border py-1.5 text-white shadow-sm bg-black font-header pl-2">
+								<input placeholder="your password" type="password" name="password" id="password" class=" px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent">
 							</div>
 							{% if errors and 'password1' in errors or 'password2' in errors %}
                                 <p
@@ -111,28 +116,24 @@
 
 					<div class="mt-5 col-[1/3] flex flex-col justify-center items-center gap-y-2">
 						<!-- button -->
-						<button type="submit" class="transition-colors w-full rounded-xl shadow-sm px-24 py-2 font-header text-white bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+						<button type="submit" class=" transition-colors w-full rounded-xl shadow-sm px-24 py-2 font-extrabold text-emerald-300 bg-green-800 hover:bg-black hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
 							Sign up
 						</button>
 						<div class="w-full flex justify-center gap-x-1 gap-y-8 items-center">
 							<div class="w-full bg-neutral-400 h-[1px] rounded">
 
 							</div>
-							<p class="text-sm font-header relative ">OR</p>
+							<p class="text-sm font-extrabold relative text-white">OR</p>
 							<div class="w-full bg-neutral-400 h-[1px] rounded">
 
 							</div>
 
 						</div>
-						<a href="http://localhost:8000/login" class="py-2 w-full transition-colors text-center font-header leading-6 shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-neutral-800 hover:bg-black rounded-xl text-white">Sign in</a>
+						<a href="http://localhost:8000/login" class="py-2 w-full transition-colors text-center font-extrabold leading-6 shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border bg-green-800 border-neutral-800 hover:bg-black rounded-xl text-emerald-300">Sign in</a>
 					</div>
-
-          <!--hover:border-green-600 leave it-->
-
 				</div>
 			</form>
 		</section>
-		{% include "ecom/footer.html" %}
 	</main>
     
   
@@ -140,3 +141,7 @@
 	
 </body>
 </html>
+
+
+
+

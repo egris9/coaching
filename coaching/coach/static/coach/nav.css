@@ -7,7 +7,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
 }
 .material-symbols-outlined{
     font-size: 14px;
@@ -38,7 +37,7 @@
 } 
 
 .nav_links li a:hover{
-    color: #51dc26;
+    color: #6EE7B7;
 } 
 
 
