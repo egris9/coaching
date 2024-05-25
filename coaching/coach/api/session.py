@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 
-def sign_in(request):
+def session(request):
     
     return render(
         request,
-        "coach/sign_in.html",
-    
+        "coach/session.html",
+       
     )

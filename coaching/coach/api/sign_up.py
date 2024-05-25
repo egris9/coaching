@@ -4,6 +4,6 @@ def sign_up(request):
     
     return render(
         request,
-        "coach/home.html",
+        "coach/sign_up.html",
        
     )

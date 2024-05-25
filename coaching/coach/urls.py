@@ -9,8 +9,11 @@ app_name = "coach"
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path("login", views.sign_in, name="login"),
+    path("signin", views.sign_in, name="signin"),
     path("signup", views.sign_up, name="signup"),
+    path("session", views.session, name="session"),
+    path("shop", views.shop, name="shop"),
+    path("products", views.products, name="products"),
 ]
 
 
