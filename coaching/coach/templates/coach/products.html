@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,700&display=swap" rel="stylesheet">
+
+		{% comment %} external links {% endcomment %}
+		<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+		{% comment %} local links {% endcomment %}
+		<link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
+		<link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+		
+	</head>
+	<body>
+		{% include 'coach/componants/nav.html' %}
+		<main class="w-full mx-auto mt-44 ">
+			<div
+				class="max-w-[1400px] mx-auto w-full flex h-full items-center justify-between"
+			>
+					<div
+						data-hs-carousel='{
+						"loadingClasses": "opacity-0"
+						}'
+						class="relative w-[700px] "
+						>
+						<div class="hs-carousel relative overflow-hidden w-full min-h-[400px]">
+							<div
+							class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0"
+							>
+							<img
+								src="{% static 'img/ronnie.jpeg' %}"
+								class="hs-carousel-slide bg-green-900"
+							/>
+							<img
+								src="{% static 'img/ronnie.jpeg' %}"
+								class="hs-carousel-slide bg-green-900"
+							/>
+							<img
+								src="{% static 'img/ronnie.jpeg' %}"
+								class="hs-carousel-slide bg-green-900"
+							/>
+							</div>
+						</div>
+
+						<div class="flex w-full justify-center gap-x-3 items-center mt-5">
+							<button type="button" class="hs-carousel-prev p-4 py-1 bg-emerald-500 rounded-md">
+								<span class="text-2xl" aria-hidden="true">«</span>
+								<span class="sr-only">Previous</span>
+							</button>
+							<button type="button" class="hs-carousel-next p-4 py-1 bg-emerald-500 rounded-md">
+								<span class="sr-only">Next</span>
+								<span class="text-2xl" aria-hidden="true">»</span>
+							</button>
+						</div>
+						</div>
+
+					
+				{% comment %}info section{% endcomment %}
+				<div class="flex flex-col mb-2">
+					<div
+						class="capitalize flex justify-start items-center gap-x-1 font-medium text-5xl"
+					>
+						<a
+							class="hover:text-emerald-500 transition-colors duration-200 flex gap-x-1 justify-start items-end font-header"
+							{%comment %}href="{% url 'ecom:shop' %}"{% endcomment %}
+						>
+							shop
+							<span class="material-symbols-outlined text-5xl">chevron_right</span>
+						</a>
+						<a
+							class="hover:text-red-400 transition-colors duration-200"
+							{%comment %}href="{% url 'ecom:shop' %}?filter={{ product.type }}#products"{% endcomment %}
+							>{{ product.type }}</a
+						>
+					</div>
+					<h1 class="font-bold text-4xl capitalize">{{ product.name }}</h1>
+					<h3
+						id="sub-headline"
+						class="text-gray-500 capitalize text-3xl mt-1 mb-2 font-header"
+					>
+						{{ product.first_flavor.name }} dumbbell bench press
+					</h3>
+					<p
+						id="product-price"
+						data-price="60"
+						class="text-2xl font-medium  tabular-nums"
+					>
+						{{ product.price }} 69 $
+					</p>
+					<p class="mb-4 max-w-md text-base font-medium">
+						{{ product.description }}
+					</p>
+
+                    <div class="flex flex-col justify-start  ">
+						<p class="max-w-md">
+							RYSE takes a unique approach to the lineup, utilizing the latest
+							science and ingredients backed by clinical evidence. Not only do
+							we use the best patented ingredients that are backed by research,
+							we TEST multiple times. You'll always get what the label says and
+							only use the highest quality ingredients, many are patented. By
+							looking at our labels you will see that we cut no corners creating
+							our products and never will, that is our commitment to you!
+						</p>
+					</div>
+
+					
+					
+					{% comment %}Quantity section{% endcomment %}
+					<p class="mt-4 font-medium capitalize mb-2">quantity</p>
+					<div class="flex items-center">
+						<button
+							class="border px-20 py-2 flex items-center text-lg font-bold border-neutral-50 hover:text-emerald-400 transition-colors duration-200 hover:border-emerald-400"
+							id="add-quantity"
+						>
+							<span class="material-symbols-outlined text-2xl">add</span>
+						</button>
+						<input
+							id="quantity-value"
+							type="text"
+							value="1"
+							class="bg-transparent w-[100px] text-center text-xl outline-none border-none"
+						/>
+						<button
+							class="border px-20 py-2 flex items-center text-lg font-bold border-neutral-50 hover:text-emerald-400 transition-colors duration-200 hover:border-emerald-400"
+							id="minus-quantity"
+						>
+							<span class="material-symbols-outlined text-2xl">remove</span>
+						</button>
+					</div>
+					<button
+						data-add-to-cart-btn
+						data-product-id="{{product.id}}"
+						class="font-semibold bg-emerald-500 hover:bg-black py-2 mt-6 w-full font-header text-2xl rounded-md hover:scale-[1.02] duration-300 hover:text-white"
+					>
+						add to cart
+					</button>
+				</div>
+			</div>
+			<div class="w-full max-w-[90%] mx-auto mt-28">
+				<h3 class="text-2xl font-medium">More Products</h3>
+				<h1 class="text-5xl thick-font font-bold">For You</h1>
+				<div class="w-full py-16 h-fit embla after:pointer-events-none before:pointer-events-none relative after:absolute after:right-0 after:top-0 after:h-full after:w-11 after:bg-gradient-to-l mx-auto items-center">
+					<div class="embla__container flex">
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+
+						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+							<img
+							  src="{% static 'img/ronnie.jpeg' %}"
+							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
+							/>
+							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
+								  <div class="mb-2">
+									<p class="text-emerald-300 font-medium capitalize ">
+									  adolfo hitler-chan
+									</p>
+								  </div>
+								</div>
+								<div class="mb-2 mt-2">
+								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  
+								</div>
+								
+						</div>  
+						
+						
+						
+	  
+					</div>
+				</div>
+			</div>
+
+
+	
+			
+            
+		</main>
+
+		
+		{% include 'coach/componants/footer.html' %}
+
+		<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script  src="{% static 'coach/slider.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@preline/carousel@2.1.0/index.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	</body>
+</html>

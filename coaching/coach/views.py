@@ -1,5 +1,10 @@
-from coach.api.sign_up import sign_up
+from coach.api.sign_up import signup
 from coach.api.home import home
-from coach.api.sign_in import sign_in
+from coach.api.sign_in import signin
+from coach.api.logout import sign_out
+from coach.api.session import session
+from coach.api.shop import shop
+from coach.api.products import products
+
 from coach.api.dashboard import dashboard
 from coach.api.session_creation import session_creation

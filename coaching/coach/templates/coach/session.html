@@ -1,0 +1,306 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
+		/>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
+		<link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+        
+</head>
+<body class="bg-gray-300">
+    {% include 'coach/componants/nav.html' %}
+    <main class="w-full ">
+        
+
+        <section class="relative w-full mt-14">
+            <div class="w-full relative max-h-[550px] h-[550px] mt-24 p-1">
+                <img class=" h-full  w-[85%] ml-32  object-cover rounded-3xl " src=" {% static 'img/session.jpeg' %}">
+    
+                <h1
+                    class="text-[4rem] capitalize absolute top-[50%] text-center left-1/2 -translate-x-1/2 -translate-y-1/2 font-header text-white"
+                >
+                    holy tren collection
+                </h1>
+            </div >
+            <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
+                <div class="hs-accordion-group min-w-[290px]">
+                    <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
+                    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none " aria-controls="hs-basic-with-arrow-collapse-two">
+                        <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                        <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                        Filter by Price
+                    </button>
+                    <div id="hs-basic-with-arrow-collapse-two" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-two">
+                            <div class="grid space-y-2">
+                                <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
+                                  <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
+                                  <span class="text-sm text-gray-100 ms-3">Under $25</span>
+                                </label>
+                                <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
+                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
+                                    <span class="text-sm text-gray-100 ms-3">$25 to $50</span>
+                                  </label>
+                                  <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
+                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
+                                    <span class="text-sm text-gray-100 ms-3">50 to $100</span>
+                                  </label>
+                                  <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
+                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
+                                    <span class="text-sm text-gray-100 ms-3">Over $100</span>
+                                  </label>
+                              </div>
+                    </div>
+                    </div>
+                
+                    <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
+                    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none " aria-controls="hs-basic-with-arrow-collapse-three">
+                        <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                        <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                        Sort By
+                    </button>
+                    <div id="hs-basic-with-arrow-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-three">
+                        <div class="grid space-y-2">
+                            <label for="hs-vertical-radio-checked-in-form" class=" max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm  bg-gray-400  text-black">
+                                <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none " id="hs-vertical-radio-checked-in-form" checked="">
+                                <span class="text-sm text-gray-100 ms-3 ">Popularity</span>
+                            </label>
+                            <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400  text-black">
+                                <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" checked="">
+                                <span class="text-sm text-gray-100 ms-3 ">Price: High to Low</span>
+                            </label>
+                            <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500  bg-gray-400  text-black">
+                              <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" checked="">
+                              <span class="text-sm text-gray-100 ms-3 ">Price: Low to High</span>
+                            </label>
+                           
+                          </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="w-full max-w-[1200px] grid grid-cols-4 gap-y-2 gap-x-4 justify-items-center  flex-col">
+                    {% comment %} {% for p in products %} {% endcomment %}
+                    <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
+                      <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
+                        >
+                          body building
+                        </p>
+                    <img
+                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+                    />
+                      <div class="min-w-0 max-w-full w-full">
+                          <h4
+                          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
+                          >
+                          ronie special nippeles
+                          </h4>
+                      </div>
+                      <div class="flex w-full justify-between mt-2 items-center gap-x-3">
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined text-lg font-semibold">
+                              history_toggle_off
+                          </span>
+                          <span>2h</span>
+                          </p>
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined"> groups </span>
+                          <span>100</span>
+                          </p>
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined"> star </span> <span>5</span>
+                          </p>
+                      </div>
+                
+                        <div class="mt-4 w-full border-y border-emerald-700 py-2">
+                        <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
+                        <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
+                      </div>
+                      <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
+                      <img
+                        class="size-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      />
+                      <div class="mb-2">
+                        <p class="text-emerald-300">coach</p>
+                        <p class="text-emerald-300 font-medium capitalize">
+                          adolfo hitler-chan
+                        </p>
+                      </div>
+                    </div>
+                        <div class="mb-2 mt-3">
+                          <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+                          
+                        </div>
+                        
+                  </div>
+
+
+                    <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
+                      <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
+                        >
+                          body building
+                        </p>
+                    <img
+                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+                    />
+                      <div class="min-w-0 max-w-full w-full">
+                          <h4
+                          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
+                          >
+                          ronie special nippeles
+                          </h4>
+                      </div>
+                      <div class="flex w-full justify-between mt-2 items-center gap-x-3">
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined text-lg font-semibold">
+                              history_toggle_off
+                          </span>
+                          <span>2h</span>
+                          </p>
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined"> groups </span>
+                          <span>100</span>
+                          </p>
+                          <p
+                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                          >
+                          <span class="material-symbols-outlined"> star </span> <span>5</span>
+                          </p>
+                      </div>
+                
+                        <div class="mt-4 w-full border-y border-emerald-700 py-2">
+                        <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
+                        <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
+                      </div>
+                      <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
+                      <img
+                        class="size-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      />
+                      <div class="mb-2">
+                        <p class="text-emerald-300">coach</p>
+                        <p class="text-emerald-300 font-medium capitalize">
+                          adolfo hitler-chan
+                        </p>
+                      </div>
+                    </div>
+                        <div class="mb-2 mt-3">
+                          <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+                          
+                        </div>
+                        
+                  </div>
+                    
+                    
+                
+                  <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
+                    <p
+                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
+                      >
+                        body building
+                      </p>
+                  <img
+                    src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+                  />
+                    <div class="min-w-0 max-w-full w-full">
+                        <h4
+                        class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
+                        >
+                        ronie special nippeles
+                        </h4>
+                    </div>
+                    <div class="flex w-full justify-between mt-2 items-center gap-x-3">
+                        <p
+                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                        >
+                        <span class="material-symbols-outlined text-lg font-semibold">
+                            history_toggle_off
+                        </span>
+                        <span>2h</span>
+                        </p>
+                        <p
+                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                        >
+                        <span class="material-symbols-outlined"> groups </span>
+                        <span>100</span>
+                        </p>
+                        <p
+                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                        >
+                        <span class="material-symbols-outlined"> star </span> <span>5</span>
+                        </p>
+                    </div>
+              
+                      <div class="mt-4 w-full border-y border-emerald-700 py-2">
+                      <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
+                      <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
+                    </div>
+                    <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
+                    <img
+                      class="size-12 rounded-full object-cover"
+                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    />
+                    <div class="mb-2">
+                      <p class="text-emerald-300">coach</p>
+                      <p class="text-emerald-300 font-medium capitalize">
+                        adolfo hitler-chan
+                      </p>
+                    </div>
+                  </div>
+                      <div class="mb-2 mt-3">
+                        <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+                        
+                      </div>
+                      
+                </div>
+                      
+                    
+                </div>
+        </section>
+    </main>
+    {% include 'coach/componants/footer.html' %}
+    <script type="module"> 
+    import preline from "https://cdn.jsdelivr.net/npm/preline@2.1.0/+esm"
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/accordion@2.1.0/index.min.js"></script>
+
+</body>
+</html>
