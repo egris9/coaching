@@ -31,26 +31,26 @@
                         class="bg-emerald-500 hover:bg-black transition-all text-white text-sm rounded-full px-5 py-2.5">Search</button>
         </div>
         <div class="w-full max-w-[1000px] grid grid-cols-3 gap-y-2 gap-x-11 content-center mt-10 mx-auto">
-            {% comment %} {% for p in products %} {% endcomment %}
+            {% for p in products %}
             <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
               <img
-                src="{% static 'img/ronnie.jpeg' %}"
+                src="{{MEDIA_URL}}{{p.url}}"
                 class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
               />
                 <div class="mt-2 w-full flex items-center justify-center gap-x-4">
                     <div class="mb-2">
                       <p class="text-emerald-300 font-medium capitalize ">
-                        adolfo hitler-chan
+                        {{p.name}}
                       </p>
                     </div>
                   </div>
                   <div class="mb-2 mt-2">
-                    <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+                    <p class="text-emerald-300 thick-font text-2xl">{{p.price}}</p>
                     
                   </div>
                   
             </div>  
-        
+        {% comment %}
             <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
               <img
                 src="{% static 'img/ronnie.jpeg' %}"
@@ -90,7 +90,7 @@
               
             
         </div>
-
+          {% endcomment %}
 
         <!-- Pagination -->
         <nav class="flex  justify-end gap-x-1 bg-emerald-500 rounded-3xl max-w-64 mx-auto mt-28">

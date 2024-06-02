@@ -38,13 +38,13 @@
 								{% if error_message %}
 								<p class="text-xs font-bold mb-2 ">{{ error_message }}</p>
 								{% endif %}
-								<form method="POST" action="/login" class="flex flex-col gap-4">
+								<form method="POST" action="/signin" class="flex flex-col gap-4">
 									{% csrf_token %}
 									<input
-										class="px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent"
+										class="px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent" name="email"
 										type="email" placeholder="Email" />
 									<input
-										class="px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent"
+										class="px-8 py-4 ring-0 placeholder-emerald-300  block w-full rounded-xl hover:border-2  text-white shadow-sm bg-green-800 hover:border-green-500 font-extrabold pl-2 outline-none placeholder:font-medium border-2 border-transparent" name="password"
 										type="password" placeholder="Password" />
 									<button
 										class="mt-5 tracking-wide font-semibold bg-green-800 border-neutral-800 text-emerald-300 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">

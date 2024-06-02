@@ -22,18 +22,19 @@
 
             <ul  data-nav-dropDown-list class="invisible opacity-0  w-fit transition-opacity duration-200 top-[calc(100%+1.5rem)] rounded-lg left-1/2 -translate-x-1/2 text-neutral-50 absolute bg-neutral-800 shadow-md">
                 <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
-                    <a class="flex items-center justify-between  gap-x-2 w-full" href="{% url 'coach:cart' %}" >cart
+                    <a class="flex items-center justify-between  gap-x-2 w-full"  >cart
                         <span class="material-symbols-outlined  text-lg  leading-none">
                             shopping_cart
                             </span></a>
                 </li>
+
                 <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
-                    <a class="flex items-center justify-between  gap-x-2 w-full" href="{% url 'coach:profile' %}" >profile
+                    <a class="flex items-center justify-between  gap-x-2 w-full"  >profile
                         <span class="material-symbols-outlined  text-lg  leading-none"> account_circle</span>
                         </a>
                 </li>
                 <li data-nav-dropDown-item class="w-36 m-2 p-2 hover:bg-neutral-800/80 transition-colors duration-300 rounded-lg cursor-pointer font-medium">
-                    <a class="flex items-center  justify-between gap-x-2 w-full" href="{% url 'coach:signout' %}" >sign out
+                    <a class="flex items-center  justify-between gap-x-2 w-full" href="{% url 'coach:logout' %}" >sign out
                         <span class="material-symbols-outlined  text-lg leading-none ">account_circle</span>
                     
                         </a>
