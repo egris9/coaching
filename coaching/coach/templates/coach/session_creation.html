@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="w-full h-full min-h-screen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,161 +8,194 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js"
+      defer
+    ></script>
   </head>
-  <body>
-    <div
-      class="h-screen bg-emerald-100"
-    >
-      <h1 class="text-4xl mt-7 capitalize font-bold my-6 ml-3  text-emerald-950">create session</h1>
-      <div class="mx-auto col-[2/3] flex flex-row w-fit gap-x-4 ">
-        <div class="bg-emerald-900 w-[280px] rounded-xl">
-        <div class="mx-auto col-[2/3] w-[220px] flex flex-col ">
+  <body class="h-full w-full">
+    <div class="bg-emerald-100 p-1 w-full h-full">
+      <h1
+        class="text-4xl capitalize font-bold w-full mt-12 mb-10 max-w-[1350px] mx-auto text-emerald-900 thick-font"
+      >
+        create session
+      </h1>
+       <div
+        class="grid grid-cols-3 grid-rows-[120px,150px,120px,1fr] justify-items-center w-full max-w-[1400px] mx-auto gap-x-4 gap-y-4"
+      >
+        <div
+          class="p-4 gap-y-2 flex-col row-[1/3] w-full bg-emerald-900 flex rounded-3xl"
+        >
+          <div class="capitalize">
+            <p class="w-fit text-xl text-emerald-100">session photo</p>
+            <p class="w-fit text-sm text-emerald-300">
+              choose an image for your training session
+            </p>
+          </div>
+
+          <label class="flex w-full justify-center gap-5 relative">
+            <input type="file" id="session_img_input" class="opacity-0 -z-10 absolute " accept="image/* " >
+            <img
+              class="w-[400px] h-[200px] object-cover object-top  rounded-3xl"
+              src="{% static 'img/ronnie.jpeg' %}"
+              id="session_img"
+            />
+          </label>
+        </div>
+
+        <div
+          class="p-4 gap-y-2 col-[2/3] row-[1/2] flex-col bg-emerald-600 flex rounded-3xl"
+        >
+          <div>
+            <p class="capitalize text-emerald-900">Session title</p>
+            <p class="w-fit text-sm text-emerald-300">
+              choose a title for your training session
+            </p>
+          </div>
+
+          <input
+            type="text"
+            name="username"
+            class="rounded-md outline-none ring-1 ring-emerald-800 focus-within:ring-emerald-400 w-[400px]  placeholder:text-emerald-300 border-0 bg-transparent py-1.5 pl-2 text-white"
+            placeholder="enter your name here"
+          />
+        </div>
+
+        <div
+          class="p-4 gap-y-2 flex-col row-[1/5] w-full bg-emerald-600 flex rounded-3xl"
+        > <div class="">
+           
+            <p class="capitalize text-emerald-100">Session Description</p>
+            <p class="w-fit text-sm text-emerald-300">
+              write what the session will be about
+            </p>
+
+          </div>
+        <div class="overflow-x-hidden scroller w-full h-full max-h-[500px] p-1 bg-emerald-600 overflow-y-scroll">
+           <div id="editorjs" class="costum-type-scale min-h-full text-white "></div>
+        </div>
+         
+
         
-        <div class=" mb-4">
-          <div class="mt-2">
-            <span
-              class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-              >full name</span
-            >
-            <div
-              class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-            >
-              <input
-                type="text"
-                name="username"
-                class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                placeholder="enter your name here"
-              />
-            </div>
+        </div>
+
+        <div class="p-4 gap-y-2 row-[3/4] flex-col relative w-full bg-emerald-600 flex rounded-3xl">
+          
+          <div>
+            <p class="capitalize text-emerald-900">Session category</p>
+            <p class="w-fit text-sm text-emerald-300">
+              choose a category for your training session
+            </p>
+          </div>
+          <div class="relative w-full flex justify-center">
+            <button class="w-[90%] bg-emerald-800 rounded-lg text-emerald-400 p-2" data-dropDown-btn="categorie_dropdown">
+            select categorie</button>
+            <div data-dropDown-list="categorie_dropdown" data-hidden="false"  class="absolute opacity-0 pointer-events-none z-10 w-[80%] p-4 gap-y-2 bg-emerald-950/80 backdrop-blur-sm rounded-2xl flex flex-col right-1/2 translate-x-1/2  top-[calc(100%+8px)] ">
+              <p class="bg-emerald-700/30 hover:bg-emerald-400 transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown">nnnnn</p>
+              <p class="bg-emerald-700/30 hover:bg-emerald-400 transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown">rrrrr</p>
+              <p class="bg-emerald-700/30 hover:bg-emerald-400 transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown">eeeee</p>
+            
           </div>
         </div>
-      
-
-
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >type of session</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div>
-
-
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >type of session(optional)</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div>
-
-
-
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >title of session</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div></div></div>
-
-        <div class="bg-emerald-900 w-[280px] rounded-xl">
-        <div class="mx-auto col-[2/3] flex flex-col w-[220px] ">
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >session description</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div>
-
-
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >date of session</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div>
-
-
-        <div class="sm:col-span-4 mb-4">
-            <div class="mt-2">
-              <span
-                class="flex select-none items-center pl-1 capitalize text-emerald-600 sm:text-sm"
-                >session picture</span
-              >
-              <div
-                class="flex rounded-md shadow-sm ring-1 ring-inset ring-emerald-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md"
-              >
-                <input
-                  type="text"
-                  name="username"
-                  class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-emerald-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="enter your name here"
-                />
-              </div>
-            </div>
-        </div></div></div>
-
         
 
+
         </div>
+
+        <div
+          class="p-4 w-full gap-y-5 flex-col h-full col-[1/2] row-[4/5] bg-emerald-900 flex rounded-3xl"
+        >
+          <div>
+            <p class="capitalize mb-1 text-emerald-100">
+              Session secondary category
+            </p>
+            <p class="w-fit text-sm text-emerald-300">
+              choose a category for your training session
+            </p>
+          </div>
+
+          <div class="relative w-full flex justify-center">
+            <button class="w-[90%] bg-emerald-600 rounded-lg text-emerald-900 p-2" data-dropDown-btn="categorie_dropdown2">
+            select categorie</button>
+            <div data-dropDown-list="categorie_dropdown2" data-hidden="false"  class="absolute opacity-0 pointer-events-none z-10 w-[80%] p-4 gap-y-2 bg-emerald-950/80 backdrop-blur-sm rounded-2xl flex flex-col right-1/2 translate-x-1/2  top-[calc(100%+8px)] ">
+              <p class="bg-emerald-700/30 hover:bg-emerald-400   transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown2">nnnnn</p>
+              <p class="bg-emerald-700/30 hover:bg-emerald-400 transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown2">rrrrr</p>
+              <p class="bg-emerald-700/30 hover:bg-emerald-400 transition-colors duration-300 text-emerald-300 hover:text-emerald-900  p-2 rounded cursor-pointer data-[item-active]:bg-emerald-400 data-[item-active]:text-emerald-900" data-dropDown-item ="categorie_dropdown2">eeeee</p>
+            
+          </div>
+        </div>
+        </div>
+        <div class="p-4 gap-y-2 justify-start flex-col row-[2/5] w-full bg-emerald-900 flex rounded-3xl">
+          <div>
+            <p class="capitalize text-emerald-100">Session period</p>
+            <p class="w-fit text-sm text-emerald-300">
+              choose when the training session begins and ends
+            </p>
+
+              <div
+                class="bg-emerald-800 rounded-2xl p-6 flex-col flex self-center items-center relative "
+              >
+                <div id="calendar" class=""></div>
+                
+                
+                <div class="w-full mt-5 flex justify-evenly items-center mx-auto">
+                  
+                  <div class="relative">
+                    <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-emerald-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <input type="time" id="time" class=" leading-none text-emerald-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-emerald-900  dark:text-emerald-500" min="06:00" max="24:00" value="00:00" required />
+                </div>
+
+                <p class="text-emerald-500 capitalize font-medium">to</p>
+                
+                <div class="relative">
+                  <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                      <svg class="w-4 h-4 text-emerald-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                          <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+                      </svg>
+                  </div>
+                  <input type="time" id="time" class=" leading-none text-emerald-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-emerald-900  dark:text-emerald-500 " min="06:00" max="24:00" value="00:00" required />
+              </div>
+                  
+                </div>
+              
+              </div>
+
+
+          </div>
+          
+          
+        </div>
+      </div>
+      <div class=" w-full max-w-[1400px] flex justify-end  mx-auto mt-3">
+      <button class="bg-emerald-600 text-emerald-800 rounded-xl py-3 px-5 font-medium hover:bg-emerald-900 hover:text-emerald-400 transition-colors duration-300
+       ">creat session</button>
     </div>
+    </div>
+
+    <script
+      src="{% static 'coach/calender_sess_creation.mjs' %}"
+      type="module"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+    <script src="{% static 'coach/editer_dashboard.js'%}"></script>
+    <script
+      src="{% static 'coach/dropdown.js' %}"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"> </script>
+    <script src="{% static 'coach/create_session.js' %}" > </script>
   </body>
 </html>

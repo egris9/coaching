@@ -18,10 +18,63 @@ body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+.scroller {
+	--scrollbar-color-thumb: #6ee7b7;
+	--scrollbar-color-track: rgb(5 150 105);
+	--scrollbar-width-legacy: 0.5rem;
+  }
+  
+  @supports (scrollbar-width: auto) {
+	.scroller {
+	  scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+	  scrollbar-gutter: stable;
+	}
+  }
+  
+  @supports selector(::-webkit-scrollbar) {
+	.scroller {
+	  text-align: justify;
+	}
+	.scroller::-webkit-scrollbar-thumb {
+	  background: var(--scrollbar-color-thumb);
+	  border-radius: 100vw;
+	}
+	.scroller::-webkit-scrollbar-track {
+	
+	  background: var(--scrollbar-color-track);
+	  border-radius: 20px;
+	}
+	.scroller::-webkit-scrollbar {
+	  width: 40px;
+	  max-width: var(--scrollbar-width-legacy);
+	  max-height: var(--scrollbar-width-legacy);
+	}
+  }
+  
 .custom-input {
 	@apply px-5 py-2 rounded-md focus:outline-none ring border-2 border-neutral-700 ring-transparent bg-[#404040] placeholder:text-neutral-500 focus:border-rose-600  focus:ring-rose-600;
 }
-
+.costum-type-scale h1{
+	font-size:3.815rem;
+}
+.costum-type-scale h2{
+	font-size:3.052rem;
+}
+.costum-type-scale h3{
+	font-size:2.441rem;
+}
+.costum-type-scale h4{
+	font-size:1.953rem;
+}
+.costum-type-scale h5{
+	font-size:1.563rem;
+}
+.costum-type-scale h6{
+	font-size:1.25rem;
+}
+.costum-type-scale p{
+	font-size:1rem;
+}
 .custom-input12 {
 	@apply px-40 py-36 rounded-md focus:outline-none ring border-2 border-neutral-700 ring-transparent bg-[#404040] placeholder:text-neutral-500 focus:border-rose-600  focus:ring-rose-600;
 }
