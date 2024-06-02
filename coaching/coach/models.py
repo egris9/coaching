@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+import random
+
+def generate_random_id():
+    return random.randint(10000, 99999)  # Adjust the range as needed
+
 
 
 class Profile(models.Model):
@@ -13,21 +18,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.type
-
     type = models.CharField(max_length=7, choices=Type.choices, default=Type.Client)
 
-class Training_plan(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
-    Profile = models.OneToOneField(User, on_delete=models.CASCADE)
-    categorie = models.CharField(max_length=100)
+
 
 class Training_session(models.Model):
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()   
-    training_plan = models.ForeignKey(Training_plan, on_delete=models.CASCADE) 
-    location = models.CharField(max_length=100)
-    participant_limit = models.IntegerField()
+    name = models.CharField(max_length=100, null=True)
+    description = models.CharField(max_length=100, null=True)
+    Profile = models.OneToOneField(User, on_delete=models.CASCADE, default=generate_random_id())
+    img = models.ImageField(upload_to="sessions/%y/%m/%d", null=True)
+    start_time = models.DateTimeField(null=True)    
+    end_time = models.DateTimeField(null=True)   
+    location = models.CharField(max_length=100,null=True)
+    participant_limit = models.IntegerField(null=True)
     
 
 class Rating(models.Model):
