@@ -6,6 +6,7 @@ from .models import (
     Order,
     OrderToProduct,
     ProductImages,
+    ProductVariant,
 )
 # Register your models here.
 
@@ -19,4 +20,5 @@ admin.site.register(CartItem)
 admin.site.register(Order)
 admin.site.register(OrderToProduct)
 admin.site.register(ProductImages)
+admin.site.register(ProductVariant)
 

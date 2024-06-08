@@ -16,7 +16,7 @@ def get_all_products():
 
         variant = p.productvariant_set.first()
         products.append(
-            {"name": p.name, "url": url, "price": variant.price, "id": p.id}
+            {"name": p.name, "url": url, "price": variant.price if variant else None, "id": p.id}
         )
 
     return {"products": products}
