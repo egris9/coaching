@@ -14,10 +14,10 @@ urlpatterns = [
     path("logout", views.sign_out, name="logout"),
     path("session", views.session, name="session"),
     path("shop", views.shop, name="shop"),
-    path("products", views.products, name="products"),
+    path("products/<int:id>", views.products, name="products"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("session_creation", views.session_creation, name="session_creation"),
-
+    path('products_list', views.product_list, name='product_list'),
 ]
 
 

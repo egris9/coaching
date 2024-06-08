@@ -38,23 +38,18 @@
 						}'
 						class="relative w-[700px] "
 						>
-						<div class="hs-carousel relative overflow-hidden w-full min-h-[400px]">
+						<div class="hs-carousel relative overflow-hidden w-full min-h-[500px]">
 							<div
 							class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0"
 							>
-							<img
-								src="{% static 'img/ronnie.jpeg' %}"
-								class="hs-carousel-slide bg-green-900"
-							/>
-							<img
-								src="{% static 'img/ronnie.jpeg' %}"
-								class="hs-carousel-slide bg-green-900"
-							/>
-							<img
-								src="{% static 'img/ronnie.jpeg' %}"
-								class="hs-carousel-slide bg-green-900"
-							/>
+							{% for p in product.imgs.all %}
+								<img
+									src="{{MEDIA_URL}}{{p.urls}}"
+									class="hs-carousel-slide bg-green-900 object-cover"
+								/>
+							{% endfor %}
 							</div>
+							
 						</div>
 
 						<div class="flex w-full justify-center gap-x-3 items-center mt-5">
@@ -73,52 +68,32 @@
 				{% comment %}info section{% endcomment %}
 				<div class="flex flex-col mb-2">
 					<div
-						class="capitalize flex justify-start items-center gap-x-1 font-medium text-5xl"
+						class="capitalize flex justify-start items-center gap-x-1 font-medium text-2xl"
 					>
 						<a
-							class="hover:text-emerald-500 transition-colors duration-200 flex gap-x-1 justify-start items-end font-header"
-							{%comment %}href="{% url 'ecom:shop' %}"{% endcomment %}
+							class="hover:text-emerald-500 transition-colors duration-200 flex gap-x-1 justify-start items-center font-header"
+							href="{% url 'coach:shop' %}"
 						>
 							shop
-							<span class="material-symbols-outlined text-5xl">chevron_right</span>
+							<span class="material-symbols-outlined text-3xl">chevron_right</span>
 						</a>
 						<a
-							class="hover:text-red-400 transition-colors duration-200"
-							{%comment %}href="{% url 'ecom:shop' %}?filter={{ product.type }}#products"{% endcomment %}
+							class="hover:text-emerald-500 transition-colors duration-200 font-header" 
+							href="{% url 'coach:shop' %}?filter={{ product.type }}#products"
 							>{{ product.type }}</a
 						>
 					</div>
-					<h1 class="font-bold text-4xl capitalize">{{ product.name }}</h1>
-					<h3
-						id="sub-headline"
-						class="text-gray-500 capitalize text-3xl mt-1 mb-2 font-header"
-					>
-						{{ product.first_flavor.name }} dumbbell bench press
-					</h3>
+					<h1 class="font-bold  capitalize text-4xl mt-3">{{ product.name }}</h1>
 					<p
 						id="product-price"
 						data-price="60"
-						class="text-2xl font-medium  tabular-nums"
+						class="text-2xl font-medium  tabular-nums mt-3"
 					>
-						{{ product.price }} 69 $
+						${{ product.price }} 
 					</p>
-					<p class="mb-4 max-w-md text-base font-medium">
+					<p class="mb-4 max-w-md text-base font-medium mt-3">
 						{{ product.description }}
 					</p>
-
-                    <div class="flex flex-col justify-start  ">
-						<p class="max-w-md">
-							RYSE takes a unique approach to the lineup, utilizing the latest
-							science and ingredients backed by clinical evidence. Not only do
-							we use the best patented ingredients that are backed by research,
-							we TEST multiple times. You'll always get what the label says and
-							only use the highest quality ingredients, many are patented. By
-							looking at our labels you will see that we cut no corners creating
-							our products and never will, that is our commitment to you!
-						</p>
-					</div>
-
-					
 					
 					{% comment %}Quantity section{% endcomment %}
 					<p class="mt-4 font-medium capitalize mb-2">quantity</p>
@@ -156,123 +131,26 @@
 				<h1 class="text-5xl thick-font font-bold">For You</h1>
 				<div class="w-full py-16 h-fit embla after:pointer-events-none before:pointer-events-none relative after:absolute after:right-0 after:top-0 after:h-full after:w-11 after:bg-gradient-to-l mx-auto items-center">
 					<div class="embla__container flex">
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
+						{% for p in popular_products %}
+						<a href="{% url 'coach:products' id=p.id %}" class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
 							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
+								src="{{MEDIA_URL}}{{p.url}}"
 							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
 							/>
 							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
 								  <div class="mb-2">
 									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
+										{{p.name}}
 									</p>
 								  </div>
 								</div>
 								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
+								  <p class="text-emerald-300 thick-font text-2xl">${{p.price}}</p>
 								  
 								</div>
 								
-						</div>  
-
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
-							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
-							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
-							/>
-							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
-								  <div class="mb-2">
-									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
-									</p>
-								  </div>
-								</div>
-								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-								  
-								</div>
-								
-						</div>  
-
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
-							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
-							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
-							/>
-							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
-								  <div class="mb-2">
-									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
-									</p>
-								  </div>
-								</div>
-								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-								  
-								</div>
-								
-						</div>  
-
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
-							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
-							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
-							/>
-							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
-								  <div class="mb-2">
-									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
-									</p>
-								  </div>
-								</div>
-								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-								  
-								</div>
-								
-						</div>  
-
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
-							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
-							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
-							/>
-							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
-								  <div class="mb-2">
-									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
-									</p>
-								  </div>
-								</div>
-								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-								  
-								</div>
-								
-						</div>  
-
-						<div class="mr-12 embla__slide flex-shrink-0 flex-grow-0 basis-auto w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3" >
-							<img
-							  src="{% static 'img/ronnie.jpeg' %}"
-							  class="rounded-3xl w-full object-top mb-1 min-h-[300px] object-cover"
-							/>
-							  <div class="mt-2 w-full flex items-center justify-center gap-x-4">
-								  <div class="mb-2">
-									<p class="text-emerald-300 font-medium capitalize ">
-									  adolfo hitler-chan
-									</p>
-								  </div>
-								</div>
-								<div class="mb-2 mt-2">
-								  <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-								  
-								</div>
-								
-						</div>  
-						
-						
-						
-	  
+						</a>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
