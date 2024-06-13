@@ -9,6 +9,7 @@ def generate_random_id():
 
 
 class Profile(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/')
 
@@ -17,23 +18,44 @@ class Profile(models.Model):
         Coache = 'coach'
 
     def __str__(self):
-        return self.type
+        return f"{self.type} - id {self.id}"
     type = models.CharField(max_length=7, choices=Type.choices, default=Type.Client)
 
 
+class session_location(models.Model):
+    id = models.AutoField(primary_key=True)
+    location = models.CharField(max_length=100, null=True)
+    
+
 
 class Training_session(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
+    categorie = models.CharField(max_length=100, null=True)
+    categorie_secondary = models.CharField(max_length=100, null=True)
     description = models.CharField(max_length=100, null=True)
-    Profile = models.OneToOneField(User, on_delete=models.CASCADE, default=generate_random_id())
+    price = models.DecimalField( max_digits=5, decimal_places=2, null=True)
+    Profile = models.ForeignKey(Profile, on_delete=models.CASCADE) 
     img = models.ImageField(upload_to="sessions/%y/%m/%d", null=True)
-    start_time = models.DateTimeField(null=True)    
-    end_time = models.DateTimeField(null=True)   
-    location = models.CharField(max_length=100,null=True)
+    start_time = models.TimeField(null=True)    
+    end_time = models.TimeField(null=True)   
     participant_limit = models.IntegerField(null=True)
+    location = models.ForeignKey(session_location,default='1', on_delete=models.CASCADE)
+
+
+    
+    
+    
+    
+class session_date(models.Model):
+    id = models.AutoField(primary_key=True)
+    date = models.DateField(null=True)
+    session = models.ForeignKey(Training_session, on_delete=models.CASCADE)
+
     
 
 class Rating(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     session = models.ForeignKey(Training_session, on_delete=models.CASCADE)
     rating = models.IntegerField()

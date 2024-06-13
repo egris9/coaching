@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Training_session
 
 
 class SigninForm(forms.Form):
@@ -26,4 +27,26 @@ class SignupForm(UserCreationForm):
             print("user-commit")
             print(user)
             user.save()
-        return user
+        return 
+    
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Training_session        
+        fields = ['Profile', 'img']  # Include 'user' field in the form
+    
+          
+class sessionform(forms.ModelForm):
+    class Meta:
+        model = Training_session        
+        fields = ['description', 'name', 'start_time', 'end_time']  # Include 'user' field in the form
+
+
+    # id = models.AutoField(primary_key=True)
+    # name = models.CharField(max_length=100, null=True)
+    # description = models.CharField(max_length=100, null=True)
+    # Profile = models.ForeignKey(Profile, on_delete=models.CASCADE) 
+    # img = models.ImageField(upload_to="sessions/%y/%m/%d", null=True)
+    # start_time = models.DateTimeField(null=True)    
+    # end_time = models.DateTimeField(null=True)   
+    # location = models.CharField(max_length=100,null=True)
+    # participant_limit = models.IntegerField(null=True)  
