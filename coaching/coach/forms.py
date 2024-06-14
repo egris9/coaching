@@ -17,7 +17,7 @@ class SignupForm(UserCreationForm):
         model=User
         fields=['username','email','password1','password2']
     def save(self, commit=True):
-        user = super().save(commit=False)
+        user = super(SignupForm , self).save(commit=False)
         user.first_name = self.cleaned_data["firstname"]
         user.last_name = self.cleaned_data["lastname"]
         user.username = self.cleaned_data["username"]
@@ -27,7 +27,7 @@ class SignupForm(UserCreationForm):
             print("user-commit")
             print(user)
             user.save()
-        return 
+        return user
     
 class ImageForm(forms.ModelForm):
     class Meta:
