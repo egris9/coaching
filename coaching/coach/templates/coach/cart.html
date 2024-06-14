@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
+  <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-300 ">
+  {% include "coach/componants/nav.html" %}
+  <main class="grid grid-cols-2 mt-11 ">
+    <section>
+      <!-- Table Section -->
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <!-- Card -->
+        <div class="flex flex-col">
+          <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+              <div class="bg-emerald-800 border border-neutral-600 rounded-xl shadow-sm overflow-hidden ">
+                <!-- Header -->
+                <div class="px-6 py-4 grid gap-3 border-b border-neutral-600  grid-cols-2 ">
+                  <h2 class="text-xl font-semibold text-neutral-100  ">
+                    cart
+                  </h2>
+                  <h2 id="cart-total" data-total="{{total}}" class="text-xl font-semibold text-neutral-100   text-right">
+                    total: {{total}} $
+                  </h2>
+                </div>
+                <!-- End Header -->
+
+                <!-- Table -->
+                <table class="min-w-full divide-y divide-neutral-600 ">
+
+                  <tbody class="divide-y divide-neutral-600 ">
+
+                    {% for item in cart_items %}
+                    <tr data-table-row data-product-container="{{item.id}}" class="bg-gray-300 ">
+                      <td class=" whitespace-nowrap w-24 pl-6 pr-3 ">
+                        <img src="{{MEDIA_URL}}{{item.img}}" class="w-32 h-24 ">
+                      </td>
+                      <td class=" whitespace-nowrap w-[calc(100%_-_96px)] pl-3 pr-6">
+                        <div class="w-full my-4">
+                          <div class="flex justify-between items-end">
+                            <div>
+                              <p class="text-xs text-neutral-400">{{item.type}}</p>
+                              <h3 class="text-lg capitalize font-medium">{{item.name}}</h3>
+                            </div>
+                            <p class="text-sm leading-7 font-medium">{{item.price}} DH</p>
+                          </div>
+                          <div>
+                            <div>
+                              
+                            </div>
+                            <div class="flex items-center w-fit mt-4">
+                              <p class="text-sm text-emerald-600 capitalize">quantity</p>
+                              <input data-prev-quantity={{item.quantity}} data-item-price="{{item.price}}" data-quantity-value data-item-id="{{item.id}}" type="text" value="{{item.quantity}}" class="grow h-[27px] w-[80px] bg-transparent outline-none border-none focus:border-none ml-7" />
+                              <button data-item-price="{{item.price}}" data-item-id="{{item.id}}" class=" grow border px-2 py-1 flex items-center text-lg font-bold border-neutral-50 hover:text-emerald-600 transition-colors duration-200 hover:border-emerald-600" data-add-quantity>
+                                <span class="material-symbols-outlined text-lg leading-none">add</span>
+                              </button>
+                              <button data-item-price="{{item.price}}" data-item-id="{{item.id}}" class=" grow border px-2 py-1 flex items-center text-lg font-bold border-neutral-50 hover:text-emerald-600 transition-colors duration-200 hover:border-emerald-600" data-minus-quantity>
+                                <span class="material-symbols-outlined text-lg leading-none">remove</span>
+                              </button>
+                            </div>
+                            <button data-delete-product-btn data-item-id="{{item.id}}" class="text-black hover:text-red-700">remove</button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    
+
+                  </tbody>
+                </table>
+                <!-- End Table -->
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+      </div>
+      <!-- End Table Section -->
+
+    </section>
+      <div class="max-w-2xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div class="bg-emerald-800 rounded-xl shadow p-4 sm:p-7">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">
+            Payment
+          </h2>
+          <p class="text-sm text-white">
+            We accept all major credit cards.
+          </p>
+        </div>
+
+        <form method="POST" action="/cart" id="payment-form">
+          {% csrf_token %}
+
+          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-neutral-600 dark:border-gray-700 dark:first:border-transparent">
+            <label for="af-payment-billing-contact" class="inline-block text-sm font-medium dark:text-white">
+              Billing contact
+            </label>
+
+            <div class="mt-2 space-y-3">
+              <input id="af-payment-billing-contact" type="text" class="py-2 px-3 pe-11 block w-full border-emerald-400 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="First Name" name="first_name" />
+              <p id="first_name_msg" class="text-xs text-red-600"></p>
+              <input type="text" class="py-2 px-3 pe-11 block w-full border-emerald-400 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="Last Name" name="last_name" />
+              <p id="last_name_msg" class="text-xs text-red-600"></p>
+              <input type="email" class="py-2 px-3 pe-11 block w-full border-emerald-400 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="email" name="email" />
+              <p id="email_msg" class="text-xs text-red-600"></p>
+              
+            </div>
+          </div>
+          <!-- End Section -->
+
+          <!-- Section -->
+          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-neutral-600 dark:border-gray-700 dark:first:border-transparent">
+            <label for="af-payment-billing-address" class="inline-block text-sm font-medium dark:text-white">
+              Billing address
+            </label>
+
+            <div class="mt-2 space-y-3">
+              <input id="af-payment-billing-address" type="text" class="py-2 px-3 pe-11 block w-full border-neutral-600 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="Street Address" name="address" />
+              <p id="address_msg" class="text-xs text-red-600"></p>
+            </div>
+          </div>
+          
+          <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-neutral-600 dark:border-gray-700 dark:first:border-transparent">
+            <label for="af-payment-payment-method" class="inline-block text-sm font-medium dark:text-white">
+              Payment method
+            </label>
+            
+            <div class="mt-2 space-y-3">
+              <input id="af-payment-payment-method" type="text" class="py-2 px-3 pe-11 block w-full border-neutral-600 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="Name on Card" name="cart_name" />
+              <p id="cartName_msg" class="text-xs text-red-600"></p>
+              <div class="grid sm:flex gap-3">
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-neutral-600 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="Expiration Date" name="exp" />
+                <input type="text" class="py-2 px-3 pe-11 block w-full border-neutral-600 shadow-sm text-sm rounded-lg focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none bg-emerald-600 placeholder:text-white text-white font-medium" placeholder="CVV Code" name="cvv" />
+              </div>
+              <p id="exp_msg" class="text-xs text-red-600"></p>
+              <p id="cvv_msg" class="text-xs text-red-600"></p>
+            </div>
+          </div>
+          <div class="mt-5 flex justify-end gap-x-2">
+            <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-emerald-600 text-white hover:bg-black hover:text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 duration-300">
+              Confirm
+            </button>
+          </div>
+
+        </form>
+      </div>
+    <script type="module" src="{% static 'cart/quantity.mjs' %}"></script>
+    <script type="module" src="{% static 'cart/delete.mjs' %}"></script>
+    <script type="module" src="{% static 'cart/payment.mjs' %}"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script src="{% static 'coach/navDropDown.js' %}"></script>
+
+  </main>
+</body>
+
+</html>

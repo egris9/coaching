@@ -22,6 +22,17 @@ urlpatterns = [
     path("updateimg", views.update_session_img, name="updateimg"),
 
     path('products_list', views.product_list, name='product_list'),
+    path("cart", views.cart, name="cart"),
+    path("cart/add_to_cart", views.add_to_cart, name="add_cart_item"),
+    path(
+        "cart/add_order",
+        views.add_order_handler,
+        name="add_order",
+    ),
+    path(
+        "cart/delete_cart_item", views.delete_cart_item_handler, name="delete_cart_item"
+    ),
+     path("profile", views.profile, name="profile"),
 ]
 
 

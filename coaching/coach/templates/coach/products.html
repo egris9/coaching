@@ -86,7 +86,7 @@
 					<h1 class="font-bold  capitalize text-4xl mt-3">{{ product.name }}</h1>
 					<p
 						id="product-price"
-						data-price="60"
+						data-price="{{product.price}}"
 						class="text-2xl font-medium  tabular-nums mt-3"
 					>
 						${{ product.price }} 
@@ -169,6 +169,10 @@
 		<script  src="{% static 'coach/slider.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/@preline/carousel@2.1.0/index.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+		<script src="{% static 'coach/quantity.js' %}"></script>
+		<script
+			type="module"
+			src="{% static 'coach/add-to-cart.mjs' %}"
+		></script>
 	</body>
 </html>

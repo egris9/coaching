@@ -8,6 +8,10 @@ from coach.api.products import products
 from coach.api.training_session.create_session import add_session,update_session_img
 from coach.api.update_session import update_session
 from coach.api.productslist import product_list
-
+from coach.api.cart import cart
+from coach.api.add_to_cart import add_to_cart
 from coach.api.dashboard import dashboard
 from coach.api.session_creation import session_creation
+from coach.api.delete_cart_item import delete_cart_item_handler
+from coach.api.add_order import add_order_handler
+from coach.api.profile import profile
