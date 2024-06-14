@@ -5,6 +5,8 @@ from coach.api.logout import sign_out
 from coach.api.session import session
 from coach.api.shop import shop
 from coach.api.products import products
+from coach.api.training_session.create_session import add_session,update_session_img
+from coach.api.update_session import update_session
 from coach.api.productslist import product_list
 from coach.api.cart import cart
 from coach.api.add_to_cart import add_to_cart

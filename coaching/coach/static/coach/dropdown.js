@@ -9,7 +9,6 @@ function toggleDropDown(dropDownId) {
 
   if(ishidden==="false"){
 
-    console.log('run show of niggers'),
 
     anime({
       targets: dropDown,
@@ -25,7 +24,6 @@ function toggleDropDown(dropDownId) {
     dropDown.setAttribute('data-hidden',true)
 
   } else{
-    console.log('run hipe of niggers'),
 
     anime({
       targets: dropDown,
@@ -35,7 +33,7 @@ function toggleDropDown(dropDownId) {
       direction:'normal',
 
       complete: function(anim) {
-        console.log('test')
+        
         dropDown.classList.add("pointer-events-none")
         
       }
@@ -76,8 +74,7 @@ dropDownBtn.forEach((el) => {
 
 function select(e, id) {
   const dropDownItem = e.target;
-  console.log(id)
-  const dropDownItems = document.querySelectorAll(
+   dropDownItems = document.querySelectorAll(
     `[data-dropDown-item="${id}"]`
   );
   dropDownItems.forEach((el) => el.removeAttribute("data-item-active"));

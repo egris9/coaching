@@ -1,9 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+import random
+
+def generate_random_id():
+    return random.randint(10000, 99999)  # Adjust the range as needed
+
 
 
 class Profile(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/')
 
@@ -12,25 +18,44 @@ class Profile(models.Model):
         Coache = 'coach'
 
     def __str__(self):
-        return self.type
-
+        return f"{self.type} - id {self.id}"
     type = models.CharField(max_length=7, choices=Type.choices, default=Type.Client)
 
-class Training_plan(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
-    Profile = models.OneToOneField(User, on_delete=models.CASCADE)
-    categorie = models.CharField(max_length=100)
+
+class session_location(models.Model):
+    id = models.AutoField(primary_key=True)
+    location = models.CharField(max_length=100, null=True)
+    
+
 
 class Training_session(models.Model):
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()   
-    training_plan = models.ForeignKey(Training_plan, on_delete=models.CASCADE) 
-    location = models.CharField(max_length=100)
-    participant_limit = models.IntegerField()
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, null=True)
+    categorie = models.CharField(max_length=100, null=True)
+    categorie_secondary = models.CharField(max_length=100, null=True)
+    description = models.CharField(max_length=100, null=True)
+    price = models.DecimalField( max_digits=5, decimal_places=2, null=True)
+    Profile = models.ForeignKey(Profile, on_delete=models.CASCADE) 
+    img = models.ImageField(upload_to="sessions/%y/%m/%d", null=True)
+    start_time = models.TimeField(null=True)    
+    end_time = models.TimeField(null=True)   
+    participant_limit = models.IntegerField(null=True)
+    location = models.ForeignKey(session_location,default='1', on_delete=models.CASCADE)
+
+
+    
+    
+    
+    
+class session_date(models.Model):
+    id = models.AutoField(primary_key=True)
+    date = models.DateField(null=True)
+    session = models.ForeignKey(Training_session, on_delete=models.CASCADE)
+
     
 
 class Rating(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     session = models.ForeignKey(Training_session, on_delete=models.CASCADE)
     rating = models.IntegerField()

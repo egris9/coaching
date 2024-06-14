@@ -18,12 +18,24 @@ body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+input[type='number'] {
+	-moz-appearance: textfield;
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
 .scroller {
 	--scrollbar-color-thumb: #6ee7b7;
 	--scrollbar-color-track: rgb(5 150 105);
 	--scrollbar-width-legacy: 0.5rem;
   }
-  
+.scroller_track_emerald{
+	--scrollbar-color-thumb: #86f1c7;
+	--scrollbar-color-track: #d1fae5;
+	--scrollbar-width-legacy: 0.5rem;
+}
   @supports (scrollbar-width: auto) {
 	.scroller {
 	  scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);

@@ -6,17 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
 const options = {
   actions: {
     clickDay(event, self) {
-      console.log(self.selectedDates);
+      document.querySelector('html').setAttribute('selected_day',JSON.stringify(self.selectedDates))
     },
   },
   settings: {
+    selection:{
+      day:'multiple-ranged'    
+    },
+
+
     visibility: {
 
       theme: 'dark',
     },
   },
   CSSClasses: {
-    
     calendar: 'vanilla-calendar',
     calendarDefault: 'vanilla-calendar_default',
     calendarMultiple: 'vanilla-calendar_multiple',
