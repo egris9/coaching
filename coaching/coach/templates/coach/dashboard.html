@@ -131,16 +131,15 @@
     
        <div class="flex flex-col gap-y-4 mb-5">
         {% for item in sessions %}
-
-       <div class="flex flex-col items-center max-w-[890px]">
+      
        <div
-         class="flex flex-row gap-x-4 rounded-3xl w-full p-5 bg-emerald-950"
+         class="flex flex-row gap-x-4 max-w-[890px] justify-center items-center min-w-0 rounded-3xl w-full p-5 bg-emerald-950"
        >
          <img
          src="{{MEDIA_URL}}{{item.img}}"         
            class="size-48 rounded-2xl shrink-0 text-emerald-200 object-cover"
          />
-
+   
          <div class="flex flex-col gap-x-1 w-full">
            <div class="flex flex-row self-end gap-x-4 items-center mr-3">
              <p
@@ -149,7 +148,10 @@
                <span class="material-symbols-outlined text-sm"> star </span>
                <span>5</span>
              </p>
-    
+            
+            
+            
+             
              <p
                class="text-emerald-300 gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium"
              >
@@ -159,13 +161,15 @@
           
              </p>
            </div>
-           <div class="flex flex-col">
+           <div class="">
              <h1 class="text-emerald-200 capitalize text-xl">
              {{ item.name }}
              </h1>
-             <p class="text-emerald-500 max-w-xl flex-1 line-clamp-3 mt-2">
+             <div class="w-full ">
+             <p class="text-emerald-500 mt-2 line-clamp-3 min-w-0 flex-1">
               {{ item.small_sum }}
-            </p>
+
+            </p></div>
            </div>
            <div class="flex ml-auto mt-auto">
              <p
@@ -181,7 +185,7 @@
            </div>
          </div>
        </div>
-     </div>       
+      
       {% empty %}
       <li>No items found.</li>
       {% endfor %}
