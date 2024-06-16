@@ -32,7 +32,7 @@ class Training_session(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
     categorie = models.CharField(max_length=100, null=True)
-    categorie_secondary = models.CharField(max_length=100, null=True)
+    type = models.CharField(max_length=100, null=True)
     description = models.CharField(max_length=100, null=True)
     price = models.DecimalField( max_digits=5, decimal_places=2, null=True)
     Profile = models.ForeignKey(Profile, on_delete=models.CASCADE,default=1) 

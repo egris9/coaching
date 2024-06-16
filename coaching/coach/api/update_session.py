@@ -40,7 +40,7 @@ def update_session(request):
             session.name = title
             session.description = description
             session.categorie = categorie
-            session.categorie_secondary = categorie_2nd
+            session.type = categorie_2nd
             session.start_time = start_time
             session.end_time = end_time
             session.location = session_location.objects.get(location= location)

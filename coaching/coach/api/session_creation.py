@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from coach.models import session_location,Profile
+from coach.models import session_location,Profile,categorie
 
 
 def session_creation(request):
@@ -14,8 +14,9 @@ def session_creation(request):
     if profile.type=='client':
         return redirect("/")
     
+    categories=categorie.objects.all()
     return render(
         request,
         'coach/session_creation.html',
-        {'locations':locations}
+        {'locations':locations, 'categorie':categories}
     )
