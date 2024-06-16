@@ -11,7 +11,7 @@ def generate_random_id():
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/',default="profile2.png")
 
     class Type(models.TextChoices):
         Client = 'client'

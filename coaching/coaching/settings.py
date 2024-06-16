@@ -134,3 +134,6 @@ DEBUG = True
 if DEBUG:
     import mimetypes
     mimetypes.add_type("text/javascript", ".mjs", True)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000/'
+]

@@ -3,6 +3,7 @@ from coach.forms import SignupForm
 from django.utils.crypto import get_random_string
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from coach.models import Profile
 
 
 def signup(request):
@@ -25,7 +26,9 @@ def signup(request):
                 )
             # insert user into database
             user = form.save()
+            Profile.objects.create(user=user)
             login(request, user)
+            
 
             return redirect("/")
         else:

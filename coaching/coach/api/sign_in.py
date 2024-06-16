@@ -26,6 +26,8 @@ def signin(request):
         error_message = 'Invalid login credentials. Please try again.'
         return render(request, 'coach/sign_in.html', {'error_message': error_message})
         
-  
+
     else:
         return render(request, 'coach/sign_in.html')
+    
+    
