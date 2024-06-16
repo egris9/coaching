@@ -95,6 +95,7 @@ const positive_numbers =(e) => {
 
 button.addEventListener("click", async function (e) {
   const title = document.getElementById("title_input").value;
+  const small_sum = document.getElementById("sm_description_input").value;
   const price = Number( document.getElementById("price_input").value);
   const location = document.querySelector(
     'p[data-dropDown-item = "location_dropdown"][data-item-active]'
@@ -112,10 +113,10 @@ button.addEventListener("click", async function (e) {
   const selected_day = document
     .querySelector("html")
     .getAttribute("selected_day");
-  console.log({ imageinput: imageinput.files[0] });
  
   if (
     title &&
+    small_sum &&
     description &&
     end_time &&
     start_time &&
@@ -134,6 +135,7 @@ button.addEventListener("click", async function (e) {
     }
     const body = {
       sessionId: sessionId,
+      small_sum,
       title,
       description,
       categorie: categorie.textContent,
@@ -145,19 +147,18 @@ button.addEventListener("click", async function (e) {
       max_participent,
       price,
     };
-
     const csrfToken = cookies.get("csrftoken");
     const headers = {
       "X-CSRFToken": csrfToken,
     };
-    console.log(JSON.stringify(body));
     await fetch("http://127.0.0.1:8000/update_session", {
       method: "POST",
       body: JSON.stringify(body),
       headers,
     }).then(async (v) => {
       const data = await v.json();
-      console.log(data);
+      window.location.href = "/dashboard";
+
     });
   }
 });

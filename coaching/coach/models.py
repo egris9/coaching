@@ -31,6 +31,7 @@ class session_location(models.Model):
 class Training_session(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, null=True)
+    small_sum = models.CharField(max_length=100, null=True)
     categorie = models.CharField(max_length=100, null=True)
     type = models.CharField(max_length=100, null=True)
     description = models.CharField(max_length=100, null=True)

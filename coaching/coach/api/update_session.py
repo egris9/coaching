@@ -27,6 +27,7 @@ def update_session(request):
             participent= data.get('max_participent')
             price= data.get('price')
             location = data.get('location')
+            small_sum = data.get('small_sum')
             # Validate data (simple example, more validation may be needed)
             if not title or not description or not categorie or not start_time or not end_time or not categorie_2nd or not selected_day:
                 return JsonResponse({'error': 'Missing data'}, status=400)
@@ -38,6 +39,7 @@ def update_session(request):
 
             # Create a new instance of MyModel
             session.name = title
+            session.small_sum = small_sum
             session.description = description
             session.categorie = categorie
             session.type = categorie_2nd
