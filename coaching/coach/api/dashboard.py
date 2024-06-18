@@ -1,8 +1,9 @@
 
 from django.shortcuts import render,redirect
-from coach.models import Profile,Training_session,session_date
-
-
+from django.utils import timezone
+from datetime import datetime
+from coach.models import Profile
+from coach.api.queries.sessions.index import get_sessions_by_date, get_all_sessions
 
 
 def dashboard(request):
@@ -11,24 +12,30 @@ def dashboard(request):
         return redirect(
             '/signin'
         )
+    
     profile= Profile.objects.get(user=request.user)
     if profile.type=='client':
         return redirect("/")
     
-    data=Training_session.objects.filter(Profile=profile)
-     
-  
-    session = []
-    for p in data:
-        first_date=session_date.objects.filter(session=p).first()
-        last_date=session_date.objects.filter(session=p).last()
+    date_filter_start_str = request.GET.get('filter-by-period-start', None)
+    date_filter_end_str = request.GET.get('filter-by-period-end', None)
 
-        session.append(
-            {"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type}
-        )  
+    if date_filter_start_str and date_filter_end_str:
+
+        date_filter_start = timezone.make_aware(datetime.strptime(date_filter_start_str, '%Y-%m-%d'))
+        date_filter_end = timezone.make_aware(datetime.strptime(date_filter_end_str, '%Y-%m-%d'))
+        sessions = get_sessions_by_date(profile=profile, date_filter_start=date_filter_start, date_filter_end=date_filter_end)
+
+        return render(
+        request,
+        'coach/dashboard.html'
+        ,{'sessions': sessions, "filter_trigger": request.GET.get('filter-trigger', None)}
+    )
+  
+    session = get_all_sessions(profile)
 
     return render(
         request,
         'coach/dashboard.html'
-        ,{'sessions': session}
+        ,{'sessions': session, "filter_trigger": "all"}
     )
