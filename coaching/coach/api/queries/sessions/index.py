@@ -1,5 +1,5 @@
 from coach.models import Profile,Training_session,session_date
-from datetime import datetime
+from datetime import datetime, date
 from django.db.models import  Exists, Q, OuterRef
 
 
@@ -9,8 +9,15 @@ def format_sessions_response(sessions):
         first_date=session_date.objects.filter(session=p).first()
         last_date=session_date.objects.filter(session=p).last()
 
+        today = date.today()
+        start_datetime = datetime.combine(today, p.start_time )
+        end_datetime = datetime.combine(today, p.end_time)
+        duration = end_datetime - start_datetime 
+        duration_hours = duration.total_seconds() / 3600  
+        int_duration_hours = int(duration_hours)
+
         session.append(
-            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit}
+            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours}
         )
     return session
 
