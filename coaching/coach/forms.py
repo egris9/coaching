@@ -51,4 +51,26 @@ class sessionform(forms.ModelForm):
     # location = models.CharField(max_length=100,null=True)
     # participant_limit = models.IntegerField(null=True) 
 
- 
+class FilterForm(forms.Form):
+    PRICE_CHOICES = [
+        ('under_25', 'Under $25'),
+        ('25_to_50', '$25 to $50'),
+        ('50_to_100', '50 to $100'),
+        ('over_100', 'Over $100'),
+    ]
+    SORT_CHOICES = [
+        ('popularity', 'Popularity'),
+        ('high_to_low', 'Price: High to Low'),
+        ('low_to_high', 'Price: Low to High'),
+    ]
+    
+    price_range = forms.ChoiceField(
+        choices=PRICE_CHOICES,
+        widget=forms.RadioSelect,
+        required=False
+    )
+    sort_by = forms.ChoiceField(
+        choices=SORT_CHOICES,
+        widget=forms.RadioSelect,
+        required=False
+    )

@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.utils import timezone
 from datetime import datetime
 from coach.models import Profile
-from coach.api.queries.sessions.index import get_sessions_by_date, get_all_sessions
+from coach.api.queries.sessions.index import get_sessions_by_date, get_all_sessions_by_profile
 
 
 def dashboard(request):
@@ -32,7 +32,7 @@ def dashboard(request):
         ,{'sessions': sessions, "filter_trigger": request.GET.get('filter-trigger', None)}
     )
   
-    session = get_all_sessions(profile)
+    session = get_all_sessions_by_profile(profile)
 
     return render(
         request,
