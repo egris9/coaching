@@ -10,14 +10,15 @@
     backdrop-filter: blur(8px);
     align-items: center;
   }
+
+ 
   
   .modalcontainer {
     background-color: #e5e7eb;
     padding: 30px;
-    max-width: 1500px;
-    max-height: 1500px;
+    max-width: 1601px;
+    max-height: 1501px;
     border-radius: 24px;
-    overflow-y: auto;
     box-sizing: border-box;
   }
   

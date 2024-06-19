@@ -20,7 +20,8 @@
 			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
 			rel="stylesheet"
 		/>
-        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body class="bg-gray-300">
     {% include 'coach/componants/nav.html' %}
@@ -315,74 +316,224 @@
 
 
 
-    <div class="modal" id="modal-1" aria-hidden="true">
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
       <div class="modaloverlay" tabindex="-1" data-micromodal-close>
         <div class="modalcontainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
          <header class="modalheader mb-3">
             <h2 class="modaltitle text-2xl capitalize text-emerald-700 font-bold " id="modal-1-title">
               session title
             </h2>
-            <button class="modalclose" aria-label="Close modal" data-micromodal-close></button>
+            <button class="hover:text-red-700 "data-micromodal-close>
+              <span class="material-symbols-outlined text-2xl font-bold">
+                close
+                </span></button>
           </header>
-          <main class="modalcontent grid grid-cols-3 grid-rows-[1500px] gap-x-3" id="modal-1-content">
+          <main class="modalcontent grid grid-cols-3 grid-rows-[500px] gap-x-7" id="modal-1-content">
+            
+
+            <div class="">
+              <img src="{% static 'img/future-artist.avif' %}" class="rounded-xl self-center object-top w-[40rem] h-full object-cover">
+  
+            </div>
+            <div class="space-y-4 max-h-full">
+              
+  
+              <div class=" divide-y-2 divide-gray-400 overflow-y-scroll max-h-[440px] scroller scroller_track_gray">
+                <p>
+                  r sit amet consectetur adipisicing elit. Maxime, nemo. Amet ipsum, saepe nobis officiis est eveniet delectus?
+                  Quia consequuntur ad eaque iusto. Eaque sint ratione accusamus, porro excepturi odit! Hic vero dolorum fugiat dolorem esse officiis ea cupiditate possimus aut
+                   </p>
+  
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
+                  location: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  price: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  time: <span class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  date: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  coach: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  participent: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  type: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
+                </p>
+  
+                <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                  categorie: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
+                </p>
+              </div>
+              <button class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300">
+                Enroll
+              </button>
+            </div>
+  
           
-          <div class="">
-            <img src="{% static 'img/future-artist.avif' %}"  class="rounded-xl self-center object-top w-[40rem] h-[60vh] object-cover">
+            <div class="max-h-full overflow-y-scroll scroller scroller_track_gray pr-6">
+              <div class="flex flex-col">
+              <div class="text-center">
+                 <p class="capitalize text-2xl self-center font-medium mb-2 "> rate this session </p>
+
+                <p class="font-medium text-lg text-gray-600">How much do u like this session </p>
+             </div>
+              <div class="rate self-center mb-6">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text"> </label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text"> </label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text"> </label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text"> </label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text"> </label>
+              </div>
+              
+
+              <p class="font-medium text-lg text-gray-600">title</p>
+              <input id="title" type="text" class="p-2 w-full bg-gray-300 duration-500 outline-none rounded-2xl focus-within:bg-gray-400 transition-colors placeholder:text-gray-500" placeholder="write ur review title here" ></input>
+              <p class="font-medium text-lg text-gray-600 mt-2">review description</p>
+              <textarea type="text" id="review" maxlength="100" class=" scroller  focus-within:bg-gray-400 transition-colors duration-500 p-2  resize-none  rounded-2xl outline-none  w-full placeholder:text-gray-500 bg-gray-300 py-1.5 text-gray-800 h-[93px]" placeholder="write ur experience with this session"></textarea>
+              
+              <button id="button1" class="mt-4 w-fit self-end bg-gray-400 text-gray-600 rounded-xl py-3 px-5 font-medium hover:bg-gray-500 hover:text-gray-200 transition-colors duration-300
+              ">submit review</button>
+            </div>
+            
+
+            <div class="mt-6">
+              <p class="font-medium text-lg capitalize text-gray-600">comments</p>
+              <div class="flex items-center gap-x-3 w-full">
+                <p class="font-medium tabular-nums text-xl">4,5</p>
+                <div>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+                <p class="ml-auto text-gray-500 font-medium">69 reviews
+                </p>
+              </div>
+
+              <div class="mt-4 space-y-8">
+
+                <div class="flex flex-col">
+                  <!-- Icon -->
+                   <div class="flex items-center gap-x-2">
+                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
+                    <div class="">
+                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
+                    <div class="space-x-1">
+                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
+                    </div>
+                    </div>
+                   </div>
+                  <div class="">
+                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
+                      Industry-leading documentation
+                    </h3>
+                    <p class="mt-1 text-gray-600 ">
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away
+                      The other night, dear, as I lay sleeping
+                      I dreamed I held you in my arms
+                      When I awoke, dear, I was mistaken
+                      So I hung my head and cried
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <!-- Icon -->
+                   <div class="flex items-center gap-x-2">
+                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
+                    <div class="">
+                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
+                    <div class="space-x-1">
+                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
+                    </div>
+                    </div>
+                   </div>
+                  <div class="">
+                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
+                      Industry-leading documentation
+                    </h3>
+                    <p class="mt-1 text-gray-600 ">
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away
+                      The other night, dear, as I lay sleeping
+                      I dreamed I held you in my arms
+                      When I awoke, dear, I was mistaken
+                      So I hung my head and cried
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <!-- Icon -->
+                   <div class="flex items-center gap-x-2">
+                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
+                    <div class="">
+                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
+                    <div class="space-x-1">
+                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
+                    </div>
+                    </div>
+                   </div>
+                  <div class="">
+                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
+                      Industry-leading documentation
+                    </h3>
+                    <p class="mt-1 text-gray-600 ">
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away
+                      The other night, dear, as I lay sleeping
+                      I dreamed I held you in my arms
+                      When I awoke, dear, I was mistaken
+                      So I hung my head and cried
+                      You are my sunshine, my only sunshine
+                      You make me happy when skies are gray
+                      You'll never know, dear, how much I love you
+                      Please don't take my sunshine away                    </p>
+                  </div>
+                </div>
+
+
+                
+              </div>
+            </div>
             
           </div>
-          <div class=" divide-y-2 divide-gray-400 overflow-y-scroll max-h-[1500px] ">
-            <p>
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, nemo. Amet ipsum, saepe nobis officiis est eveniet delectus?
-             Quia consequuntur ad eaque iusto. Eaque sint ratione accusamus, porro excepturi odit! Hic vero dolorum fugiat dolorem esse officiis ea cupiditate possimus aut
-              adipisci! Velit nobis animi a distinctio at. Ullam, vel tenetur facere minus eum impedit, est, officia minima incidunt recusandae sunt! Alias, enim esse. Commodi qui
-              , molestias nulla dolore quam veritatis tempore. Illo aperiam quod et quisquam similique recusandae odio qui nostrum accusantium eveniet. Deserunt odit dignissimos 
-              fugit dolor placeat quas quod iusto incidunt, consequuntur, atque eum accusantium doloribus nihil veniam sint tenetur voluptatem obcaecati tempore voluptatum nisi q
-              uos, aspernatur ad a. Ad provident magnam illum accusantium facere eum vitae soluta accusamus id excepturi voluptatum dolore sit distinctio saepe nulla, officiis, 
-              ipsa repellendus! Voluptatum, explicabo ipsam. Nesciunt in aliquid fugit ab, soluta ex, commodi tempora, optio delectus eius numquam. Ipsa totam inventore reprehen
-              derit odit aperiam laborum sint, dignissimos illo id, sed labore magni nihil facere hic quas possimus similique maiores eum cumque ipsum quisquam, sunt libero quae mollitia! Veritatis libero illum eum, error voluptas, officiis natus dolor quisquam beatae quidem molestias omnis quas voluptatem optio architecto? Reprehenderit, sed sunt explicabo placeat, ab at atque harum ad deserunt minus odit illum distinctio! Unde eaque commodi omnis eveniet nam impedit vero odit adipisci eius voluptate, beatae voluptas odio esse quis rerum cumque dolorem dolores corrupti at sit sequi excepturi? Rerum aliquid excepturi ducimus nemo tenetur maxime aperiam corrupti nam exercitationem tempora, natus perferendis voluptas doloremque nihil. Sit in quo, doloremque qui repudiandae veniam sint consequuntur ea sapiente repellendus, architecto iusto impedit! Ad repellat minus nam necessitatibus odit maxime facere delectus eaque, temporibus asperiores, dicta totam illo reprehenderit atque cumque adipisci et porro praesentium? Nostrum fugit sed totam nobis repellendus, animi ex enim ipsum illo possimus vero deserunt, minima quidem veritatis architecto. Tenetur, exercitationem perspiciatis? Dolore voluptates nihil inventore ipsa labore saepe, officiis minus quaerat laudantium explicabo reprehenderit libero aspernatur ad, molestiae ratione ab dolores facere amet accusamus! Suscipit voluptatibus distinctio tenetur? Iure quis sed dolorem id adipisci quia maxime, unde minima consequuntur recusandae corporis ipsum ipsam, magni vero obcaecati, dicta eveniet quisquam. Tenetur optio voluptas quo sit! Praesentium explicabo ex magnam ducimus consequatur maiores molestias at labore. Quo culpa repellat accusamus. Officia sed veritatis animi dolorum, voluptates aliquid placeat itaque ut quibusdam labore enim impedit harum nihil ipsa nulla minus, esse, dicta earum ab totam. Voluptatibus quis corrupti, doloremque similique fuga enim laboriosam aliquid soluta qui ex. Accusantium commodi cumque repudiandae magnam qui quas fuga neque quos. Laborum omnis similique reiciendis expedita deserunt autem, voluptatum id velit cumque nam incidunt nemo mollitia necessitatibus. Labore minus debitis, asperiores exercitationem, dolor fugit ipsum voluptatibus vero, quidem similique cupiditate. Officiis corporis eaque, eligendi voluptatibus maxime expedita mollitia vero quas accusamus qui, at voluptas non earum labore consequuntur, quaerat culpa assumenda neque reiciendis suscipit. Necessitatibus eos tempore eaque ipsam perferendis expedita ab? Iure quia blanditiis at libero unde culpa eligendi? Molestiae vitae quidem nihil maxime, rerum facere eum fugit quos beatae quisquam dolorum reprehenderit incidunt eius consequuntur nesciunt tempore ipsam quod est doloribus non molestias. Ad veniam similique porro, tempore perferendis ducimus numquam natus autem tenetur minus ratione perspiciatis laudantium error. Velit consectetur tempore nihil maiores illum natus laudantium dolores cum ea repellendus, ut, vel enim, aperiam facere voluptas officiis a. Cumque labore consectetur vel eos sequi, molestiae laboriosam alias in deserunt repellat iusto est illum omnis animi reiciendis? Nulla, beatae libero eveniet nostrum temporibus quibusdam tenetur repellendus earum aut. Ullam iusto quam quibusdam soluta, expedita libero doloribus unde enim sed natus laborum. Temporibus maiores id est voluptatem tenetur, et, similique a odit tempora, molestiae soluta atque adipisci sed corporis rem ipsum. Voluptas dolorem cumque repellat debitis vel praesentium quibusdam tempore quod doloribus optio, recusandae maiores ad, consequuntur ratione, animi hic inventore beatae voluptatum odio molestiae. In esse totam eligendi ullam perspiciatis consequuntur ducimus quae labore, unde ad quibusdam voluptates nulla saepe dolor a enim obcaecati nesciunt consequatur mollitia? Cumque ea veritatis neque? Inventore recusandae sit quis earum labore autem voluptates natus beatae enim consequatur commodi ut, ullam facilis quisquam totam esse, adipisci, illo deleniti sapiente soluta libero doloremque quam sequi at? Omnis consequuntur exercitationem ratione a cupiditate dolores doloremque minima perferendis ex officia, non iste pariatur nesciunt magnam deserunt itaque. Ab quis dolore eum labore sapiente neque voluptatum fugit temporibus necessitatibus, cupiditate aperiam veniam sed pariatur quam dolorem natus veritatis harum suscipit impedit modi. Similique, consequatur aperiam eligendi harum accusamus officia, totam aliquid corrupti nihil distinctio quae numquam doloribus eius voluptatem et perferendis iste natus suscipit ipsam aliquam earum officiis soluta! Quo eaque numquam aliquam placeat ratione, magni voluptate dolores molestias inventore debitis consequuntur mollitia officia explicabo, minus quia cumque assumenda similique sed? Temporibus quibusdam delectus corrupti, nisi explicabo dolorem obcaecati veniam atque sequi maiores dolor numquam sit dolore incidunt tempora facere sapiente accusantium fugiat repellendus necessitatibus. Nobis in quae aspernatur molestias delectus consequatur, molestiae quas dolor consectetur hic qui dolorum est commodi cum labore dolore excepturi nam quod reprehenderit adipisci dicta incidunt laborum. Exercitationem, repudiandae! Quasi, voluptatum suscipit. Fugiat delectus, expedita consequuntur laboriosam veritatis tempora repellat ad asperiores harum, nam aperiam iusto impedit laborum blanditiis deleniti dicta praesentium distinctio! Voluptatibus doloribus nulla soluta hic quo cupiditate atque, est sequi rem velit incidunt nemo, placeat dolore, quasi repellendus aspernatur laudantium laboriosam voluptatum nesciunt nam eaque facere! Repellat animi sit soluta nobis obcaecati fugit, at neque ipsam perferendis officia placeat veniam exercitationem dolorum odit qui ullam deserunt? Numquam deserunt voluptatibus quod laboriosam, ab sed ipsum obcaecati eos quasi molestiae voluptatem neque quaerat dolorum voluptatum magni impedit quam assumenda omnis nemo? Possimus veritatis voluptatibus laudantium rem ipsa deserunt nemo. Quam quibusdam veritatis nisi ad iusto illum, saepe voluptates veniam quasi id ducimus autem facere necessitatibus est natus vero fugit ut, suscipit optio! Quia aspernatur autem eaque nulla exercitationem alias suscipit ut nihil. Alias ad ipsum sit doloremque dignissimos nulla beatae magnam, eveniet commodi accusantium, harum, provident minus similique! Facilis laudantium beatae rem similique optio exercitationem quasi delectus! consectetur adipisicing elit. Aut nemo voluptatibus, quas ratione aperiam eligendi, recusandae minima nam corrupti, id beatae labore iusto quo pariatur consectetur quos quibusdam sapiente. Sit, similique, quam voluptates itaque vitae id dolore nemo sequi dolorem adipisci natus, odit et labore aspernatur quo minus tempora consequatur. Quis, omnis sunt. Voluptatum reiciendis repudiandae cumque cum aut, inventore, fugit quos incidunt obcaecati, amet necessitatibus culpa eos enim! Exercitationem quos doloremque similique dolorem earum at dicta repellendus minus ipsa. Esse earum expedita quidem ipsum. Maiores aspernatur maxime magni! Nulla provident totam minus consequatur! Ut odio dicta provident officia dolore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aperiam ex non similique in animi, rem odit quos explicabo consectetur nisi quibusdam voluptates eaque fugit unde laudantium qui expedita doloremque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, tempore! Amet accusantium alias deserunt reiciendis, doloremque eveniet qui itaque, commodi eaque dolorem illo voluptate non facilis ab sit optio quidem!
-            </p>
-            
-       
-            <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
-             location: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span> 
-            </p>
-          
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             price: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             time: <span class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             date: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             coach: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             participent: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             type: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             categorie: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
-            </p>
-          </div>
-          
-          
           <div class="">
-            comments
+           
           </div>
           </main>
 
-
+          
 
           
         </div>

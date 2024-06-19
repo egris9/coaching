@@ -27,6 +27,44 @@ input[type='number'] {
 		margin: 0;
 	}
 }
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:42px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
 
 .text-block-div {
 	display: block;
@@ -78,7 +116,10 @@ input[type='number'] {
 	  max-height: var(--scrollbar-width-legacy);
 	}
   }
-  
+  .scroller_track_gray {
+    --scrollbar-color-thumb: #d1d5db;
+    --scrollbar-color-track: #e5e7eb;
+}
 .custom-input {
 	@apply px-5 py-2 rounded-md focus:outline-none ring border-2 border-neutral-700 ring-transparent bg-[#404040] placeholder:text-neutral-500 focus:border-rose-600  focus:ring-rose-600;
 }

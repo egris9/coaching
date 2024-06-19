@@ -128,7 +128,7 @@
               </div>
               <div class="w-full ">
                 <p class="text-emerald-500 mt-2 line-clamp-3 min-w-0 flex-1">
-                  {{ item.small_sum }}
+                  {{ item.small_sum | truncatechars:50 }}
                 </p>
               </div>
               <p class="text-emerald-300 w-fit  rounded-md   mt-2 font-medium capitalize">
