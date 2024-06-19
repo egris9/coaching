@@ -2,393 +2,595 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
-		/>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
-		<link rel="stylesheet" href="{% static 'coach/global.css' %}" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="stylesheet" href="{% static 'coach/modal.css' %}" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
-			rel="stylesheet"
-		/>
-        
-</head>
-<body class="bg-gray-300">
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'coach/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="{% static 'coach/modal.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-300">
     {% include 'coach/componants/nav.html' %}
-    <main class="w-full ">
-        
+    <main class="w-full">
+      <section class="relative w-full mt-14">
+        <div class="w-full relative max-h-[550px] h-[550px] mt-24 p-1">
+          <img
+            class="h-full w-[85%] ml-32 object-cover rounded-3xl"
+            src=" {% static 'img/session.jpeg' %}"
+          />
 
-        <section class="relative w-full mt-14">
-            <div class="w-full relative max-h-[550px] h-[550px] mt-24 p-1">
-                <img class=" h-full  w-[85%] ml-32  object-cover rounded-3xl " src=" {% static 'img/session.jpeg' %}">
-    
-                <h1
-                    class="text-[4rem] capitalize absolute top-[50%] text-center left-1/2 -translate-x-1/2 -translate-y-1/2 font-header text-white"
+          <h1
+            class="text-[4rem] capitalize absolute top-[50%] text-center left-1/2 -translate-x-1/2 -translate-y-1/2 font-header text-white"
+          >
+            holy tren collection
+          </h1>
+        </div>
+        <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
+          <form method="Get" class="hs-accordion-group min-w-[290px]">
+            <input type="hidden" name="allow_filter" value="true">
+            <button type="submit">Filter</button>
+            <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
+              <button
+                type="button"
+                class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none"
+                aria-controls="hs-basic-with-arrow-collapse-two"
+              >
+                <svg
+                  class="hs-accordion-active:hidden block size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
-                    holy tren collection
-                </h1>
-            </div >
-            <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
-                <div class="hs-accordion-group min-w-[290px]">
-                    <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
-                    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none " aria-controls="hs-basic-with-arrow-collapse-two">
-                        <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                        <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m18 15-6-6-6 6"></path>
-                        </svg>
-                        Filter by Price
-                    </button>
-                    <div id="hs-basic-with-arrow-collapse-two" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-two">
-                            <div class="grid space-y-2">
-                                <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
-                                  <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
-                                  <span class="text-sm text-gray-100 ms-3">Under $25</span>
-                                </label>
-                                <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
-                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
-                                    <span class="text-sm text-gray-100 ms-3">$25 to $50</span>
-                                  </label>
-                                  <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
-                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
-                                    <span class="text-sm text-gray-100 ms-3">50 to $100</span>
-                                  </label>
-                                  <label for="vertical-checkbox-checked-in-form" class="max-w-xs flex p-3 w-full bg-gray-400 rounded-lg text-sm  text-black">
-                                    <input type="checkbox" class="shrink-0 mt-0.5  rounded text-emerald-600 disabled:opacity-50 disabled:pointer-events-none  accent-emerald-500" id="vertical-checkbox-checked-in-form" >
-                                    <span class="text-sm text-gray-100 ms-3">Over $100</span>
-                                  </label>
-                              </div>
-                    </div>
-                    </div>
-                
-                    <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
-                    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none " aria-controls="hs-basic-with-arrow-collapse-three">
-                        <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                        <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m18 15-6-6-6 6"></path>
-                        </svg>
-                        Sort By
-                    </button>
-                    <div id="hs-basic-with-arrow-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-three">
-                        <div class="grid space-y-2">
-                            <label for="hs-vertical-radio-checked-in-form" class=" max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm  bg-gray-400  text-black">
-                                <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none " id="hs-vertical-radio-checked-in-form" checked="">
-                                <span class="text-sm text-gray-100 ms-3 ">Popularity</span>
-                            </label>
-                            <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400  text-black">
-                                <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" checked="">
-                                <span class="text-sm text-gray-100 ms-3 ">Price: High to Low</span>
-                            </label>
-                            <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500  bg-gray-400  text-black">
-                              <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" checked="">
-                              <span class="text-sm text-gray-100 ms-3 ">Price: Low to High</span>
-                            </label>
-                           
-                          </div>
-                    </div>
-                    </div>
-                </div>
-
-
-                <div class="w-full max-w-[1200px] grid grid-cols-4 gap-y-2 gap-x-4 justify-items-center  flex-col">
-                    {% comment %} {% for p in products %} {% endcomment %}
-                    <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
-                      <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
-                        >
-                          body building
-                        </p>
-                    <img
-                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
-                    />
-                      <div class="min-w-0 max-w-full w-full">
-                          <h4
-                          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
-                          >
-                          ronie special nippeles
-                          </h4>
-                      </div>
-                      <div class="flex w-full justify-between mt-2 items-center gap-x-3">
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined text-lg font-semibold">
-                              history_toggle_off
-                          </span>
-                          <span>2h</span>
-                          </p>
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined"> groups </span>
-                          <span>100</span>
-                          </p>
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined"> star </span> <span>5</span>
-                          </p>
-                      </div>
-                
-                        <div class="mt-4 w-full border-y border-emerald-700 py-2">
-                        <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
-                        <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
-                      </div>
-                      <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
-                      <img
-                        class="size-12 rounded-full object-cover"
-                        src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      />
-                      <div class="mb-2">
-                        <p class="text-emerald-300">coach</p>
-                        <p class="text-emerald-300 font-medium capitalize">
-                          adolfo hitler-chan
-                        </p>
-                      </div>
-                    </div>
-
-                    
-
-                        <div class="mb-2  mt-3 flex self-start justify-between ">
-                          <p class="text-emerald-300 thick-font text-xl">Price: $69</p>
-                          <button class="hover:text-emerald-500  text-emerald-300 thick-font" data-micromodal-trigger="modal-1">see more</button>
-                          
-                        </div>
-                        
-                        
-                  </div>
-
-
-                    <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
-                      <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
-                        >
-                          body building
-                        </p>
-                    <img
-                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
-                    />
-                      <div class="min-w-0 max-w-full w-full">
-                          <h4
-                          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
-                          >
-                          ronie special nippeles
-                          </h4>
-                      </div>
-                      <div class="flex w-full justify-between mt-2 items-center gap-x-3">
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined text-lg font-semibold">
-                              history_toggle_off
-                          </span>
-                          <span>2h</span>
-                          </p>
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined"> groups </span>
-                          <span>100</span>
-                          </p>
-                          <p
-                          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                          >
-                          <span class="material-symbols-outlined"> star </span> <span>5</span>
-                          </p>
-                      </div>
-                
-                        <div class="mt-4 w-full border-y border-emerald-700 py-2">
-                        <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
-                        <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
-                      </div>
-                      <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
-                      <img
-                        class="size-12 rounded-full object-cover"
-                        src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      />
-                      <div class="mb-2">
-                        <p class="text-emerald-300">coach</p>
-                        <p class="text-emerald-300 font-medium capitalize">
-                          adolfo hitler-chan
-                        </p>
-                      </div>
-                    </div>
-                        <div class="mb-2 mt-3">
-                          <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-                          
-                        </div>
-                        
-                  </div>
-                    
-                    
-                
-                  <div class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative" >
-                    <p
-                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
-                      >
-                        body building
-                      </p>
-                  <img
-                    src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+                <svg
+                  class="hs-accordion-active:block hidden size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m18 15-6-6-6 6"></path>
+                </svg>
+                Filter by Price
+              </button>
+              <div
+                id="hs-basic-with-arrow-collapse-two"
+                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+                aria-labelledby="hs-basic-with-arrow-heading-two"
+              >
+                <div class="grid space-y-2">
+                  <label
+                  for="hs-vertical-radio-checked-in-form-price"
+                  class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
+                >
+                  <input
+                    type="radio"
+                    name="price_range"
+                    class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                    id="hs-vertical-radio-checked-in-form-price"
+                    checked=""
+                    value='Under $25'
                   />
-                    <div class="min-w-0 max-w-full w-full">
-                        <h4
-                        class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
-                        >
-                        ronie special nippeles
-                        </h4>
-                    </div>
-                    <div class="flex w-full justify-between mt-2 items-center gap-x-3">
-                        <p
-                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                        >
-                        <span class="material-symbols-outlined text-lg font-semibold">
-                            history_toggle_off
-                        </span>
-                        <span>2h</span>
-                        </p>
-                        <p
-                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                        >
-                        <span class="material-symbols-outlined"> groups </span>
-                        <span>100</span>
-                        </p>
-                        <p
-                        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-                        >
-                        <span class="material-symbols-outlined"> star </span> <span>5</span>
-                        </p>
-                    </div>
-              
-                      <div class="mt-4 w-full border-y border-emerald-700 py-2">
-                      <p class="text-emerald-300 flex justify-between mb-1">start date: <span class="font-medium capitalize" >may,10th</span></p>
-                      <p class="text-emerald-300 flex justify-between">end date: <span class="font-medium capitalize" >may,10th</span></p>
-                    </div>
-                    <div class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2">
-                    <img
-                      class="size-12 rounded-full object-cover"
-                      src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  <span class="text-sm text-gray-100 ms-3">Under $25</span>
+                </label>
+                  <label
+                    for="hs-vertical-radio-checked-in-form-price-2"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="price_range"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form-price-2"
+                      checked=""
+                      value='$25 to $50'
                     />
-                    <div class="mb-2">
-                      <p class="text-emerald-300">coach</p>
-                      <p class="text-emerald-300 font-medium capitalize">
-                        adolfo hitler-chan
-                      </p>
-                    </div>
-                  </div>
-                      <div class="mb-2 mt-3">
-                        <p class="text-emerald-300 thick-font text-2xl">Price: $69</p>
-                        
-                      </div>
-                      
+                    <span class="text-sm text-gray-100 ms-3">$25 - $50</span>
+                  </label>
+                  <label
+                    for="hs-vertical-radio-checked-in-form-price-3"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="price_range"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form-price-3"
+                      checked=""
+                      value='50 to $100'
+                    />
+                    <span class="text-sm text-gray-100 ms-3">$50 to $100</span>
+                  </label>
+                  <label
+                    for="hs-vertical-radio-checked-in-form-price-4"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="price_range"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form-price-4"
+                      checked=""
+                      value='Over $100'
+                    />
+                    <span class="text-sm text-gray-100 ms-3">Over $100</span>
+                  </label>
                 </div>
-                      
-                    
-                </div>
-        </section>
-    </main>
-   
+              </div>
+            </div>
 
+            <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
+              <button
+                type="button"
+                class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none"
+                aria-controls="hs-basic-with-arrow-collapse-three"
+              >
+                <svg
+                  class="hs-accordion-active:hidden block size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+                <svg
+                  class="hs-accordion-active:block hidden size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m18 15-6-6-6 6"></path>
+                </svg>
+                Sort By
+              </button>
+              <div
+                id="hs-basic-with-arrow-collapse-three"
+                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+                aria-labelledby="hs-basic-with-arrow-heading-three"
+              >
+                <div class="grid space-y-2">
+                  <label
+                    for="hs-vertical-radio-checked-in-form"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="sort_by"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form"
+                      checked=""
+                      value='Popularity'
+                    />
+                    <span class="text-sm text-gray-100 ms-3">Popularity</span>
+                  </label>
+                  <label
+                    for="hs-vertical-radio-checked-in-form-2"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="sort_by"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form-2"
+                      checked=""
+                      value='Price: High to Low'
+                    />
+                    <span class="text-sm text-gray-100 ms-3"
+                      >Price: High to Low</span
+                    >
+                  </label>
+                  <label
+                    for="hs-vertical-radio-checked-in-form-3"
+                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black"
+                  >
+                    <input
+                      type="radio"
+                      name="sort_by"
+                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
+                      id="hs-vertical-radio-checked-in-form-3"
+                      checked=""
+                      value='Price: Low to High'
+                    />
+                    <span class="text-sm text-gray-100 ms-3"
+                      >Price: Low to High</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+
+
+
+
+          <!--Carts start-->
+          
+          <div
+            class="w-full max-w-[1200px] grid grid-cols-4 gap-y-2 gap-x-4 justify-items-center flex-col"
+          >
+            {% for item in sessions %} 
+            <div
+              class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative"
+            >
+              <p
+                class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
+              >
+                {{ item.categorie }}
+              </p>
+              <img
+                src="{{MEDIA_URL}}{{item.img}}"
+                class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+              />
+              <div class="min-w-0 max-w-full w-full">
+                <h4
+                  class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
+                >
+                  {{ item.name }}
+                </h4>
+              
+              <div
+                class="flex w-full justify-between mt-2 items-center gap-x-3"
+              >
+                <p
+                  class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                >
+                  <span class="material-symbols-outlined text-lg font-semibold">
+                    history_toggle_off
+                  </span>
+                  <span>2h</span>
+                </p>
+                <p
+                  class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                >
+                  <span class="material-symbols-outlined"> groups </span>
+                  <span>{{ item.participant_limit }}</span>
+                </p>
+                <p
+                  class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+                >
+                  <span class="material-symbols-outlined"> star </span>
+                  <span>5</span>
+                </p>
+              </div>
+
+              <div class="mt-4 w-full border-y border-emerald-700 py-2">
+                <p class="text-emerald-300 flex justify-between mb-1">
+                  start date:
+                  <span class="font-medium capitalize">{{ item.first_date.date }}</span>
+                </p>
+                <p class="text-emerald-300 flex justify-between">
+                  end date: <span class="font-medium capitalize">{{ item.last_date.date }}</span>
+                </p>
+              </div>
+              <div
+                class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2"
+              >
+                <img
+                  class="size-12 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                />
+                <div class="mb-2">
+                  <p class="text-emerald-300">coach</p>
+                  <p class="text-emerald-300 font-medium capitalize">
+                    adolfo hitler-chan
+                  </p>
+                </div>
+              </div>
+              <div class="mb-2 mt-3 flex self-start justify-between">
+                <p class="text-emerald-300 thick-font text-xl">$ {{ item.price }}</p>
+                <button
+                  class="hover:text-emerald-500 text-emerald-300 thick-font"
+                  data-micromodal-trigger="modal-1"
+                >
+                  see more
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
 
     {% include 'coach/componants/footer.html' %}
-    <script type="module"> 
-    import preline from "https://cdn.jsdelivr.net/npm/preline@2.1.0/+esm"
+    <script type="module">
+      import preline from "https://cdn.jsdelivr.net/npm/preline@2.1.0/+esm";
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@preline/accordion@2.1.0/index.min.js"></script>
     <script src="{% static 'coach/navDropDown.js' %}"></script>
-    <script src="{% static 'coach/add_to_cart_popup.mjs' %}" type="module"></script>
+    <script
+      src="{% static 'coach/add_to_cart_popup.mjs' %}"
+      type="module"
+    ></script>
 
-
-
-    <div class="modal" id="modal-1" aria-hidden="true">
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
       <div class="modaloverlay" tabindex="-1" data-micromodal-close>
-        <div class="modalcontainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-         <header class="modalheader mb-3">
-            <h2 class="modaltitle text-2xl capitalize text-emerald-700 font-bold " id="modal-1-title">
+        <div
+          class="modalcontainer"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-1-title"
+        >
+          <header class="modalheader mb-3">
+            <h2
+              class="modaltitle text-2xl capitalize text-emerald-700 font-bold"
+              id="modal-1-title"
+            >
               session title
             </h2>
-            <button class="modalclose" aria-label="Close modal" data-micromodal-close></button>
+            <button
+              class="modalclose"
+              aria-label="Close modal"
+              data-micromodal-close
+            ></button>
           </header>
-          <main class="modalcontent grid grid-cols-3 grid-rows-[1500px] gap-x-3" id="modal-1-content">
-          
-          <div class="">
-            <img src="{% static 'img/future-artist.avif' %}"  class="rounded-xl self-center object-top w-[40rem] h-[60vh] object-cover">
-            
-          </div>
-          <div class=" divide-y-2 divide-gray-400 overflow-y-scroll max-h-[1500px] ">
-            <p>
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, nemo. Amet ipsum, saepe nobis officiis est eveniet delectus?
-             Quia consequuntur ad eaque iusto. Eaque sint ratione accusamus, porro excepturi odit! Hic vero dolorum fugiat dolorem esse officiis ea cupiditate possimus aut
-              adipisci! Velit nobis animi a distinctio at. Ullam, vel tenetur facere minus eum impedit, est, officia minima incidunt recusandae sunt! Alias, enim esse. Commodi qui
-              , molestias nulla dolore quam veritatis tempore. Illo aperiam quod et quisquam similique recusandae odio qui nostrum accusantium eveniet. Deserunt odit dignissimos 
-              fugit dolor placeat quas quod iusto incidunt, consequuntur, atque eum accusantium doloribus nihil veniam sint tenetur voluptatem obcaecati tempore voluptatum nisi q
-              uos, aspernatur ad a. Ad provident magnam illum accusantium facere eum vitae soluta accusamus id excepturi voluptatum dolore sit distinctio saepe nulla, officiis, 
-              ipsa repellendus! Voluptatum, explicabo ipsam. Nesciunt in aliquid fugit ab, soluta ex, commodi tempora, optio delectus eius numquam. Ipsa totam inventore reprehen
-              derit odit aperiam laborum sint, dignissimos illo id, sed labore magni nihil facere hic quas possimus similique maiores eum cumque ipsum quisquam, sunt libero quae mollitia! Veritatis libero illum eum, error voluptas, officiis natus dolor quisquam beatae quidem molestias omnis quas voluptatem optio architecto? Reprehenderit, sed sunt explicabo placeat, ab at atque harum ad deserunt minus odit illum distinctio! Unde eaque commodi omnis eveniet nam impedit vero odit adipisci eius voluptate, beatae voluptas odio esse quis rerum cumque dolorem dolores corrupti at sit sequi excepturi? Rerum aliquid excepturi ducimus nemo tenetur maxime aperiam corrupti nam exercitationem tempora, natus perferendis voluptas doloremque nihil. Sit in quo, doloremque qui repudiandae veniam sint consequuntur ea sapiente repellendus, architecto iusto impedit! Ad repellat minus nam necessitatibus odit maxime facere delectus eaque, temporibus asperiores, dicta totam illo reprehenderit atque cumque adipisci et porro praesentium? Nostrum fugit sed totam nobis repellendus, animi ex enim ipsum illo possimus vero deserunt, minima quidem veritatis architecto. Tenetur, exercitationem perspiciatis? Dolore voluptates nihil inventore ipsa labore saepe, officiis minus quaerat laudantium explicabo reprehenderit libero aspernatur ad, molestiae ratione ab dolores facere amet accusamus! Suscipit voluptatibus distinctio tenetur? Iure quis sed dolorem id adipisci quia maxime, unde minima consequuntur recusandae corporis ipsum ipsam, magni vero obcaecati, dicta eveniet quisquam. Tenetur optio voluptas quo sit! Praesentium explicabo ex magnam ducimus consequatur maiores molestias at labore. Quo culpa repellat accusamus. Officia sed veritatis animi dolorum, voluptates aliquid placeat itaque ut quibusdam labore enim impedit harum nihil ipsa nulla minus, esse, dicta earum ab totam. Voluptatibus quis corrupti, doloremque similique fuga enim laboriosam aliquid soluta qui ex. Accusantium commodi cumque repudiandae magnam qui quas fuga neque quos. Laborum omnis similique reiciendis expedita deserunt autem, voluptatum id velit cumque nam incidunt nemo mollitia necessitatibus. Labore minus debitis, asperiores exercitationem, dolor fugit ipsum voluptatibus vero, quidem similique cupiditate. Officiis corporis eaque, eligendi voluptatibus maxime expedita mollitia vero quas accusamus qui, at voluptas non earum labore consequuntur, quaerat culpa assumenda neque reiciendis suscipit. Necessitatibus eos tempore eaque ipsam perferendis expedita ab? Iure quia blanditiis at libero unde culpa eligendi? Molestiae vitae quidem nihil maxime, rerum facere eum fugit quos beatae quisquam dolorum reprehenderit incidunt eius consequuntur nesciunt tempore ipsam quod est doloribus non molestias. Ad veniam similique porro, tempore perferendis ducimus numquam natus autem tenetur minus ratione perspiciatis laudantium error. Velit consectetur tempore nihil maiores illum natus laudantium dolores cum ea repellendus, ut, vel enim, aperiam facere voluptas officiis a. Cumque labore consectetur vel eos sequi, molestiae laboriosam alias in deserunt repellat iusto est illum omnis animi reiciendis? Nulla, beatae libero eveniet nostrum temporibus quibusdam tenetur repellendus earum aut. Ullam iusto quam quibusdam soluta, expedita libero doloribus unde enim sed natus laborum. Temporibus maiores id est voluptatem tenetur, et, similique a odit tempora, molestiae soluta atque adipisci sed corporis rem ipsum. Voluptas dolorem cumque repellat debitis vel praesentium quibusdam tempore quod doloribus optio, recusandae maiores ad, consequuntur ratione, animi hic inventore beatae voluptatum odio molestiae. In esse totam eligendi ullam perspiciatis consequuntur ducimus quae labore, unde ad quibusdam voluptates nulla saepe dolor a enim obcaecati nesciunt consequatur mollitia? Cumque ea veritatis neque? Inventore recusandae sit quis earum labore autem voluptates natus beatae enim consequatur commodi ut, ullam facilis quisquam totam esse, adipisci, illo deleniti sapiente soluta libero doloremque quam sequi at? Omnis consequuntur exercitationem ratione a cupiditate dolores doloremque minima perferendis ex officia, non iste pariatur nesciunt magnam deserunt itaque. Ab quis dolore eum labore sapiente neque voluptatum fugit temporibus necessitatibus, cupiditate aperiam veniam sed pariatur quam dolorem natus veritatis harum suscipit impedit modi. Similique, consequatur aperiam eligendi harum accusamus officia, totam aliquid corrupti nihil distinctio quae numquam doloribus eius voluptatem et perferendis iste natus suscipit ipsam aliquam earum officiis soluta! Quo eaque numquam aliquam placeat ratione, magni voluptate dolores molestias inventore debitis consequuntur mollitia officia explicabo, minus quia cumque assumenda similique sed? Temporibus quibusdam delectus corrupti, nisi explicabo dolorem obcaecati veniam atque sequi maiores dolor numquam sit dolore incidunt tempora facere sapiente accusantium fugiat repellendus necessitatibus. Nobis in quae aspernatur molestias delectus consequatur, molestiae quas dolor consectetur hic qui dolorum est commodi cum labore dolore excepturi nam quod reprehenderit adipisci dicta incidunt laborum. Exercitationem, repudiandae! Quasi, voluptatum suscipit. Fugiat delectus, expedita consequuntur laboriosam veritatis tempora repellat ad asperiores harum, nam aperiam iusto impedit laborum blanditiis deleniti dicta praesentium distinctio! Voluptatibus doloribus nulla soluta hic quo cupiditate atque, est sequi rem velit incidunt nemo, placeat dolore, quasi repellendus aspernatur laudantium laboriosam voluptatum nesciunt nam eaque facere! Repellat animi sit soluta nobis obcaecati fugit, at neque ipsam perferendis officia placeat veniam exercitationem dolorum odit qui ullam deserunt? Numquam deserunt voluptatibus quod laboriosam, ab sed ipsum obcaecati eos quasi molestiae voluptatem neque quaerat dolorum voluptatum magni impedit quam assumenda omnis nemo? Possimus veritatis voluptatibus laudantium rem ipsa deserunt nemo. Quam quibusdam veritatis nisi ad iusto illum, saepe voluptates veniam quasi id ducimus autem facere necessitatibus est natus vero fugit ut, suscipit optio! Quia aspernatur autem eaque nulla exercitationem alias suscipit ut nihil. Alias ad ipsum sit doloremque dignissimos nulla beatae magnam, eveniet commodi accusantium, harum, provident minus similique! Facilis laudantium beatae rem similique optio exercitationem quasi delectus! consectetur adipisicing elit. Aut nemo voluptatibus, quas ratione aperiam eligendi, recusandae minima nam corrupti, id beatae labore iusto quo pariatur consectetur quos quibusdam sapiente. Sit, similique, quam voluptates itaque vitae id dolore nemo sequi dolorem adipisci natus, odit et labore aspernatur quo minus tempora consequatur. Quis, omnis sunt. Voluptatum reiciendis repudiandae cumque cum aut, inventore, fugit quos incidunt obcaecati, amet necessitatibus culpa eos enim! Exercitationem quos doloremque similique dolorem earum at dicta repellendus minus ipsa. Esse earum expedita quidem ipsum. Maiores aspernatur maxime magni! Nulla provident totam minus consequatur! Ut odio dicta provident officia dolore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aperiam ex non similique in animi, rem odit quos explicabo consectetur nisi quibusdam voluptates eaque fugit unde laudantium qui expedita doloremque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, tempore! Amet accusantium alias deserunt reiciendis, doloremque eveniet qui itaque, commodi eaque dolorem illo voluptate non facilis ab sit optio quidem!
-            </p>
-            
-       
-            <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
-             location: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span> 
-            </p>
-          
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             price: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             time: <span class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             date: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             coach: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             participent: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             type: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
-            </p>
-         
-            <p class="uppercase text-lg font-bold py-1 text-gray-700">
-             categorie: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
-            </p>
-          </div>
-          
-          
-          <div class="">
-            comments
-          </div>
+          <main
+            class="modalcontent grid grid-cols-3 grid-rows-[1500px] gap-x-3"
+            id="modal-1-content"
+          >
+            <div class="">
+              <img
+                src="{% static 'img/future-artist.avif' %}"
+                class="rounded-xl self-center object-top w-[40rem] h-[60vh] object-cover"
+              />
+            </div>
+            <div
+              class="divide-y-2 divide-gray-400 overflow-y-scroll max-h-[1500px]"
+            >
+              <p>
+                Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Maxime, nemo. Amet ipsum, saepe
+                nobis officiis est eveniet delectus? Quia consequuntur ad eaque
+                iusto. Eaque sint ratione accusamus, porro excepturi odit! Hic
+                vero dolorum fugiat dolorem esse officiis ea cupiditate possimus
+                aut adipisci! Velit nobis animi a distinctio at. Ullam, vel
+                tenetur facere minus eum impedit, est, officia minima incidunt
+                recusandae sunt! Alias, enim esse. Commodi qui , molestias nulla
+                dolore quam veritatis tempore. Illo aperiam quod et quisquam
+                similique recusandae odio qui nostrum accusantium eveniet.
+                Deserunt odit dignissimos fugit dolor placeat quas quod iusto
+                incidunt, consequuntur, atque eum accusantium doloribus nihil
+                veniam sint tenetur voluptatem obcaecati tempore voluptatum nisi
+                q uos, aspernatur ad a. Ad provident magnam illum accusantium
+                facere eum vitae soluta accusamus id excepturi voluptatum dolore
+                sit distinctio saepe nulla, officiis, ipsa repellendus!
+                Voluptatum, explicabo ipsam. Nesciunt in aliquid fugit ab,
+                soluta ex, commodi tempora, optio delectus eius numquam. Ipsa
+                totam inventore reprehen derit odit aperiam laborum sint,
+                dignissimos illo id, sed labore magni nihil facere hic quas
+                possimus similique maiores eum cumque ipsum quisquam, sunt
+                libero quae mollitia! Veritatis libero illum eum, error
+                voluptas, officiis natus dolor quisquam beatae quidem molestias
+                omnis quas voluptatem optio architecto? Reprehenderit, sed sunt
+                explicabo placeat, ab at atque harum ad deserunt minus odit
+                illum distinctio! Unde eaque commodi omnis eveniet nam impedit
+                vero odit adipisci eius voluptate, beatae voluptas odio esse
+                quis rerum cumque dolorem dolores corrupti at sit sequi
+                excepturi? Rerum aliquid excepturi ducimus nemo tenetur maxime
+                aperiam corrupti nam exercitationem tempora, natus perferendis
+                voluptas doloremque nihil. Sit in quo, doloremque qui
+                repudiandae veniam sint consequuntur ea sapiente repellendus,
+                architecto iusto impedit! Ad repellat minus nam necessitatibus
+                odit maxime facere delectus eaque, temporibus asperiores, dicta
+                totam illo reprehenderit atque cumque adipisci et porro
+                praesentium? Nostrum fugit sed totam nobis repellendus, animi ex
+                enim ipsum illo possimus vero deserunt, minima quidem veritatis
+                architecto. Tenetur, exercitationem perspiciatis? Dolore
+                voluptates nihil inventore ipsa labore saepe, officiis minus
+                quaerat laudantium explicabo reprehenderit libero aspernatur ad,
+                molestiae ratione ab dolores facere amet accusamus! Suscipit
+                voluptatibus distinctio tenetur? Iure quis sed dolorem id
+                adipisci quia maxime, unde minima consequuntur recusandae
+                corporis ipsum ipsam, magni vero obcaecati, dicta eveniet
+                quisquam. Tenetur optio voluptas quo sit! Praesentium explicabo
+                ex magnam ducimus consequatur maiores molestias at labore. Quo
+                culpa repellat accusamus. Officia sed veritatis animi dolorum,
+                voluptates aliquid placeat itaque ut quibusdam labore enim
+                impedit harum nihil ipsa nulla minus, esse, dicta earum ab
+                totam. Voluptatibus quis corrupti, doloremque similique fuga
+                enim laboriosam aliquid soluta qui ex. Accusantium commodi
+                cumque repudiandae magnam qui quas fuga neque quos. Laborum
+                omnis similique reiciendis expedita deserunt autem, voluptatum
+                id velit cumque nam incidunt nemo mollitia necessitatibus.
+                Labore minus debitis, asperiores exercitationem, dolor fugit
+                ipsum voluptatibus vero, quidem similique cupiditate. Officiis
+                corporis eaque, eligendi voluptatibus maxime expedita mollitia
+                vero quas accusamus qui, at voluptas non earum labore
+                consequuntur, quaerat culpa assumenda neque reiciendis suscipit.
+                Necessitatibus eos tempore eaque ipsam perferendis expedita ab?
+                Iure quia blanditiis at libero unde culpa eligendi? Molestiae
+                vitae quidem nihil maxime, rerum facere eum fugit quos beatae
+                quisquam dolorum reprehenderit incidunt eius consequuntur
+                nesciunt tempore ipsam quod est doloribus non molestias. Ad
+                veniam similique porro, tempore perferendis ducimus numquam
+                natus autem tenetur minus ratione perspiciatis laudantium error.
+                Velit consectetur tempore nihil maiores illum natus laudantium
+                dolores cum ea repellendus, ut, vel enim, aperiam facere
+                voluptas officiis a. Cumque labore consectetur vel eos sequi,
+                molestiae laboriosam alias in deserunt repellat iusto est illum
+                omnis animi reiciendis? Nulla, beatae libero eveniet nostrum
+                temporibus quibusdam tenetur repellendus earum aut. Ullam iusto
+                quam quibusdam soluta, expedita libero doloribus unde enim sed
+                natus laborum. Temporibus maiores id est voluptatem tenetur, et,
+                similique a odit tempora, molestiae soluta atque adipisci sed
+                corporis rem ipsum. Voluptas dolorem cumque repellat debitis vel
+                praesentium quibusdam tempore quod doloribus optio, recusandae
+                maiores ad, consequuntur ratione, animi hic inventore beatae
+                voluptatum odio molestiae. In esse totam eligendi ullam
+                perspiciatis consequuntur ducimus quae labore, unde ad quibusdam
+                voluptates nulla saepe dolor a enim obcaecati nesciunt
+                consequatur mollitia? Cumque ea veritatis neque? Inventore
+                recusandae sit quis earum labore autem voluptates natus beatae
+                enim consequatur commodi ut, ullam facilis quisquam totam esse,
+                adipisci, illo deleniti sapiente soluta libero doloremque quam
+                sequi at? Omnis consequuntur exercitationem ratione a cupiditate
+                dolores doloremque minima perferendis ex officia, non iste
+                pariatur nesciunt magnam deserunt itaque. Ab quis dolore eum
+                labore sapiente neque voluptatum fugit temporibus
+                necessitatibus, cupiditate aperiam veniam sed pariatur quam
+                dolorem natus veritatis harum suscipit impedit modi. Similique,
+                consequatur aperiam eligendi harum accusamus officia, totam
+                aliquid corrupti nihil distinctio quae numquam doloribus eius
+                voluptatem et perferendis iste natus suscipit ipsam aliquam
+                earum officiis soluta! Quo eaque numquam aliquam placeat
+                ratione, magni voluptate dolores molestias inventore debitis
+                consequuntur mollitia officia explicabo, minus quia cumque
+                assumenda similique sed? Temporibus quibusdam delectus corrupti,
+                nisi explicabo dolorem obcaecati veniam atque sequi maiores
+                dolor numquam sit dolore incidunt tempora facere sapiente
+                accusantium fugiat repellendus necessitatibus. Nobis in quae
+                aspernatur molestias delectus consequatur, molestiae quas dolor
+                consectetur hic qui dolorum est commodi cum labore dolore
+                excepturi nam quod reprehenderit adipisci dicta incidunt
+                laborum. Exercitationem, repudiandae! Quasi, voluptatum
+                suscipit. Fugiat delectus, expedita consequuntur laboriosam
+                veritatis tempora repellat ad asperiores harum, nam aperiam
+                iusto impedit laborum blanditiis deleniti dicta praesentium
+                distinctio! Voluptatibus doloribus nulla soluta hic quo
+                cupiditate atque, est sequi rem velit incidunt nemo, placeat
+                dolore, quasi repellendus aspernatur laudantium laboriosam
+                voluptatum nesciunt nam eaque facere! Repellat animi sit soluta
+                nobis obcaecati fugit, at neque ipsam perferendis officia
+                placeat veniam exercitationem dolorum odit qui ullam deserunt?
+                Numquam deserunt voluptatibus quod laboriosam, ab sed ipsum
+                obcaecati eos quasi molestiae voluptatem neque quaerat dolorum
+                voluptatum magni impedit quam assumenda omnis nemo? Possimus
+                veritatis voluptatibus laudantium rem ipsa deserunt nemo. Quam
+                quibusdam veritatis nisi ad iusto illum, saepe voluptates veniam
+                quasi id ducimus autem facere necessitatibus est natus vero
+                fugit ut, suscipit optio! Quia aspernatur autem eaque nulla
+                exercitationem alias suscipit ut nihil. Alias ad ipsum sit
+                doloremque dignissimos nulla beatae magnam, eveniet commodi
+                accusantium, harum, provident minus similique! Facilis
+                laudantium beatae rem similique optio exercitationem quasi
+                delectus! consectetur adipisicing elit. Aut nemo voluptatibus,
+                quas ratione aperiam eligendi, recusandae minima nam corrupti,
+                id beatae labore iusto quo pariatur consectetur quos quibusdam
+                sapiente. Sit, similique, quam voluptates itaque vitae id dolore
+                nemo sequi dolorem adipisci natus, odit et labore aspernatur quo
+                minus tempora consequatur. Quis, omnis sunt. Voluptatum
+                reiciendis repudiandae cumque cum aut, inventore, fugit quos
+                incidunt obcaecati, amet necessitatibus culpa eos enim!
+                Exercitationem quos doloremque similique dolorem earum at dicta
+                repellendus minus ipsa. Esse earum expedita quidem ipsum.
+                Maiores aspernatur maxime magni! Nulla provident totam minus
+                consequatur! Ut odio dicta provident officia dolore? Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Minima aperiam ex
+                non similique in animi, rem odit quos explicabo consectetur nisi
+                quibusdam voluptates eaque fugit unde laudantium qui expedita
+                doloremque! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Ipsum, tempore! Amet accusantium alias deserunt
+                reiciendis, doloremque eveniet qui itaque, commodi eaque dolorem
+                illo voluptate non facilis ab sit optio quidem!
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
+                location:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >tanger</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                price:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >70$</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                time:
+                <span
+                  class="text-gray-600/70 capitalize font-medium fontmd text-lg ml-3"
+                  >12:00 - 15:34</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                date:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >14may - 17may</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                coach:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >mr.abdlha9 waterson</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                participent:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >60</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                type:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >solo</span
+                >
+              </p>
+
+              <p class="uppercase text-lg font-bold py-1 text-gray-700">
+                categorie:
+                <span
+                  class="text-gray-600/70 capitalize font-medium text-lg ml-3"
+                  >samba</span
+                >
+              </p>
+            </div>
+
+            <div class="">comments</div>
           </main>
-
-
-
-          
         </div>
       </div>
     </div>
-
-
-</body>
+  </body>
 </html>

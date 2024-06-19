@@ -35,6 +35,7 @@ urlpatterns = [
     ),
      path("profile", views.profile, name="profile"),
      path("delete-session/<int:session_id>/", views.delete_session, name="delete_session"),
+     path('products/', views.session_filtre, name='session_filtre'),
 ]
 
 

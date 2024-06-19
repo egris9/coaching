@@ -14,11 +14,16 @@ def format_sessions_response(sessions):
         )
     return session
 
-def get_all_sessions(profile: Profile):
+def get_all_sessions_by_profile(profile: Profile):
     sessions=Training_session.objects.filter(Profile=profile)
     return format_sessions_response(sessions)
 
 def get_sessions_by_date(profile: Profile, date_filter_start: datetime, date_filter_end: datetime):
     conditions = Q(session__id=OuterRef('id')) & Q(date__gte=date_filter_start) & Q(date__lte=date_filter_end)
     sessions = Training_session.objects.filter(Exists(session_date.objects.filter(conditions),Profile=profile))
+    return format_sessions_response(sessions)
+
+
+def get_all_sessions():
+    sessions=Training_session.objects.all()
     return format_sessions_response(sessions)
