@@ -13,6 +13,7 @@ urlpatterns = [
     path("signup", views.signup, name="signup"),
     path("logout", views.sign_out, name="logout"),
     path("session", views.session, name="session"),
+    path("stats", views.stats, name="stats"),
     path("shop", views.shop, name="shop"),
     path("products/<int:id>", views.products, name="products"),
     path("dashboard", views.dashboard, name="dashboard"),

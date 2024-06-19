@@ -18,6 +18,7 @@ body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
 input[type='number'] {
 	-moz-appearance: textfield;
 	&::-webkit-inner-spin-button,
