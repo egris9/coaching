@@ -17,3 +17,4 @@ from coach.api.add_order import add_order_handler
 from coach.api.profile import profile
 from coach.api.stats import stats
 
+from coach.api.delete_session import delete_session

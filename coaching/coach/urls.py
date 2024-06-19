@@ -34,6 +34,7 @@ urlpatterns = [
         "cart/delete_cart_item", views.delete_cart_item_handler, name="delete_cart_item"
     ),
      path("profile", views.profile, name="profile"),
+     path("delete-session/<int:session_id>/", views.delete_session, name="delete_session"),
 ]
 
 

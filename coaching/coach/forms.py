@@ -49,4 +49,6 @@ class sessionform(forms.ModelForm):
     # start_time = models.DateTimeField(null=True)    
     # end_time = models.DateTimeField(null=True)   
     # location = models.CharField(max_length=100,null=True)
-    # participant_limit = models.IntegerField(null=True)  
+    # participant_limit = models.IntegerField(null=True) 
+
+ 
