@@ -34,7 +34,7 @@ class Training_session(models.Model):
     small_sum = models.CharField(max_length=100, null=True)
     categorie = models.CharField(max_length=100, null=True)
     type = models.CharField(max_length=100, null=True)
-    description = models.CharField(max_length=100, null=True)
+    description = models.JSONField( null=True)
     price = models.DecimalField( max_digits=5, decimal_places=2, null=True)
     Profile = models.ForeignKey(Profile, on_delete=models.CASCADE,default=1) 
     img = models.ImageField(upload_to="sessions/%y/%m/%d", null=True)
@@ -58,12 +58,13 @@ class session_date(models.Model):
 
     
 
-class Rating(models.Model):
+class Reviews(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     session = models.ForeignKey(Training_session, on_delete=models.CASCADE)
-    rating = models.IntegerField()
+    stars = models.IntegerField()
     comment = models.TextField(blank=True, null=True)
+    title = models.TextField(blank=True, null=True)
 
 
 

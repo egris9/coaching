@@ -17,5 +17,8 @@ from coach.api.add_order import add_order_handler
 from coach.api.profile import profile
 from coach.api.stats import stats
 from coach.api.session_filtrage import session_filtre
+from coach.api.add_to_cart_popup import pop_up
+from coach.api.reviews import reviews
+
 
 from coach.api.delete_session import delete_session
