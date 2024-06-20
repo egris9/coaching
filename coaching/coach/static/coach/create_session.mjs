@@ -101,7 +101,11 @@ button.addEventListener("click", async function (e) {
     'p[data-dropDown-item = "location_dropdown"][data-item-active]'
   );
   const max_participent = Number( document.getElementById("participent_input").value);
-  const description = await editor.save().then((v) => v);
+  const description = await editor.save().then((v) =>{
+    console.log(JSON.stringify(v))
+    return v
+
+  });
   const start_time = document.getElementById("time").value;
   const end_time = document.getElementById("time2").value;
   const categorie = document.querySelector(
@@ -114,7 +118,7 @@ button.addEventListener("click", async function (e) {
     .querySelector("html")
     .getAttribute("selected_day");
  
-  if (
+   if (
     title &&
     small_sum &&
     description &&
@@ -130,7 +134,7 @@ button.addEventListener("click", async function (e) {
     const sessionId = document
       .querySelector("html")
       .getAttribute("data_session_id");
-    if (!sessionId) {
+   if (!sessionId) {
       return;
     }
     const body = {

@@ -257,7 +257,7 @@
               >
                 {{ item.categorie }}
               </p>
-              <img
+              <img data-session-id="{{item.id}}"
                 src="{{MEDIA_URL}}{{item.img}}"
                 class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
               />
@@ -319,9 +319,7 @@
               <div class="mb-2 mt-3 flex self-start justify-between">
                 <p class="text-emerald-300 thick-font text-xl">$ {{ item.price }}</p>
                 <button
-                  class="hover:text-emerald-500 text-emerald-300 thick-font"
-                  data-micromodal-trigger="modal-1"
-                >
+                  class="hover:text-emerald-500 text-emerald-300 thick-font modal_button" data-id="{{ item.id }}">
                   see more
                 </button>
               </div>
@@ -338,6 +336,8 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@preline/accordion@2.1.0/index.min.js"></script>
     <script src="{% static 'coach/navDropDown.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/editorjs-html@3.4.0/build/edjsHTML.js"></script>
+    
     <script
       src="{% static 'coach/add_to_cart_popup.mjs' %}"
       type="module"
@@ -365,53 +365,52 @@
                 close
                 </span></button>
           </header>
-          <main class="modalcontent grid grid-cols-3 grid-rows-[500px] gap-x-7" id="modal-1-content">
+          <main class="modalcontent grid grid-cols-3 grid-rows-[500px] gap-x-7"  id="modal-1-content">
             
 
             <div class="">
-              <img src="{% static 'img/future-artist.avif' %}" class="rounded-xl self-center object-top w-[40rem] h-full object-cover">
+              <img src="{% static 'img/future-artist.avif' %}" id="img_mod" class="rounded-xl self-center object-top w-[40rem] h-full object-cover">
   
             </div>
             <div class="space-y-4 max-h-full">
               
   
               <div class=" divide-y-2 divide-gray-400 overflow-y-scroll max-h-[440px] scroller scroller_track_gray">
-                <p>
-                  r sit amet consectetur adipisicing elit. Maxime, nemo. Amet ipsum, saepe nobis officiis est eveniet delectus?
-                  Quia consequuntur ad eaque iusto. Eaque sint ratione accusamus, porro excepturi odit! Hic vero dolorum fugiat dolorem esse officiis ea cupiditate possimus aut
-                   </p>
+                <div id="mod_description" class="break-all costum-type-scale">
+                 
+                </div>
   
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
-                  location: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span>
+                  location: <span id="location" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  price: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
+                  price: <span id="price" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  time: <span class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
+                  time: <span id="time" class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  date: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
+                  date: <span id="date" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  coach: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
+                  coach: <span id="coach" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  participent: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
+                  participent: <span id="participent" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  type: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
+                  type: <span id="type" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  categorie: <span class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
+                  categorie: <span id="categorie" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
                 </p>
               </div>
               <button class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300">
@@ -428,25 +427,25 @@
                 <p class="font-medium text-lg text-gray-600">How much do u like this session </p>
              </div>
               <div class="rate self-center mb-6">
-                <input type="radio" id="star5" name="rate" value="5" />
+                <input type="radio" id="star5" name="rate" class="star" value="5" />
                 <label for="star5" title="text"> </label>
-                <input type="radio" id="star4" name="rate" value="4" />
+                <input type="radio" id="star4" name="rate" class="star" value="4" />
                 <label for="star4" title="text"> </label>
-                <input type="radio" id="star3" name="rate" value="3" />
+                <input type="radio" id="star3" name="rate" class="star" value="3" />
                 <label for="star3" title="text"> </label>
-                <input type="radio" id="star2" name="rate" value="2" />
+                <input type="radio" id="star2" name="rate" class="star" value="2" />
                 <label for="star2" title="text"> </label>
-                <input type="radio" id="star1" name="rate" value="1" />
+                <input type="radio" id="star1" name="rate" class="star" value="1" />
                 <label for="star1" title="text"> </label>
               </div>
-              
+
 
               <p class="font-medium text-lg text-gray-600">title</p>
-              <input id="title" type="text" class="p-2 w-full bg-gray-300 duration-500 outline-none rounded-2xl focus-within:bg-gray-400 transition-colors placeholder:text-gray-500" placeholder="write ur review title here" ></input>
+              <input  id="title_review" type="text" class="p-2 w-full bg-gray-300 duration-500 outline-none rounded-2xl focus-within:bg-gray-400 transition-colors placeholder:text-gray-500" placeholder="write ur review title here" ></input>
               <p class="font-medium text-lg text-gray-600 mt-2">review description</p>
-              <textarea type="text" id="review" maxlength="100" class=" scroller  focus-within:bg-gray-400 transition-colors duration-500 p-2  resize-none  rounded-2xl outline-none  w-full placeholder:text-gray-500 bg-gray-300 py-1.5 text-gray-800 h-[93px]" placeholder="write ur experience with this session"></textarea>
+              <textarea type="text" id="review_cmnt" maxlength="100" class=" scroller  focus-within:bg-gray-400 transition-colors duration-500 p-2  resize-none  rounded-2xl outline-none  w-full placeholder:text-gray-500 bg-gray-300 py-1.5 text-gray-800 h-[93px]" placeholder="write ur experience with this session"></textarea>
               
-              <button id="button1" class="mt-4 w-fit self-end bg-gray-400 text-gray-600 rounded-xl py-3 px-5 font-medium hover:bg-gray-500 hover:text-gray-200 transition-colors duration-300
+              <button id="review_btn" class="mt-4 w-fit self-end bg-gray-400 text-gray-600 rounded-xl py-3 px-5 font-medium hover:bg-gray-500 hover:text-gray-200 transition-colors duration-300
               ">submit review</button>
             </div>
             
@@ -576,5 +575,8 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
   </body>
 </html>

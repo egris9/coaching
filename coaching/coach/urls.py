@@ -35,6 +35,8 @@ urlpatterns = [
     ),
      path("profile", views.profile, name="profile"),
      path("delete-session/<int:session_id>/", views.delete_session, name="delete_session"),
+     path("add_to_cart_popup/<int:session_id>/", views.pop_up, name="add_to_cart_popup"),
+     path("reviews/<int:session_id>/", views.reviews, name="reviews"),
      path('products/', views.session_filtre, name='session_filtre'),
 ]
 

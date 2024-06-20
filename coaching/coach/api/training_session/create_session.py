@@ -4,6 +4,7 @@ from coach.forms import ImageForm
 from coach.models import Profile
 from coach.models import Training_session,session_location
 from django.shortcuts import  get_object_or_404, redirect
+import json
 
 def add_session(request):
     if request.method != "POST":
@@ -19,7 +20,7 @@ def add_session(request):
         return redirect("/")
     
     if request.method == 'POST':
-        location = session_location.objects.first()
+        location = session_location.objects.filter(location=request.POST.get('location'))
         if profile is None:
             return JsonResponse({"ok":False , 'reason': 'profile_not_found'})
         
@@ -46,10 +47,11 @@ def update_session_img(request):
         # profile = Profile.objects.filter(id='1').first()
         # if profile is None:
         # return JsonResponse({"ok":False , 'reason': 'profile_not_found'})
-        
+        json_data = json.loads(request.POST.get('description'))
+      
         combined_data = request.POST.copy()  # Make a copy to avoid modifying the original QueryDict
         combined_data['Profile'] = session.Profile     
-    
+        combined_data['description'] = json_data
         form = ImageForm(combined_data, request.FILES, instance=session )
         if form.is_valid():
              instance= form.save()
