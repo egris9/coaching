@@ -95,7 +95,7 @@
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                     id="hs-vertical-radio-checked-in-form-price"
                     checked=""
-                    value='Under $25'
+                    value='under_25'
                   />
                   <span class="text-sm text-gray-100 ms-3">Under $25</span>
                 </label>
@@ -109,7 +109,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form-price-2"
                       checked=""
-                      value='$25 to $50'
+                      value='25_to_50'
                     />
                     <span class="text-sm text-gray-100 ms-3">$25 - $50</span>
                   </label>
@@ -123,7 +123,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form-price-3"
                       checked=""
-                      value='50 to $100'
+                      value='50_to_100'
                     />
                     <span class="text-sm text-gray-100 ms-3">$50 to $100</span>
                   </label>
@@ -137,7 +137,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form-price-4"
                       checked=""
-                      value='Over $100'
+                      value='over_100'
                     />
                     <span class="text-sm text-gray-100 ms-3">Over $100</span>
                   </label>
@@ -197,7 +197,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form"
                       checked=""
-                      value='Popularity'
+                      value='popularity'
                     />
                     <span class="text-sm text-gray-100 ms-3">Popularity</span>
                   </label>
@@ -211,7 +211,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form-2"
                       checked=""
-                      value='Price: High to Low'
+                      value='high_to_low'
                     />
                     <span class="text-sm text-gray-100 ms-3"
                       >Price: High to Low</span
@@ -227,7 +227,7 @@
                       class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
                       id="hs-vertical-radio-checked-in-form-3"
                       checked=""
-                      value='Price: Low to High'
+                      value='low_to_high'
                     />
                     <span class="text-sm text-gray-100 ms-3"
                       >Price: Low to High</span
@@ -277,7 +277,7 @@
                   <span class="material-symbols-outlined text-lg font-semibold">
                     history_toggle_off
                   </span>
-                  <span>2h</span>
+                  <span>{{ item.duration }}</span>
                 </p>
                 <p
                   class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"

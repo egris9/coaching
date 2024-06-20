@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from coach.models import Training_session
 from coach.forms import FilterForm
-from coach.api.queries.sessions.index import  get_all_sessions
+from coach.api.queries.sessions.index import  format_sessions_response
 
 
 def session(request):
     allow_filter = request.GET.get('allow_filter', None)
-    sessions = get_all_sessions()
+    sessions = Training_session.objects.all()
     if allow_filter : 
         form = FilterForm(request.GET)
-        
+        p= request.GET.get('price_range')
+        print(f'price range {p}')
         if form.is_valid():
             price_range = form.cleaned_data.get('price_range')
             sort_by = form.cleaned_data.get('sort_by')
@@ -33,7 +34,7 @@ def session(request):
                     sessions = sessions.order_by('price')
     
     context = {
-        'sessions': sessions,
+        'sessions': format_sessions_response(sessions),
     }
     return render(
         request,
