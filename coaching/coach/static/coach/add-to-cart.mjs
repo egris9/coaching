@@ -5,9 +5,13 @@ const cookies = new Cookies (null, { path: "/" });
 const btns = document.querySelectorAll("[data-add-to-cart-btn]");
 
 function getData(btn) {
-	let quantity = Number(document.querySelector("#quantity-value").value);
+	let quantity = 1;
 
 	const productId = Number(btn.getAttribute("data-product-id"));
+	const product_type = btn.getAttribute("data-product-type");
+	if (product_type == "accessory"){
+		quantity = Number(document.querySelector("#quantity-value").value);
+	}
 
 	const price = Number(
 		document.getElementById("product-price").getAttribute("data-price")
@@ -23,6 +27,7 @@ function getData(btn) {
 		productId,
 		quantity,
 		price,
+		product_type,
 	};
 }
 

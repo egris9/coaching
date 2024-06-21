@@ -15,7 +15,7 @@ def add_to_cart(request):
 
     if request.user.is_authenticated == False:
         return JsonResponse(
-            {"ok": True, "status": 200, "action": "redirect", "url": "/login"}
+            {"ok": True, "status": 200, "action": "redirect", "url": "/signin"}
         )
 
     import json
@@ -35,14 +35,17 @@ def add_to_cart(request):
     maybe_item = check_for_item(
         cart=cart,
         product_id=data["productId"],
+        product_type=data["product_type"]
     )
 
     # check if it is the same product with the same
     # flavor and serving size if so increase
     # the quantity else add the item
     # into the cart
-    if maybe_item["ok"]:
-        item = maybe_item["data"]
+    if maybe_item["ok"]== True:
+        item = maybe_item["data"] 
+        if data["product_type"] == "session" :
+            return JsonResponse({"ok": True, "status": 200, "action": "nothing"})
         if item.quantity == data["quantity"]:
             return JsonResponse({"ok": True, "status": 200, "action": "nothing"})
 
@@ -56,7 +59,7 @@ def add_to_cart(request):
         item.save()
         return JsonResponse({"ok": True, "status": 200, "action": "update"})
 
-    maybe_new_item = create_cart_item(cart=maybe_cart["data"], data=data)
+    maybe_new_item = create_cart_item(cart=maybe_cart["data"], data=data,product_type=data["product_type"])
 
     if maybe_new_item["ok"] is False:
         return JsonResponse(
@@ -78,7 +81,9 @@ def add_to_cart(request):
                 "quantity": new_item.quantity,
                 "price": new_item.price,
                 "id": new_item.id,
-                "productId": new_item.product.id,
+                "productId": new_item.product.id if new_item.type == 'accessory' else None,
+                "type": new_item.type,
+                "sessionId" : new_item.training_session.id if new_item.type == 'session' else None
             },
         }
     )

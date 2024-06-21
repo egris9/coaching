@@ -51,6 +51,8 @@ def add_order_handler(request):
             product_name=item["name"],
             quantity=item["quantity"],
             price=item["price"],
+            type=item["type"],
+            training_session=item["training_session"],
         )
 
     empty_cart(maybe_cart["cart"])
