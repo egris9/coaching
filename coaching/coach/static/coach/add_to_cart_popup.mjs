@@ -1,8 +1,23 @@
 import micromodal from "https://cdn.jsdelivr.net/npm/micromodal@0.4.10/+esm";
 import Cookies from 'https://cdn.jsdelivr.net/npm/universal-cookie@7.0.1/+esm'
 
-const q = (id) => document.getElementById(id);
 
+const successToast = (text) =>
+	Toastify({
+		text,
+		avatar:
+			"https://api.iconify.design/material-symbols:done.svg?color=%234ade80",
+
+		className:
+			"bg-gradient-to-l from-neutral-800 to-neutral-800 text-sm w-full px-4 py-4 border-2 border-green-700 rounded-md max-w-fit capitalize flex items-center justify-between text-body text-neutral-300",
+		close: true,
+		gravity: "top", // `top` or `bottom`
+		position: "right", // `left`, `center` or `right`
+		stopOnFocus: true, // Prevents dismissing of toast on hover
+	}).showToast();
+
+const q = (id) => document.getElementById(id);
+const review_btn=q('review_btn')
 const cookies = new Cookies (null, { path: "/" });
 
 micromodal.init();
@@ -17,6 +32,7 @@ button.forEach((btn) => {
      
     
     const sessionId=btn.getAttribute('data-id');
+    review_btn.setAttribute( "data-id", sessionId )
     const csrfToken = cookies.get("csrftoken");
     const headers = {
       "X-CSRFToken": csrfToken,
@@ -67,9 +83,67 @@ button.forEach((btn) => {
   });
 });
 
-const review_btn=q('review_btn')
+
 review_btn.addEventListener('click',async(v)=>{
-  const stars= document.querySelector('.star:checked')
+  const stars= document.querySelector('.star:checked').value
   const title= q('title_review').value
   const description= q('review_cmnt').value
-})
+
+  if (!stars) {
+    alert('Please select a star rating.');
+    return
+  }
+
+  const sessionId=review_btn.getAttribute("data-id");
+  const csrfToken = cookies.get("csrftoken");
+  const headers = {
+    'Content-Type': 'application/json',
+    "X-CSRFToken": csrfToken,
+
+
+  };
+
+  await fetch("reviews/"+sessionId+ "/" ,{
+    method: 'post',
+    headers: headers,
+    body: JSON.stringify({stars,title,description})
+   }).then(async v=>{
+    const res= await v.json()
+    let starsIcons = ""
+    const url= res.img 
+    const full_name= res.full_name
+  for(let i =0; i <  stars; i++) {
+     starsIcons = starsIcons + ' <i class="fa-solid inline fa-star"></i> '
+}
+   const review=`<div class="flex flex-col">
+                  <!-- Icon -->
+                   <div class="flex items-center gap-x-2">
+                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="${url}">
+                    <div class="">
+                    <p class="self-start font-medium text-lg block text-gray-500">${full_name} </p>
+                    <div class="space-x-1">
+                    ${starsIcons} 
+                   </div>
+                    </div>
+                   </div>
+                  <div class="">
+                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
+                    ${title}
+                    </h3>
+                    <p class="mt-1 text-gray-600 ">
+                     ${description}              </p>
+                  </div>
+                </div>` 
+    const review_page =document.querySelector('.reviews_list')
+    review_page.insertAdjacentHTML('afterbegin', review);    // Optionally, reset the form
+   })
+   
+    document.getElementById('title_review').value = '';
+    document.getElementById('review_cmnt').value = '';
+    const checkedStar = document.querySelector('.star:checked');
+    if (checkedStar) {
+      checkedStar.checked = false;
+    }
+    successToast('review submitted')
+  });
+
