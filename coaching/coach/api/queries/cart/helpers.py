@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.forms.models import model_to_dict
 from coach.models import CartItem
-from coach.models import Cart, Product
+from coach.models import Cart, Product,Training_session
 
 
 def check_for_cart(user_id):
@@ -13,11 +13,18 @@ def check_for_cart(user_id):
         return {"ok": False, "data": None}
 
 
-def check_for_item(cart, product_id):
+def check_for_item(cart, product_id,product_type):
     try:
-        item = CartItem.objects.get(
+
+        item = None
+        if product_type == 'accessory':
+            item = CartItem.objects.get(
             cart_id=cart, product__id=product_id
-        )
+            )
+        else:
+            item = CartItem.objects.get(
+            cart_id=cart, training_session__id=product_id
+            )
 
         return {"ok": True, "data": item}
 
@@ -32,19 +39,38 @@ def create_cart(user_id, total):
     return cart
 
 
-def create_cart_item(cart, data):
+def create_cart_item(cart, data,product_type):
     try:
-        product = Product.objects.get(id=data["productId"])
-        item = CartItem.objects.create(
+        
+        cart_item = None
+        if product_type == 'accessory':
+            item = Product.objects.get(id=data["productId"])
+            cart_item = CartItem.objects.create(
             quantity=data["quantity"],
             price=data["price"],
             cart_id=cart,
-            product=product,
+            product=item,
+            type=product_type,
+
         )
-        return {"ok": True, "data": item}
+        else:
+            item = Training_session.objects.get(
+                id=data["productId"]
+            )
+            cart_item = CartItem.objects.create(
+            quantity=data["quantity"],
+            price=data["price"],
+            cart_id=cart,
+            training_session=item,
+        )
+
+        return {"ok": True, "data": cart_item}
 
     except Product.DoesNotExist:
         return {"ok": False, "cause": "product"}
+    except Training_session.DoesNotExist:
+        return {"ok": False, "cause": "session"}
+
 
 
 def update_quantity(id, quantity, cart_total):
@@ -81,16 +107,27 @@ def get_cart_items(cart):
     cart_items = []
 
     for item in items.all():
-        for img in item.product.productimages_set.all():
-            if img.type == "main":
-                cart_items.append(
-                    {
-                        **model_to_dict(item),
-                        "img": img.urls,
-                        "type": item.product.type,
-                        "name": item.product.name,
-                    }
-                )
+        if(item.type == "accessory"):
+            for img in item.product.productimages_set.all():
+                if img.type == "main":
+                    cart_items.append(
+                        {
+                            **model_to_dict(item),
+                            "img": img.urls,
+                            "type": item.product.type,
+                            "name": item.product.name,
+                            "cart_item_type":"accessory",
+                        }
+
+                    )
+        else:
+            cart_items.append(
+                {
+                    **model_to_dict(item),
+                    "cart_item_type":"session",
+                }
+            )
+ 
 
     return cart_items
 
@@ -101,17 +138,28 @@ def get_cart_items_with_products(cart):
     cart_items = []
 
     for item in items.all():
-        for img in item.product.productimages_set.all():
-            if img.type == "main":
-                cart_items.append(
-                    {
-                        **model_to_dict(item),
-                        "img": img.urls,
-                        "type": item.product.type,
-                        "name": item.product.name,
-                        "product": item.product,
-                    }
-                )
+        if(item.type == "accessory"):
+            for img in item.product.productimages_set.all():
+                if img.type == "main":
+                    cart_items.append(
+                        {
+                            **model_to_dict(item),
+                            "img": img.urls,
+                            "type": item.product.type,
+                            "name": item.product.name,
+                            "cart_item_type":"accessory",
+                            "product":item.product,
+                        }
+
+                    )
+        else:
+            cart_items.append(
+                {
+                    **model_to_dict(item),
+                    "cart_item_type":"session",
+                    "training_session":item.training_session,
+                }
+            )
 
     return cart_items
 

@@ -38,6 +38,11 @@ urlpatterns = [
      path("add_to_cart_popup/<int:session_id>/", views.pop_up, name="add_to_cart_popup"),
      path("reviews/<int:session_id>/", views.reviews, name="reviews"),
      path('products/', views.session_filtre, name='session_filtre'),
+      path(
+        "cart/update_item_quantity",
+        views.update_item_quantity,
+        name="update_item_quantity",
+    ),
 ]
 
 
