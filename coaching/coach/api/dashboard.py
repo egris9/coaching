@@ -33,9 +33,11 @@ def dashboard(request):
     )
   
     session = get_all_sessions_by_profile(profile)
+    full_name= request.user.first_name+' '+request.user.last_name
+    img=Profile.objects.filter(user=request.user).first().image.url   
 
     return render(
         request,
         'coach/dashboard.html'
-        ,{'sessions': session, "filter_trigger": "all"}
+        ,{'sessions': session, "filter_trigger": "all", "full_name":full_name , "img":img}
     )
