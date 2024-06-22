@@ -44,7 +44,6 @@
         <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
           <form method="Get" class="hs-accordion-group min-w-[290px]">
             <input type="hidden" name="allow_filter" value="true">
-            <button type="submit">Filter</button>
             <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
               <button
                 type="button"
@@ -238,6 +237,7 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-600 hover:text-gray-800 duration-300">Filter</button>
 
           </form>
 
@@ -378,41 +378,41 @@
               
   
               <div class=" divide-y-2 divide-gray-400 overflow-y-scroll max-h-[440px] scroller scroller_track_gray">
-                <div id="mod_description" class="break-all costum-type-scale">
+                <div id="mod_description" class=" prose break-all costum-type-scale">
                  
                 </div>
   
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700 mt-4">
-                  location: <span id="location" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">tanger</span>
+                  location: <span id="location" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  price: <span id="price" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">70$</span>
+                  price: <span id="price" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  time: <span id="time" class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3">12:00 - 15:34</span>
+                  time: <span id="time" class="text-gray-600/70 capitalize font-medium fontmd  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  date: <span id="date" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">14may - 17may</span>
+                  date: <span id="date" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  coach: <span id="coach" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">mr.abdlha9 waterson</span>
+                  coach: <span id="coach" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  participent: <span id="participent" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">60</span>
+                  participent: <span id="participent" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  type: <span id="type" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">solo</span>
+                  type: <span id="type" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
   
                 <p class="uppercase text-lg font-bold py-1 text-gray-700">
-                  categorie: <span id="categorie" class="text-gray-600/70 capitalize font-medium  text-lg ml-3">samba</span>
+                  categorie: <span id="categorie" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
               </div>
               <button class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300">
@@ -453,115 +453,17 @@
             
 
             <div class="mt-6">
-              <p class="font-medium text-lg capitalize text-gray-600">comments</p>
+              <p class="font-medium text-lg capitalize text-gray-600"></p>
               <div class="flex items-center gap-x-3 w-full">
-                <p class="font-medium tabular-nums text-xl">4,5</p>
-                <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star-half-stroke"></i>
-              </div>
-                <p class="ml-auto text-gray-500 font-medium">69 reviews
+                <div class="flex flex-col">
+                  <div id="stars_average_icon"></div>
+                  <p id="stars_average" class="font-medium tabular-nums text-xl"></p>
+               </div> 
+               <p id="reviews_count" class="ml-auto text-gray-500 font-medium">
                 </p>
               </div>
 
               <div class="mt-4 space-y-8 reviews_list">
-
-                <div class="flex flex-col">
-                  <!-- Icon -->
-                   <div class="flex items-center gap-x-2">
-                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
-                    <div class="">
-                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
-                    <div class="space-x-1">
-                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
-                    </div>
-                    </div>
-                   </div>
-                  <div class="">
-                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
-                      Industry-leading documentation
-                    </h3>
-                    <p class="mt-1 text-gray-600 ">
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away
-                      The other night, dear, as I lay sleeping
-                      I dreamed I held you in my arms
-                      When I awoke, dear, I was mistaken
-                      So I hung my head and cried
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-col">
-                  <!-- Icon -->
-                   <div class="flex items-center gap-x-2">
-                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
-                    <div class="">
-                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
-                    <div class="space-x-1">
-                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
-                    </div>
-                    </div>
-                   </div>
-                  <div class="">
-                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
-                      Industry-leading documentation
-                    </h3>
-                    <p class="mt-1 text-gray-600 ">
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away
-                      The other night, dear, as I lay sleeping
-                      I dreamed I held you in my arms
-                      When I awoke, dear, I was mistaken
-                      So I hung my head and cried
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-col">
-                  <!-- Icon -->
-                   <div class="flex items-center gap-x-2">
-                    <img class="flex-shrink-0 size-[46px] self-start rounded-full object-cover" src="{% static 'img/sunshine.jpg' %}">
-                    <div class="">
-                    <p class="self-start font-medium text-lg block text-gray-500">sunshine</p>
-                    <div class="space-x-1">
-                    <i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i><i class="fa-solid inline fa-star"></i>
-                    </div>
-                    </div>
-                   </div>
-                  <div class="">
-                    <h3 class="text-base sm:text-lg font-semibold text-gray-800 mt-2">
-                      Industry-leading documentation
-                    </h3>
-                    <p class="mt-1 text-gray-600 ">
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away
-                      The other night, dear, as I lay sleeping
-                      I dreamed I held you in my arms
-                      When I awoke, dear, I was mistaken
-                      So I hung my head and cried
-                      You are my sunshine, my only sunshine
-                      You make me happy when skies are gray
-                      You'll never know, dear, how much I love you
-                      Please don't take my sunshine away                    </p>
-                  </div>
-                </div>
-
-
-                
               </div>
             </div>
             
