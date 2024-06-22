@@ -12,6 +12,7 @@ from .models import (
     session_date,
     categorie,
     ProductVariant,
+    Reviews,
 )
 # Register your models here.
 
@@ -20,6 +21,7 @@ admin.site.register(Training_session)
 admin.site.register(session_location)
 admin.site.register(session_date)
 admin.site.register(Profile)
+admin.site.register(Reviews)
 admin.site.site_header='Cancer'
 admin.site.site_title='Cancer'
 

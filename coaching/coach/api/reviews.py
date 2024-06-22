@@ -15,7 +15,8 @@ def reviews(request, session_id):
     stars = data["stars"]
     session = Training_session.objects.get(id=session_id)
     full_name= request.user.first_name+' '+request.user.last_name
-    img=Profile.objects.filter(user=request.user).first().image.url   
+    img=Profile.objects.filter(user=request.user).first().image.url 
+      
     Reviews.objects.create(
         title=title,
         comment=description,
@@ -27,7 +28,31 @@ def reviews(request, session_id):
     return JsonResponse({"ok": True,'full_name':full_name,'img':img})
 def get_sessions_reviews(request,session_id):
     reviews=Reviews.objects.filter(session__id=session_id)
-    return JsonResponse({'ok':True,'reviews':reviews})
+    reviews_list=[]
+    
+    stars_count=0
+    stars_average=0
+    sum_stars=0
+    
+    if reviews.exists():
+        for review in reviews.all():
+            reviews_list.append({'title':review.title,'comment':review.comment,'stars':review.stars,
+                                "full_name": review.user.first_name + " " +review.user.last_name,"url": Profile.objects.filter(user=review.user).first().image.url
+                                })
+            
+            sum_stars= review.stars+sum_stars
+        stars_count= reviews.count()
+        stars_average= sum_stars/stars_count
+        print(stars_average,stars_count)
+    
+        
+        
+
+        
+         
+    return JsonResponse({'ok':True,'reviews':reviews_list,'reviews_count':stars_count,'stars_average':stars_average})
+
+
     
     
     

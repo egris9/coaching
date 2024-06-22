@@ -37,6 +37,7 @@ urlpatterns = [
      path("delete-session/<int:session_id>/", views.delete_session, name="delete_session"),
      path("add_to_cart_popup/<int:session_id>/", views.pop_up, name="add_to_cart_popup"),
      path("reviews/<int:session_id>/", views.reviews, name="reviews"),
+     path("comments/<int:session_id>/", views.get_sessions_reviews, name="comments"),
      path('products/', views.session_filtre, name='session_filtre'),
       path(
         "cart/update_item_quantity",
