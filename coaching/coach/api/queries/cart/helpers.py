@@ -159,6 +159,8 @@ def get_cart_items_with_products(cart):
                     **model_to_dict(item),
                     "cart_item_type":"session",
                     "training_session":item.training_session,
+                    "name": item.training_session.name,
+                    "type": "session",
                 }
             )
 

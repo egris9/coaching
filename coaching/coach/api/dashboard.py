@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from django.utils import timezone
 from datetime import datetime
-from coach.models import Profile
+from coach.models import Profile,Reviews
 from coach.api.queries.sessions.index import get_sessions_by_date, get_all_sessions_by_profile
 
 
@@ -36,8 +36,28 @@ def dashboard(request):
     full_name= request.user.first_name+' '+request.user.last_name
     img=Profile.objects.filter(user=request.user).first().image.url   
 
+    stars_count=0
+    stars_average=1
+    sum_stars=0
+    
+    count_sessions =  len(session)
+
+
+    for el in session:
+        reviews=Reviews.objects.filter(session__id=el["id"])
+
+        if reviews.exists():
+            for review in reviews.all():
+                sum_stars= review.stars+sum_stars
+            stars_count= stars_count +  reviews.count()
+            
+    if stars_count != 0 :
+        stars_average= sum_stars/stars_count
+
+    
+
     return render(
         request,
         'coach/dashboard.html'
-        ,{'sessions': session, "filter_trigger": "all", "full_name":full_name , "img":img}
+        ,{'sessions': session, "filter_trigger": "all", "full_name":full_name , "img":img , "stars": stars_average, "stars_count" : stars_count,"count_sessions": count_sessions}
     )

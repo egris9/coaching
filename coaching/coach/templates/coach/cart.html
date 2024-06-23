@@ -61,7 +61,7 @@
                               
                             </div>
                             <div class="flex items-center w-fit mt-4">
-                              {% if item.type == 'accessory' %}
+                              {% if item.cart_item_type == 'accessory' %}
                               <p class="text-sm text-emerald-600 capitalize">quantity</p>
                               <input data-prev-quantity={{item.quantity}} data-item-price="{{item.price}}" data-quantity-value data-item-id="{{item.id}}" type="text" value="{{item.quantity}}" class="grow h-[27px] w-[80px] bg-transparent outline-none border-none focus:border-none ml-7" />
                               
