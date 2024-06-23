@@ -1,9 +1,12 @@
-from django.shortcuts import render
-from coach.models import Order
+from django.shortcuts import render,redirect
+from coach.models import Order,Profile
+from coach.forms import Editprofileform,Editimageprofileform
 
 def profile(request):
     orders = Order.objects.all().prefetch_related("ordertoproduct_set")
     order_data = []
+    full_name= request.user.first_name+' '+request.user.last_name
+    img=Profile.objects.filter(user=request.user).first().image.url   
 
     for order in orders:
             for order_item in order.ordertoproduct_set.all():
@@ -21,4 +24,13 @@ def profile(request):
                 "training_session":training_session_name,
             })
 
-    return render(request, 'coach/profile.html', {'product_data': order_data})
+    if request.method == "POST":
+         form = Editprofileform (data=request.POST, instance=request.user)
+         if form.is_valid():
+              form.save()
+              instance= Editimageprofileform(request.POST, request.FILES , instance=request.user.profile )
+              if instance.is_valid() :
+                   instance.save()
+                   return redirect("/profile")
+        
+    return render(request, 'coach/profile.html', {'product_data': order_data ,"full_name":full_name , "img":img, })

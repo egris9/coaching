@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Training_session
+from .models import Training_session,Profile
 
 
 class SigninForm(forms.Form):
@@ -74,3 +74,14 @@ class FilterForm(forms.Form):
         widget=forms.RadioSelect,
         required=False
     )
+
+class Editprofileform(forms.ModelForm):
+
+    class Meta:
+        model=User
+        fields=['first_name','last_name']
+
+class Editimageprofileform(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

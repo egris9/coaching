@@ -1,0 +1,100 @@
+
+
+
+<div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="bg-gradient-to-r bg-emerald-900 rounded-2xl">
+          <!-- Header -->
+          <div class="px-6 py-4 border-b border-black">
+            <h2 class="text-3xl font-header text-white text-center">
+              Your latest order
+            </h2>
+          </div>
+          <!-- End Header -->
+
+          <!-- Table -->
+          <table class="min-w-full divide-y">
+            <thead class="bg-black">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    product name
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      Price
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      first name
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      last name
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      email
+                  </span>
+                </th>
+
+                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    order total
+                  </span>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-200">
+              {% for item in product_data %}
+              <tr>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{item.name}}</span>
+                  </div>
+                </td>
+                </td>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{ item.price }}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{ item.first_name }}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{ item.last_name }}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{ item.email }}</span>
+                  </div>
+                </td>
+                <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                  <div class="flex items-center gap-x-3">
+                    <span class="font-semibold text-sm text-gray-800 dark:text-white">{{ item.order_total }}</span>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- End Table -->
+        </div>
+      </div>
+    </div>
+  </div>
