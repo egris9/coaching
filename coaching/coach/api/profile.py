@@ -1,6 +1,10 @@
 from django.shortcuts import render,redirect
 from coach.models import Order,Profile
 from coach.forms import Editprofileform,Editimageprofileform
+from coach.api.queries.sessions.index import get_all_sessions_by_profile_client,get_all_sessions_by_profile_client_date
+from django.utils import timezone
+from datetime import datetime
+
 
 def profile(request):
     orders = Order.objects.all().prefetch_related("ordertoproduct_set")
@@ -32,5 +36,22 @@ def profile(request):
               if instance.is_valid() :
                    instance.save()
                    return redirect("/profile")
+              
+    session = get_all_sessions_by_profile_client(request.user.profile)
+
+    date_filter_start_str = request.GET.get('filter-by-period-start', None)
+    date_filter_end_str = request.GET.get('filter-by-period-end', None)
+
+    if date_filter_start_str and date_filter_end_str:
+
+        date_filter_start = timezone.make_aware(datetime.strptime(date_filter_start_str, '%Y-%m-%d'))
+        date_filter_end = timezone.make_aware(datetime.strptime(date_filter_end_str, '%Y-%m-%d'))
+        sessions = get_all_sessions_by_profile_client_date(profile=request.user.profile, date_filter_start=date_filter_start, date_filter_end=date_filter_end)
+
+        return render(
+        request,
+        'coach/profile.html'
+        ,{'sessions': sessions, "filter_trigger": request.GET.get('filter-trigger', None),'product_data': order_data ,"full_name":full_name , "img":img}
+    )
         
-    return render(request, 'coach/profile.html', {'product_data': order_data ,"full_name":full_name , "img":img, })
+    return render(request, 'coach/profile.html', {'product_data': order_data ,"full_name":full_name , "img":img, 'sessions': session})

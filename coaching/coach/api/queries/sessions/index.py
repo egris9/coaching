@@ -1,4 +1,4 @@
-from coach.models import Profile,Training_session,session_date
+from coach.models import Profile,Training_session,session_date,Order
 from datetime import datetime, date
 from django.db.models import  Exists, Q, OuterRef
 
@@ -34,3 +34,30 @@ def get_sessions_by_date(profile: Profile, date_filter_start: datetime, date_fil
 def get_all_sessions():
     sessions=Training_session.objects.all()
     return format_sessions_response(sessions)
+
+
+def get_all_sessions_by_profile_client(profile: Profile):
+    orders = Order.objects.filter(user=profile.user).prefetch_related('ordertoproduct_set')
+
+    ordered_sessions = []
+
+    for order in orders:
+        for item in order.ordertoproduct_set.all():
+            if item.type == "session":
+                ordered_sessions.append(item.training_session)
+
+    return format_sessions_response(ordered_sessions)
+
+def get_all_sessions_by_profile_client_date(profile: Profile, date_filter_start: datetime, date_filter_end: datetime):
+    orders = Order.objects.filter(user=profile.user).prefetch_related('ordertoproduct_set')
+    conditions = Q(date__gte=date_filter_start) & Q(date__lte=date_filter_end)
+    ordered_sessions = []
+
+    for order in orders:
+        for item in order.ordertoproduct_set.all():
+            if item.type == "session":
+                is_in_date_range = session_date.objects.filter(conditions, session=item.training_session)
+                if is_in_date_range:
+                    ordered_sessions.append(item.training_session)
+
+    return format_sessions_response(ordered_sessions)

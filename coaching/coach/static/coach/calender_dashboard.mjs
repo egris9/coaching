@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calendar = new VanillaCalendar("#calendar", options);
   calendar.init();
-  console.log(calendar)
 });
 
 function setFilterPeriodUrlParams(start, end, trigger) {
