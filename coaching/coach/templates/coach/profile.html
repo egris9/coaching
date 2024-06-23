@@ -20,6 +20,7 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="{% static 'coach/modal.css' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js" defer></script>
 
 </head>
 
@@ -34,7 +35,7 @@
 	<main class="w-full my-auto">
 		<!-- orders list -->
 		<!-- Table Section -->
-<div class="max-w-[85rem] grid-cols-2 grid-rows-2 grid mx-auto">
+<div class="max-w-[85rem] grid-cols-[repeat(2,1fr)] grid-rows-2 w-full justify-items-stretch grid mx-auto gap-x-6">
 	<div class="bg-emerald-950 overflow-hidden relative rounded-[48px] p-8">
         <img src="{% static 'img/Ellipse 1.svg' %}" class="absolute right-[139px] top-[-303px] max-w-[700px] isolate -z-1" />
         <div class="flex justify-center border isolate backdrop-blur-md border-emerald-900 p-8 rounded-3xl items-center gap-x-4">
@@ -47,7 +48,98 @@
           </div>
         </div>
       </div>
+	  <div class="bg-emerald-950 rounded-[48px] px-8 self-stretch flex items-center  relative overflow-hidden ">
+		<img src="{% static 'img/Ellipse 1.svg' %}" class="absolute right-[34px] top-[128px] max-w-[460px] isolate -z-1" />
+		<div id="calendar" class="m-5 mx-auto"></div>
+	  </div>
 
+	  <!--Carts start-->
+          
+	  <div
+	  class="w-full max-w-[1200px] grid grid-cols-4 gap-y-2 gap-x-4 justify-items-center flex-col"
+	>
+	  {% for item in sessions %} 
+	  <div
+		class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3 relative"
+	  >
+		<p
+		  class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800/50 text-sm backdrop-blur-md py-2 absolute top-6 left-4 rounded-3xl px-4 font-medium capitalize"
+		>
+		  {{ item.categorie }}
+		</p>
+		<img data-session-id="{{item.id}}"
+		  src="{{MEDIA_URL}}{{item.img}}"
+		  class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
+		/>
+		<div class="min-w-0 max-w-full w-full">
+		  <h4
+			class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
+		  >
+			{{ item.name }}
+		  </h4>
+		
+		<div
+		  class="flex w-full justify-between mt-2 items-center gap-x-3"
+		>
+		  <p
+			class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+		  >
+			<span class="material-symbols-outlined text-lg font-semibold">
+			  history_toggle_off
+			</span>
+			<span>{{ item.duration }}</span>
+		  </p>
+		  <p
+			class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+		  >
+			<span class="material-symbols-outlined"> groups </span>
+			<span>{{ item.participant_limit }}</span>
+		  </p>
+		  <p
+			class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
+		  >
+			<span class="material-symbols-outlined"> star </span>
+			<span>5</span>
+		  </p>
+		</div>
+
+		<div class="mt-4 w-full border-y border-emerald-700 py-2">
+		  <p class="text-emerald-300 flex justify-between mb-1">
+			start date:
+			<span class="font-medium capitalize">{{ item.first_date.date }}</span>
+		  </p>
+		  <p class="text-emerald-300 flex justify-between">
+			end date: <span class="font-medium capitalize">{{ item.last_date.date }}</span>
+		  </p>
+		</div>
+		<div
+		  class="w-full flex items-center gap-x-4 border-b border-emerald-700 py-2"
+		>
+		  <img
+			class="size-12 rounded-full object-cover"
+			src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		  />
+		  <div class="mb-2">
+			<p class="text-emerald-300">coach</p>
+			<p class="text-emerald-300 font-medium capitalize">
+			  adolfo hitler-chan
+			</p>
+		  </div>
+		</div>
+		<div class="mb-2 mt-3 flex self-start justify-between">
+		  <p class="text-emerald-300 thick-font text-xl">$ {{ item.price }}</p>
+		  <button
+			data-price="{{item.price}}" class="hover:text-emerald-500 text-emerald-300 thick-font modal_button" data-id="{{ item.id }}">
+			see more
+		  </button>
+		</div>
+	  </div>
+	</div>
+	{% empty %}
+	<div  class="flex flex-row gap-x-4 max-w-[890px] justify-center items-center min-w-0 rounded-3xl w-full p-5 bg-emerald-950 self-stretch"> empty </div>
+	{% endfor %}
+
+  	</div>
 </div>
 
 	</main>
@@ -98,9 +190,13 @@
 			</main>
 		  </div>
 		</div>
+
+
+
+		
 	  </div>
 
-	  
+	  <script src="{% static 'coach/calender_dashboard.mjs' %}" type="module"></script>
 
 </body>
 
