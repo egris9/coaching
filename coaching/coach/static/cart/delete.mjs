@@ -39,7 +39,7 @@ deleteBtns.forEach((btn) => {
 				return;
 			}
 			cartTotal.setAttribute('data-total', res.data.cart_total)
-			cartTotal.innerText = `total: ${res.data.cart_total} DH`
+			cartTotal.innerText = `total: ${res.data.cart_total} $`
 		}
 	})
 })

@@ -102,7 +102,7 @@ def empty_cart(cart):
 
 
 def get_cart_items(cart):
-    items = CartItem.objects.filter(cart_id=cart).prefetch_related("product")
+    items = CartItem.objects.filter(cart_id=cart).prefetch_related("product").prefetch_related('training_session')
 
     cart_items = []
 
@@ -125,6 +125,7 @@ def get_cart_items(cart):
                 {
                     **model_to_dict(item),
                     "cart_item_type":"session",
+                    'img':item.training_session.img
                 }
             )
  

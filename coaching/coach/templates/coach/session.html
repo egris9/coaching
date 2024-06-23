@@ -321,7 +321,7 @@
               <div class="mb-2 mt-3 flex self-start justify-between">
                 <p class="text-emerald-300 thick-font text-xl">$ {{ item.price }}</p>
                 <button
-                  class="hover:text-emerald-500 text-emerald-300 thick-font modal_button" data-id="{{ item.id }}">
+                  data-price="{{item.price}}" class="hover:text-emerald-500 text-emerald-300 thick-font modal_button" data-id="{{ item.id }}">
                   see more
                 </button>
               </div>
@@ -415,7 +415,7 @@
                   categorie: <span id="categorie" class="text-gray-600/70 capitalize font-medium  text-lg ml-3"></span>
                 </p>
               </div>
-              <button class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300">
+              <button id="enroll_btn" class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300">
                 Enroll
               </button>
             </div>
