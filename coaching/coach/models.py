@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 import random
 
@@ -108,11 +109,6 @@ class Order(models.Model):
     cart_name = models.CharField(max_length=255)
     exp = models.DateField()
     cvv = models.CharField(max_length=4)
-    date = models.DateField(default='2024-01-01')
-    
-
-    product = models.ForeignKey("Product",on_delete=models.SET_NULL, null=True, blank=True)
-    training_session = models.ForeignKey("Training_session",on_delete=models.SET_NULL, null=True, blank=True)
     
 
     def __str__(self):
@@ -122,11 +118,12 @@ class OrderToProduct(models.Model):
     id = models.AutoField(primary_key=True)
     order_id = models.ForeignKey("Order", on_delete=models.CASCADE)
     product = models.ForeignKey("Product", on_delete=models.SET_NULL, null=True, blank=True)
-    training_session = models.ForeignKey("Training_session",on_delete=models.SET_NULL, null=True, blank=True)
+    training_session = models.ForeignKey("Training_session",related_name='orders_training_session',on_delete=models.SET_NULL, null=True, blank=True)
     product_name = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()
     price=models.DecimalField(max_digits=10, decimal_places=2, default=0)
     type = models.CharField(max_length= 255, default="session")
+    date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
         return f"Order {self.order_id} - {self.product_name} - Quantity {self.quantity}"

@@ -49,6 +49,9 @@ def session_meta_data(session):
             duration = end_datetime - start_datetime 
             duration_hours = duration.total_seconds() / 3600  
             int_duration_hours = int(duration_hours)
+            coach_first_name = session.Profile.user.first_name
+            coach_last_name = session.Profile.user.last_name
+            coach_img = session.Profile.image
             return {
                         "id":session.id,
                         "first_date": first_date,
@@ -65,6 +68,9 @@ def session_meta_data(session):
                         "end_time": session.end_time,
                         "duration":int_duration_hours,
                         "star_rating":star_rating,
+                        "coach_first_name":coach_first_name,
+                        "coach_last_name":coach_last_name,
+                        "coach_img":coach_img,
                 }
 
 def get_all_sessions_by_profile_client(profile: Profile):
