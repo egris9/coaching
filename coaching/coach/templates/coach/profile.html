@@ -4,10 +4,7 @@
 <html lang="en">
 
 <head>
-    <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
-  />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
@@ -15,27 +12,24 @@
   <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{% static 'coach/modal.css' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js" defer></script>
 
 </head>
 
 <body class="font-brand bg-emerald-100 grid grid-cols-1 grid-rows-[auto,1fr,auto] ">
 
-	<!-- navbar -->
-	<header class="w-full h-24">
-		{% include 'coach/componants/nav.html' %}
-	</header>
+  <!-- navbar -->
+  <header class="w-full h-24">
+    {% include 'coach/componants/nav.html' %}
+  </header>
 
 
-	<main class="w-full my-auto">
-		<!-- orders list -->
-		<!-- Table Section -->
-<div class="max-w-[85rem] grid-cols-2 grid-rows-2 grid mx-auto">
-	<div class="bg-emerald-950 overflow-hidden relative rounded-[48px] p-8">
+  <main class="w-full my-auto">
+    <!-- profile Section -->
+    <div class="max-w-[85rem] grid-cols-[repeat(2,1fr)] grid-rows-[353px,1fr] w-full justify-items-stretch items-start grid mx-auto gap-6">
+      <div class="bg-emerald-950 overflow-hidden relative rounded-[48px] p-8">
         <img src="{% static 'img/Ellipse 1.svg' %}" class="absolute right-[139px] top-[-303px] max-w-[700px] isolate -z-1" />
         <div class="flex justify-center border isolate backdrop-blur-md border-emerald-900 p-8 rounded-3xl items-center gap-x-4">
           <div>
@@ -43,67 +37,214 @@
             <p class="text-emerald-200 text-center capitalize mt-4 ">
               {{ full_name }}
             </p>
-			<button id="edit_profil_btn" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 ">edit profile</button>
+            <button id="edit_profil_btn" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 ">edit profile</button>
           </div>
         </div>
       </div>
+      <!-- calendar Section -->
 
-</div>
+      <div class="bg-emerald-950 rounded-[48px] px-8 h-full flex items-center  relative overflow-hidden ">
+        <img src="{% static 'img/Ellipse 1.svg' %}" class="absolute right-[34px] top-[128px] max-w-[460px] isolate -z-1" />
+        <div id="calendar" class="m-5 mx-auto"></div>
+      </div>
 
-	</main>
-	{% include 'coach/componants/footer.html' %}
-	<script src="{% static 'coach/navDropDown.js' %}"></script>
-	<script src="{% static 'coach/profile.mjs' %}" type="module"></script>
+      <!--Cards start-->
+
+      <div class="w-full  gap-y-4 grid grid-cols-1">
+        {% if not sessions %}
+        <div class="flex  min-h-[280px] flex-col gap-4 justify-center items-center min-w-0 rounded-3xl w-full p-5 bg-emerald-950 self-stretch ">
+          <h4 class="text-xl text-emerald-100 capitalize">it looks like you're yet to join a session</h4>
+          <a href="{% url 'coach:session' %}" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg  block w-fit hover:bg-emerald-600 duration-300 ">find a session</a>
+
+        </div>
+        {% else %}
+
+        {% for item in sessions %}
+        <div id="order-{{item.order_id}}" class="flex flex-row gap-x-4 max-w-[890px] justify-center items-center min-w-0 rounded-3xl w-full p-5 bg-emerald-950">
+          <img src="{{MEDIA_URL}}{{item.img}}" class="size-48 rounded-2xl shrink-0 text-emerald-200 object-cover" />
+
+          <div class="flex flex-col gap-x-1 w-full">
+            <div class="flex flex-row gap-x-4 items-center mr-3 justify-start">
+              <p class="text-emerald-500 flex items-center justify-center gap-x-0.5 py-0.5 bg-emerald-900/30 rounded-full px-2 font-medium capitalize">
+                <span>{{item.star_rating}}</span>
+                <span class="material-symbols-outlined text-sm"> star </span>
+              </p>
+              <p class="text-emerald-300 gap-x-2 bg-emerald-950 rounded-full  px-2 py-0.5 font-medium ml-auto">
+                {{ item.first_date.date }}
+                -
+                {{ item.last_date.date }}
+
+              </p>
+
+            </div>
+            <div class="mt-4 jus">
+              <div class="flex justify-between items-center">
+                <h1 class="text-emerald-200 capitalize text-xl ">
+                  {{ item.name }}
+                </h1>
+                <button data-order-id="{{item.order_id}}" class="text-red-300 w-fit  gap-x-2   rounded-md py-1 mt-2 px-3 font-medium capitalize delete_session_button" data-session-id="{{item.id}}">
+                  <span class="material-symbols-outlined text-xl">
+                    delete
+                  </span>
+                </button>
+              </div>
+              <div class="w-full ">
+                <p class="text-emerald-500 mt-2 line-clamp-3 min-w-0 flex-1">
+                  {{ item.small_sum | truncatechars:50 }}
+                </p>
+              </div>
+              <p class="text-emerald-300 w-fit  rounded-md   mt-2 font-medium capitalize">
+                {{ item.price }}$
+              </p>
+            </div>
+
+            <div class="flex ml-auto mt-auto w-full">
+              <p class="text-emerald-300 w-fit gap-x-2 mr-auto bg-emerald-800 rounded-md py-1 mt-2 px-3 font-medium capitalize ">
+                {{ item.location }}
+              </p>
+              <p class="text-emerald-300 w-fit gap-x-2 mr-3 bg-emerald-800 rounded-md py-1 ml-auto mt-2 px-3 font-medium capitalize">
+                {{ item.type }}
+              </p>
+              <p class="text-emerald-300 w-fit gap-x-2 mr-3 bg-emerald-800 rounded-md py-1 mt-2 px-3 font-medium capitalize">
+                {{ item.categorie }}
+              </p>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+      </div>
+      
 
 
-	<div class="modal micromodal-slide modal-emerald" id="modal-1" aria-hidden="true">
-		<div class="modaloverlay" tabindex="-1" data-micromodal-close>
-		  <div
-			class="modalcontainer"
-			role="dialog"
-			aria-modal="true"
-			aria-labelledby="modal-1-title"
-		  >
-			<header class="modalheader mb-3">
-			  <h2
-				class="modaltitle text-2xl capitalize text-emerald-200 font-bold"
-				id="modal-1-title"
-			  >
-				edit profile
-			  </h2>
-			  <button class="hover:text-red-300 text-white"data-micromodal-close>
-				<span class="material-symbols-outlined text-2xl font-bold">
-				  close
-				  </span></button>
-			</header>
-			<main class="modalcontent grid grid-cols-1 gap-x-7"  id="modal-1-content">
-				
-			  <form method="post" action="/profile" enctype="multipart/form-data" class="max-h-full min-w-[400px] pr-6">
-				{% csrf_token %}
-				<div class="relative w-fit rounded-full mx-auto group">
-				<img src="{{ img }}" class="size-28 rounded-full object-cover mx-auto" alt="" />
-				<label class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center group-hover:bg-gray-900/50 w-full h-full rounded-full cursor-pointer">
-					<input type="file" name="image" class="opacity-0 size-1 absolute -z-20"/>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5 stroke-white opacity-0 group-hover:opacity-100" >
-					<path fill="#fff" d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg>
-				</label>
-				</div>
-				<p class="font-medium text-lg text-emerald-200">first name</p>
-				<input  id="title_review" type="text" name="first_name" class="p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="write your first name here" ></input>
-				<p class="font-medium text-lg text-emerald-200 mt-2">last name</p>
-				<input  id="title_review" type="text" name="last_name" class="p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="write your last name here" ></input>
-				<button id="edit_profile_form_btn" type="submit" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 
-				">submit changes</button>
-			  </form>
-			</main>
-		  </div>
-		</div>
-	  </div>
+      <div class="flex flex-col">
+        <div class="-m-1.5 overflow-x-auto">
+          <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class=" bg-emerald-950 rounded-3xl">
+              <!-- Header -->
+              <div class="px-6 py-4 border-b border-black">
+                <h2 class="text-3xl font-medium text-emerald-300 text-center ">
+                  Your latest order
+                </h2>
+              </div>
+              <!-- End Header -->
 
-	  
+              <!-- Table -->
+              <table class="min-w-full divide-y">
+                <thead class="bg-[#3ab969] ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                      <span class="text-xs uppercase tracking-wide text-white font-medium">
+                        product name
+                      </span>
+                    </th>
+
+                    <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                      <span class="text-xs font-medium uppercase tracking-wide text-white">
+                          Price
+                      </span>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                      <span class="text-xs font-medium uppercase tracking-wide text-white">
+                          email
+                      </span>
+                    </th>
+
+                    <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                      <span class="text-xs font-medium uppercase tracking-wide text-white ">
+                        order total
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="">
+                  {% for item in product_data %}
+                  <tr>
+                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                      <div class="flex items-center gap-x-3 jus">
+                        <span class="font-medium text-emerald-300 text-sm ">{{item.name}}</span>
+                      </div>
+                    </td>
+                    </td>
+                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                      <div class="flex items-center gap-x-3">
+                        <span class="font-medium text-emerald-300  text-sm ">{{ item.price }}</span>
+                      </div>
+                    </td>
+                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                      <div class="flex items-center gap-x-3">
+                        <span class=" font-medium text-emerald-300  text-sm ">{{ item.email }}</span>
+                      </div>
+                    </td>
+                    <td class="h-px w-px whitespace-nowrap px-6 py-3">
+                      <div class="flex items-center gap-x-3">
+                        <span class=" font-medium text-emerald-300 text-sm ">{{ item.order_total }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  {% include 'coach/componants/footer.html' %}
+  <script src="{% static 'coach/navDropDown.js' %}"></script>
+  <script src="{% static 'coach/profile.mjs' %}" type="module"></script>
+  <script src="{% static 'coach/order_sessions.mjs' %}" type="module"></script>
+
+
+  <div class="modal micromodal-slide modal-emerald" id="modal-1" aria-hidden="true">
+    <div class="modaloverlay" tabindex="-1" data-micromodal-close>
+      <div class="modalcontainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modalheader mb-3">
+          <h2 class="modaltitle text-2xl capitalize text-emerald-200 font-bold" id="modal-1-title">
+            edit profile
+          </h2>
+          <button class="hover:text-red-300 text-white" data-micromodal-close>
+            <span class="material-symbols-outlined text-2xl font-bold">
+              close
+            </span></button>
+        </header>
+        <main class="modalcontent grid grid-cols-1 gap-x-7" id="modal-1-content">
+
+          <form method="post" action="/profile" enctype="multipart/form-data" class="max-h-full min-w-[400px] pr-6">
+            {% csrf_token %}
+            <div class="relative w-fit rounded-full mx-auto group">
+              <img src="{{ img }}" class="size-28 rounded-full object-cover mx-auto" alt="" />
+              <label class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center group-hover:bg-gray-900/50 w-full h-full rounded-full cursor-pointer">
+                <input type="file" name="image" class="opacity-0 size-1 absolute -z-20" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5 stroke-white opacity-0 group-hover:opacity-100">
+                  <path fill="#fff" d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
+                </svg>
+              </label>
+            </div>
+            <p class="font-medium text-lg text-emerald-200">first name</p>
+            <input id="title_review" type="text" name="first_name" class="p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="write your first name here"></input>
+            <p class="font-medium text-lg text-emerald-200 mt-2">last name</p>
+            <input id="title_review" type="text" name="last_name" class="p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="write your last name here"></input>
+            <button id="edit_profile_form_btn" type="submit" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 
+                ">submit changes</button>
+          </form>
+        </main>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <script src="{% static 'coach/calender_dashboard.mjs' %}" type="module"></script>
 
 </body>
 
 </html>
-
-

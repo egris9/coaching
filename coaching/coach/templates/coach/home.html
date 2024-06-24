@@ -40,7 +40,9 @@
       </section>
       {% include 'coach/componants/categorie.html' %}
       {% include 'coach/componants/cta.html' %}
-      {% include 'coach/componants/weekly_popular_sessions.html' %}
+      
+      {% include 'coach/componants/weekly_popular_sessions.html' with sessions=sessions %}
+      
 
       {% include 'coach/componants/reviews.html' %}
 

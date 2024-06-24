@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <div
   class="w-full mx-auto max-w-[97%] flex flex-col bg-primary min-h-screen rounded-[36px] my-[150px] overflow-hidden relative p-11 isolate"
 >
@@ -29,18 +30,19 @@
     </p>
   </div>
   <div class="min-h-6 flex-grow flex gap-x-40 items-center justify-center">
+    {% for session in sessions %}
     <div
       class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3"
     >
       <img
-        src="{% static 'img/ronnie.jpeg' %}"
+        src="{{MEDIA_URL}}{{session.img}}"
         class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
       />
       <div class="min-w-0 max-w-full w-full">
         <h4
           class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
         >
-          ronie special nippeles
+          {{session.name}}
         </h4>
       </div>
       <div class="flex w-full justify-center items-center gap-x-3">
@@ -50,151 +52,43 @@
           <span class="material-symbols-outlined text-lg font-semibold">
             history_toggle_off
           </span>
-          <span>2h</span>
+          <span>{{ session.duration }}h</span>
         </p>
         <p
           class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
         >
           <span class="material-symbols-outlined"> groups </span>
-          <span>100</span>
+          <span>{{ session.participant_limit }}</span>
         </p>
         <p
           class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
         >
-          <span class="material-symbols-outlined"> star </span> <span>5</span>
+          <span class="material-symbols-outlined"> star </span> <span>{{session.star_rating}}</span>
         </p>
       </div>
 
       <div class="mt-2 w-full flex items-center gap-x-4">
         <img
           class="size-12 rounded-full object-cover"
-          src="{% static 'img/future-artist.avif' %}"
+          src="{{MEDIA_URL}}{{session.coach_img}}"
         />
         <div class="mb-2">
           <p class="text-emerald-300">coach</p>
           <p class="text-emerald-300 font-medium capitalize">
-            adolfo hitler-chan
+            {{session.coach_first_name}} {{session.coach_last_name}}
           </p>
         </div>
       </div>
       <p
         class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 py-2 rounded-b-full mt-2 w-full self-start px-2 font-medium capitalize"
       >
-        body building
+        {{session.categorie}}
       </p>
     </div>
-
-    <!------------------------------------------------------------->
-    <div
-      class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3"
-    >
-      <img
-        src="{% static 'img/ronnie.jpeg' %}"
-        class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
-      />
-      <div class="min-w-0 max-w-full w-full">
-        <h4
-          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
-        >
-          ronie special nippeles
-        </h4>
-      </div>
-      <div class="flex w-full justify-center items-center gap-x-3">
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined text-lg font-semibold">
-            history_toggle_off
-          </span>
-          <span>2h</span>
-        </p>
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined"> groups </span>
-          <span>100</span>
-        </p>
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined"> star </span> <span>5</span>
-        </p>
-      </div>
-
-      <div class="mt-2 w-full flex items-center gap-x-4">
-        <img
-          class="size-12 rounded-full object-cover"
-          src="{% static 'img/future-artist.avif' %}"
-        />
-        <div class="mb-2">
-          <p class="text-emerald-300">coach</p>
-          <p class="text-emerald-300 font-medium capitalize">
-            adolfo hitler-chan
-          </p>
-        </div>
-      </div>
-      <p
-        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 py-2 rounded-b-full mt-2 w-full self-start px-2 font-medium capitalize"
-      >
-        body building
-      </p>
-    </div>
-
-    <!------------------------------------------------------------->
-
-    <div
-      class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3"
-    >
-      <img
-        src="{% static 'img/ronnie.jpeg' %}"
-        class="rounded-3xl w-full object-top mb-4 min-h-[200px] object-cover"
-      />
-      <div class="min-w-0 max-w-full w-full">
-        <h4
-          class="thick-font text-lg capitalize text-center font-medium text-primary truncate"
-        >
-          ronie special nippeles
-        </h4>
-      </div>
-      <div class="flex w-full justify-center items-center gap-x-3">
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined text-lg font-semibold">
-            history_toggle_off
-          </span>
-          <span>2h</span>
-        </p>
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined"> groups </span>
-          <span>100</span>
-        </p>
-        <p
-          class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
-        >
-          <span class="material-symbols-outlined"> star </span> <span>5</span>
-        </p>
-      </div>
-
-      <div class="mt-2 w-full flex items-center gap-x-4">
-        <img
-          class="size-12 rounded-full object-cover"
-          src="{% static 'img/future-artist.avif' %}"
-        />
-        <div class="mb-2">
-          <p class="text-emerald-300">coach</p>
-          <p class="text-emerald-300 font-medium capitalize">
-            adolfo hitler-chan
-          </p>
-        </div>
-      </div>
-      <p
-        class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 py-2 rounded-b-full mt-2 w-full self-start px-2 font-medium capitalize"
-      >
-        body building
-      </p>
-    </div>
+    {% endfor %}
   </div>
 </div>
+
+
+
+    
