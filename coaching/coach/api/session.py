@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from coach.models import Training_session
 from coach.forms import FilterForm
 from coach.api.queries.sessions.index import  format_sessions_response
+from django.db.models import Count
+
 
 
 def session(request):
@@ -9,8 +11,6 @@ def session(request):
     sessions = Training_session.objects.all()
     if allow_filter : 
         form = FilterForm(request.GET)
-        p= request.GET.get('price_range')
-        print(f'price range {p}')
         if form.is_valid():
             price_range = form.cleaned_data.get('price_range')
             sort_by = form.cleaned_data.get('sort_by')
@@ -27,7 +27,7 @@ def session(request):
                     
             if sort_by:
                 if sort_by == 'popularity':
-                    sessions = sessions.order_by('-popularity')  # Assuming you have a popularity field
+                    sessions = sessions.annotate(num_orders=Count('order')).order_by('-num_orders')  # Assuming you have a popularity field
                 elif sort_by == 'high_to_low':
                     sessions = sessions.order_by('-price')
                 elif sort_by == 'low_to_high':
