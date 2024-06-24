@@ -42,204 +42,68 @@
           </h1>
         </div>
         <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
-          <form method="Get" class="hs-accordion-group min-w-[290px]">
-            <input type="hidden" name="allow_filter" value="true">
+          <div class="hs-accordion-group min-w-[290px]">
             <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
-              <button
-                type="button"
-                class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none"
-                aria-controls="hs-basic-with-arrow-collapse-two"
-              >
-                <svg
-                  class="hs-accordion-active:hidden block size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+              <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-two">
+                <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m6 9 6 6 6-6"></path>
                 </svg>
-                <svg
-                  class="hs-accordion-active:block hidden size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m18 15-6-6-6 6"></path>
                 </svg>
                 Filter by Price
               </button>
-              <div
-                id="hs-basic-with-arrow-collapse-two"
-                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-with-arrow-heading-two"
-              >
+              <div id="hs-basic-with-arrow-collapse-two" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-two">
                 <div class="grid space-y-2">
-                  <label
-                  for="hs-vertical-radio-checked-in-form-price"
-                  class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
-                >
-                  <input
-                    type="radio"
-                    name="price_range"
-                    class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                    id="hs-vertical-radio-checked-in-form-price"
-                    checked=""
-                    value='under_25'
-                  />
-                  <span class="text-sm text-gray-100 ms-3">Under $25</span>
-                </label>
-                  <label
-                    for="hs-vertical-radio-checked-in-form-price-2"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="price_range"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form-price-2"
-                      checked=""
-                      value='25_to_50'
-                    />
+                  <label for="hs-vertical-radio-checked-in-form-price" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="price_range" class="filter-price-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form-price" value='under_25' />
+                    <span class="text-sm text-gray-100 ms-3">Under $25</span>
+                  </label>
+                  <label for="hs-vertical-radio-checked-in-form-price-2" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="price_range" class="filter-price-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form-price-2" value='25_to_50' />
                     <span class="text-sm text-gray-100 ms-3">$25 - $50</span>
                   </label>
-                  <label
-                    for="hs-vertical-radio-checked-in-form-price-3"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="price_range"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form-price-3"
-                      checked=""
-                      value='50_to_100'
-                    />
+                  <label for="hs-vertical-radio-checked-in-form-price-3" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="price_range" class="filter-price-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form-price-3" value='50_to_100' />
                     <span class="text-sm text-gray-100 ms-3">$50 to $100</span>
                   </label>
-                  <label
-                    for="hs-vertical-radio-checked-in-form-price-4"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="price_range"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form-price-4"
-                      checked=""
-                      value='over_100'
-                    />
+                  <label for="hs-vertical-radio-checked-in-form-price-4" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="price_range" class="filter-price-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form-price-4" value='over_100' />
                     <span class="text-sm text-gray-100 ms-3">Over $100</span>
                   </label>
                 </div>
               </div>
             </div>
-
+  
             <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
-              <button
-                type="button"
-                class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none"
-                aria-controls="hs-basic-with-arrow-collapse-three"
-              >
-                <svg
-                  class="hs-accordion-active:hidden block size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+              <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-three">
+                <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m6 9 6 6 6-6"></path>
                 </svg>
-                <svg
-                  class="hs-accordion-active:block hidden size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m18 15-6-6-6 6"></path>
                 </svg>
                 Sort By
               </button>
-              <div
-                id="hs-basic-with-arrow-collapse-three"
-                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-with-arrow-heading-three"
-              >
+              <div id="hs-basic-with-arrow-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-three">
                 <div class="grid space-y-2">
-                  <label
-                    for="hs-vertical-radio-checked-in-form"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="sort_by"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form"
-                      checked=""
-                      value='popularity'
-                    />
+                  <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-sort-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="filter-sort-radio hs-vertical-radio-checked-in-form" value='popularity' />
                     <span class="text-sm text-gray-100 ms-3">Popularity</span>
                   </label>
-                  <label
-                    for="hs-vertical-radio-checked-in-form-2"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="sort_by"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form-2"
-                      checked=""
-                      value='high_to_low'
-                    />
-                    <span class="text-sm text-gray-100 ms-3"
-                      >Price: High to Low</span
-                    >
+                  <label for="hs-vertical-radio-checked-in-form-2" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-sort-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="filter-sort-radio hs-vertical-radio-checked-in-form-2" value='high_to_low' />
+                    <span class="text-sm text-gray-100 ms-3">Price: High to Low</span>
                   </label>
-                  <label
-                    for="hs-vertical-radio-checked-in-form-3"
-                    class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black"
-                  >
-                    <input
-                      type="radio"
-                      name="sort_by"
-                      class="shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none"
-                      id="hs-vertical-radio-checked-in-form-3"
-                      checked=""
-                      value='low_to_high'
-                    />
-                    <span class="text-sm text-gray-100 ms-3"
-                      >Price: Low to High</span
-                    >
+                  <label for="hs-vertical-radio-checked-in-form-3" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm accent-emerald-500 bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-sort-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="filter-sort-radio hs-vertical-radio-checked-in-form-3" value='low_to_high' />
+                    <span class="text-sm text-gray-100 ms-3">Price: Low to High</span>
                   </label>
                 </div>
               </div>
             </div>
-            <button type="submit" class="font-semibold w-fit ml-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-600 hover:text-gray-800 duration-300">Filter</button>
-
-          </form>
+  
+          </div>
 
 
 
@@ -344,6 +208,11 @@
       src="{% static 'coach/add_to_cart_popup.mjs' %}"
       type="module"
     ></script>
+    <script
+      src="{% static 'coach/filter.mjs' %}"
+      type="module"
+    ></script>
+
 
 
 
