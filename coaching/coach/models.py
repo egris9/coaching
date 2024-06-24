@@ -108,6 +108,7 @@ class Order(models.Model):
     cart_name = models.CharField(max_length=255)
     exp = models.DateField()
     cvv = models.CharField(max_length=4)
+    date = models.DateField(default='2024-01-01')
     
 
     product = models.ForeignKey("Product",on_delete=models.SET_NULL, null=True, blank=True)

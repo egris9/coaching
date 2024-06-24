@@ -20,6 +20,6 @@ from coach.api.session_filtrage import session_filtre
 from coach.api.add_to_cart_popup import pop_up
 from coach.api.reviews import reviews,get_sessions_reviews
 from coach.api.update_item_quantity import update_item_quantity
-
+from coach.api.delete_session_order import delete_session_order
 
 from coach.api.delete_session import delete_session
