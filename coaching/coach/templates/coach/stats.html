@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'coach/global.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="{% static 'coach/chart.css' %}"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -22,8 +23,10 @@
     />
   </head>
   <body class="bg-emerald-100 w-full h-full">
+    {% include 'coach/componants/coach_sidebar.html' %}
+
     <h1
-      class="text-4xl capitalize font-bold w-full mt-12 mb-10 max-w-[1350px] mx-auto text-gray-700 thick-font"
+      class="text-4xl capitalize font-bold w-full mt-12 mb-10 max-w-[1350px] mx-auto text-emerald-900 thick-font"
     >
       coach statistics
     </h1>

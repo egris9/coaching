@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Training_session,Profile
+from .models import Training_session,Profile,CoachRequest
 
 
 class SigninForm(forms.Form):
@@ -85,3 +85,9 @@ class Editimageprofileform(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+        
+        
+class coach_request_form(forms.ModelForm):
+    class Meta:
+        model = CoachRequest
+        fields = ['exp','description','Profile']

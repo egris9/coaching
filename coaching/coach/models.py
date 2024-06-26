@@ -151,4 +151,13 @@ class CartItem(models.Model):
     #chose what to display in admin 
     def __str__(self):
         return f"CartItem {self.id} - Quantity: {self.quantity} - Price: {self.price}"
+    
 
+class CoachRequest(models.Model):
+    id = models.AutoField(primary_key=True)
+    exp = models.CharField(max_length= 255, default="1")
+    description= models.CharField(max_length= 255, default="")
+    Profile = models.ForeignKey(Profile, on_delete=models.CASCADE,default=1) 
+    
+    def __str__(self):
+        return f"REQUEST {self.id} - experience: {self.exp}"

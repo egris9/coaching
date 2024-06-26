@@ -1,12 +1,50 @@
 from django.shortcuts import render,redirect
 from coach.models import Order,Profile
-from coach.forms import Editprofileform,Editimageprofileform
+from coach.forms import Editprofileform,Editimageprofileform,coach_request_form
 from coach.api.queries.sessions.index import get_all_sessions_by_profile_client,get_all_sessions_by_profile_client_date
 from django.utils import timezone
 from datetime import datetime
 
 
+
+def coach_request(request):
+    if request.user.is_authenticated == False:
+        return redirect(
+            '/signin'
+        )
+
+    if request.method == "POST":
+        userData = request.POST.copy()
+        userData["Profile"] = request.user.profile
+        form = coach_request_form (data=userData)
+        print('form')
+        if form.is_valid():
+            print('!form')
+             
+            form.save()
+        else:
+            errors = {}
+            for field, err in form.errors.items():
+                print(f"Field: {field}, Errors: {', '.join(err)}")
+                print(", ".join(err))
+                errors[field] = ", ".join(err)
+    return redirect("/profile")
+              
+   
+
+
+
+
 def profile(request):
+    if request.user.is_authenticated == False:
+        return redirect(
+            '/signin'
+        )
+    profile= Profile.objects.get(user=request.user)
+    if profile.type == 'coach' :
+        return redirect(
+            '/dashboard'
+        )
     orders = Order.objects.all().prefetch_related("ordertoproduct_set")
     order_data = []
     full_name= request.user.first_name+' '+request.user.last_name

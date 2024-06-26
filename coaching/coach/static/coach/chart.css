@@ -1,0 +1,22 @@
+#chart3 .apexcharts-tooltip{
+    
+    background-color: rgba(16, 185, 129, 0.9) !important; 
+    margin-top: 0.25rem !important; 
+    color:#f8fafc;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 0.125rem 0,2rem !important;
+    border-radius: 0.125rem !important; 
+  }
+  
+
+  #chart3 .apexcharts-tooltip .name{
+    
+    
+    color:#09090b;
+    font-size: 16px;
+    margin: 2rem !important;
+    
+  }

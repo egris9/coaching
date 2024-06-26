@@ -50,7 +50,11 @@ urlpatterns = [
     path("dashboard", views.dashboard, name="dashboard"),
     path("delete-session/<int:session_id>/", views.delete_session, name="delete_session"),
     path("stats", views.stats, name="stats"),
+    path("stats/participent_by_coach", views.participent_by_coach, name="participent_by_coach"),
+    path("stats/revenue_by_session", views.revenue_by_session, name="revenue_by_session"),
+    path("stats/top_sessions", views.top_sessions, name="top_sessions"),
     path("profile", views.profile, name="profile"),
+    path("profile/coach_request", views.coach_request, name="coach_request"),
     path("delete-session-order/<int:order_id>/", views.delete_session_order, name="delete_order_session"),
 ]
 

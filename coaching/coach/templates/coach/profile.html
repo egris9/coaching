@@ -37,7 +37,10 @@
             <p class="text-emerald-200 text-center capitalize mt-4 ">
               {{ full_name }}
             </p>
+            <div class="flex items-center gap-x-3">
+            <button id="become_coach_btn" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 ">become a coach</button>
             <button id="edit_profil_btn" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 ">edit profile</button>
+            </div>
           </div>
         </div>
       </div>
@@ -237,9 +240,35 @@
         </main>
       </div>
     </div>
+  </div>
 
 
-
+    <div class="modal micromodal-slide modal-emerald" id="modal-2" aria-hidden="true">
+      <div class="modaloverlay" tabindex="-1" data-micromodal-close>
+        <div class="modalcontainer" role="dialog" aria-modal="true" aria-labelledby="model-2-title">
+          <header class="modalheader mb-3">
+            <h2 class="modaltitle text-2xl capitalize text-emerald-200 font-bold" id="model-2-title">
+              coach request
+            </h2>
+            <button class="hover:text-red-300 text-white" data-micromodal-close>
+              <span class="material-symbols-outlined text-2xl font-bold">
+                close
+              </span></button>
+          </header>
+          <main class="modalcontent grid grid-cols-1 gap-x-7" id="model-2-content">
+  
+            <form method="post" action="/profile/coach_request"  class="max-h-full min-w-[400px] pr-6">
+              {% csrf_token %}
+              <p  class="font-medium text-lg text-emerald-200">description</p>
+              <textarea id="title_review"  maxlength="100"  name="description" class=" h-[93px] resize-none p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="description"></textarea>
+              <p class="font-medium text-lg text-emerald-200 mt-2">years of experience</p>
+              <input id="title_review" type="number" name="exp" class="p-2 w-full bg-emerald-800 duration-500 outline-none rounded-2xl focus-within:bg-emerald-700 transition-colors placeholder:text-emerald-200" placeholder="how many years of experience do you have"></input>
+              <button id="edit_profile_form_btn" type="submit" class="font-semibold bg-emerald-300  py-3 px-6 rounded-lg mt-6 block w-fit hover:bg-emerald-600 duration-300 
+                  ">submit request</button>
+            </form>
+          </main>
+        </div>
+      </div>
 
   </div>
 

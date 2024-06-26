@@ -14,8 +14,8 @@ from coach.api.dashboard import dashboard
 from coach.api.session_creation import session_creation
 from coach.api.delete_cart_item import delete_cart_item_handler
 from coach.api.add_order import add_order_handler
-from coach.api.profile import profile
-from coach.api.stats import stats
+from coach.api.profile import profile,coach_request
+from coach.api.stats import stats,participent_by_coach,revenue_by_session,top_sessions
 from coach.api.session_filtrage import session_filtre
 from coach.api.add_to_cart_popup import pop_up
 from coach.api.reviews import reviews,get_sessions_reviews

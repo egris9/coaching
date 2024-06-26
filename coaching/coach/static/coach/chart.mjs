@@ -1,11 +1,20 @@
 import ApexCharts from 'https://cdn.jsdelivr.net/npm/apexcharts@3.49.1/+esm'
-
-var options_simple_lines = {
+fetch('http://127.0.0.1:8000/stats/participent_by_coach').then(async function (v) {
+  const res=await v.json()
+  let month=[]
+  let participent=[]
+  res.participent_by_month.forEach((el)=>{
+    month.push(el.month)
+    participent.push(el.count)
+  })
+  var options_simple_lines = {
     series: [{
       name: "participent",
-      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+      data: participent
   }],
+
     chart: {
+    foreColor: '#a7f3d0',
     height: 370,
     width:600,
     type: 'line',
@@ -32,24 +41,80 @@ var options_simple_lines = {
     },
   },
   xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    categories: month,
   }
   };
+  var chart = new ApexCharts(document.querySelector("#chart"), options_simple_lines);
+  chart.render();
+})
 
 
+
+fetch('http://127.0.0.1:8000/stats/revenue_by_session').then(async function (v) {
+  const res=await v.json()
+  let month=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  
+
+
+
+  const data=res.revenue_by_session.map((el)=>{
+  let list=[]
+  
+    for(const m of month) {
+
+      if (m===el.month) {
+         list.push( el.total )
+
+         
+         continue
+      }
+      list.push(null)
+
+
+    }
+    const serie={
+      name:el.name,
+      data:list
+    }
+   return serie
+  
+  })  
+  
+  const formatedTotalRevnueEachMonth = res.total_each_month.reduce((store, current) =>{
+  console.log(store, current)
+    store.months.push(current.month)
+    store.total.push(current.total_price)
+    return store
+}, {
+    months: [],
+    total: []
+})
+
+let TotalRevnueEachMonth = []
+
+for(const m of month) {
+  
+    if (formatedTotalRevnueEachMonth.months.includes(m)) {
+      const index=formatedTotalRevnueEachMonth.months.indexOf(m)
+        TotalRevnueEachMonth.push( formatedTotalRevnueEachMonth.total[index] )
+       continue
+    }
+    TotalRevnueEachMonth.push(null)
+  }
+
+  const TotalRevnueEachMonthSerie = {
+    data:TotalRevnueEachMonth,
+    name:'total',
+  }
+  
+    data.push(TotalRevnueEachMonthSerie)
 
   var options_mult_bars = {
-    series: [{
-    name: 'session2',
-    data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-  },{
-    name: 'total',
-    data: [116, 116, 116, 116, 116, 116, 116, 116,116]
-  }, {
-    name: 'session1',
-    data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-  },],
+    
+      series:data,
+
     chart: {
+    foreColor: '#a7f3d0',
     type: 'bar',
     height: 400,
     width:1150,
@@ -57,7 +122,7 @@ var options_simple_lines = {
   plotOptions: {
     bar: {
       horizontal: false,
-      columnWidth: '55%',
+      columnWidth: '80%',
       endingShape: 'rounded'
     },
   },
@@ -66,11 +131,11 @@ var options_simple_lines = {
   },
   stroke: {
     show: true,
-    width: 2,
+    width: 1,
     colors: ['transparent']
   },
   xaxis: {
-    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+    categories: month,
   },
   yaxis: {
     title: {
@@ -88,39 +153,75 @@ var options_simple_lines = {
     }
   }
   };
+var chart2 = new ApexCharts(document.querySelector("#chart2"), options_mult_bars);
+  chart2.render();
+  
+})
 
+
+
+
+
+fetch('http://127.0.0.1:8000/stats/top_sessions').then(async function (v) {
+  const res=await v.json()
+  let month=[]
+  let revenues=[]
+  let participent=[]
+ 
+  console.log(res)
   var pie_options = {
-    series: [44, 55, 13, 43, 22],
+    series: res.payload.map((el)=>el.participent_count),
+
     chart: {
+    foreColor: '#a7f3d0',
+
     height: 500,
     width: 500,
     type: 'pie',
+   
   },
-  labels: ['session1', 'session2', 'session3', 'session4', 'session5'],
+   stroke: {
+      colors: ['transparent']
+    },
+  dataLabels: {
+    style: {
+      colors: ['#a7f3d0']
+    }
+  },
+  labels: res.payload.map((el)=>el.name),
+  
+  tooltip: {
+    custom: function({series, seriesIndex, dataPointIndex, w}) {
+      console.log(w)
+
+      return `<div class="">
+      <span> revenues: ${res.payload[seriesIndex].revenues}$</span><br> 
+
+      <span>participent: ${res.payload[seriesIndex].participent_count}</span><br>
+      
+      <span class="name">${w.config.labels[seriesIndex]}</span><br>
+     
+      </div>`
+    }
+  },
   responsive: [{
     breakpoint: 480,
     options: {
       chart: {
         height: 500,
-        width: 500
+        width: 500,
       },
-      legend: {
+      legend: {  
+        labels: {
+          colors: ['#a7f3d0'],
+          useSeriesColors: false
+      },
         position: 'bottom'
-      }
+      },
+     
     }
   }]
   };
-
-
-
-  
   var chart3 = new ApexCharts(document.querySelector("#chart3"), pie_options);
   chart3.render();
-
-  var chart2 = new ApexCharts(document.querySelector("#chart2"), options_mult_bars);
-  chart2.render();
-
-  var chart = new ApexCharts(document.querySelector("#chart"), options_simple_lines);
-  chart.render();
-
-
+})

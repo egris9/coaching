@@ -15,7 +15,8 @@ def top_sessions():
     start_of_week, end_of_week = get_current_week()
     # Annotate and order the sessions based on the number of orders in the current week
     sessions = (Training_session.objects
-                .annotate(num_orders=Count('orders_training_session', filter=Q(orders_training_session__date__range=(start_of_week, end_of_week))))
+                .annotate(num_orders=Count('orders_training_session', filter=Q(
+                    orders_training_session__date__range=(start_of_week, end_of_week))))
                 .filter(num_orders__gt=0)
                 .order_by('-num_orders')[:3])
     session_meta = []
