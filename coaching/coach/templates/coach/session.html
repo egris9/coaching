@@ -101,6 +101,53 @@
                   </label>
                 </div>
               </div>
+              
+            </div>
+            <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
+              <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-three">
+                <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+                <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 15-6-6-6 6"></path>
+                </svg>
+                Filter By Categorie
+              </button>
+              <div id="hs-basic-with-arrow-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-three">
+                <div class="grid space-y-2">
+                  {% for categorie in categories %}
+                  <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-categorie-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" value='{{categorie.name}}' />
+                    <span class="text-sm text-gray-100 ms-3">{{categorie.name}}</span>
+                  </label>
+                  {% endfor %}
+                </div>
+              </div>
+              
+            </div>
+            <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
+              <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-three">
+                <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+                <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 15-6-6-6 6"></path>
+                </svg>
+                Filter By Type
+              </button>
+              <div id="hs-basic-with-arrow-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-arrow-heading-three">
+                <div class="grid space-y-2">
+                  <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-type-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" value='Personal' />
+                    <span class="text-sm text-gray-100 ms-3">Personal</span>
+                  </label>
+                  <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full border border-gray-200 rounded-lg text-sm bg-gray-400 text-black">
+                    <input type="radio" name="sort_by" class="filter-type-radio shrink-0 mt-0.5 border-gray-200 rounded-full accent-emerald-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-vertical-radio-checked-in-form" value='Group' />
+                    <span class="text-sm text-gray-100 ms-3">Group</span>
+                  </label>
+                </div>
+              </div>
+              
             </div>
   
           </div>
@@ -173,12 +220,12 @@
               >
                 <img
                   class="size-12 rounded-full object-cover"
-                  src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="{{MEDIA_URL}}{{item.coach_img}}"
                 />
                 <div class="mb-2">
                   <p class="text-emerald-300">coach</p>
                   <p class="text-emerald-300 font-medium capitalize">
-                    adolfo hitler-chan
+                    {{ item.coach_first_name }} {{ item.coach_last_name }}
                   </p>
                 </div>
               </div>

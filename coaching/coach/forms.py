@@ -63,6 +63,10 @@ class FilterForm(forms.Form):
         ('high_to_low', 'Price: High to Low'),
         ('low_to_high', 'Price: Low to High'),
     ]
+    SESSION_TYPE_CHOICES = [
+        ('Personal', 'Personal'),
+        ('Group', 'Group'),
+    ]
     
     price_range = forms.ChoiceField(
         choices=PRICE_CHOICES,
@@ -74,6 +78,12 @@ class FilterForm(forms.Form):
         widget=forms.RadioSelect,
         required=False
     )
+    session_type = forms.ChoiceField(
+        choices=SESSION_TYPE_CHOICES,
+        widget=forms.RadioSelect,
+        required=False
+    )
+
 
 class Editprofileform(forms.ModelForm):
 

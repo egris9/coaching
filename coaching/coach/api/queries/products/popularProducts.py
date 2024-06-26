@@ -1,9 +1,9 @@
-from coach.models import Product
+from coach.models import Product,OrderToProduct
 from django.db.models import Count
 
 def popular_products():
 
-    popular_products = Product.objects.annotate(num_orders=Count('order')).order_by('-num_orders')[:5].prefetch_related("productvariant_set").prefetch_related(
+    popular_products = Product.objects.annotate(num_orders=Count('orders_product')).order_by('-num_orders')[:5].prefetch_related("productvariant_set").prefetch_related(
             "productimages_set"
         )
 

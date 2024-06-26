@@ -16,9 +16,12 @@ def format_sessions_response(sessions):
         duration = end_datetime - start_datetime 
         duration_hours = duration.total_seconds() / 3600  
         int_duration_hours = int(duration_hours)
+        coach_first_name = p.Profile.user.first_name
+        coach_last_name = p.Profile.user.last_name
+        coach_img = p.Profile.image
 
         session.append(
-            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating}
+            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating,"coach_first_name":coach_first_name,"coach_last_name":coach_last_name,"coach_img":coach_img}
         )
     return session
 
@@ -81,7 +84,7 @@ def get_all_sessions_by_profile_client(profile: Profile):
     for order in orders:
         for item in order.ordertoproduct_set.all():
             if item.type == "session":
-                    print(item.training_session)
+                    print(item.order_id)
                     session = session_meta_data(item.training_session)
             
                     ordered_sessions.append(

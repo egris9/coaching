@@ -7,6 +7,9 @@
     <div class="flex text-white items-center list-none gap-x-4 ">
         <li><a href="{% url 'coach:shop' %}" class="here hover:text-emerald-300">accessory</a></li>
         <li><a href="{% url 'coach:session' %}" class="here hover:text-emerald-300">sessions</a></li>
+        {% if user.profile.type == 'coach' %}
+            <li><a href="{% url 'coach:dashboard' %}" class="here hover:text-emerald-300">dashboard</a></li>
+        {% endif %}
     </div>
     <div class="text-slate-50">
       <ul class="nav_links items-center flex justify-between"> 
