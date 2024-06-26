@@ -16,9 +16,12 @@ def format_sessions_response(sessions):
         duration = end_datetime - start_datetime 
         duration_hours = duration.total_seconds() / 3600  
         int_duration_hours = int(duration_hours)
+        coach_first_name = p.Profile.user.first_name
+        coach_last_name = p.Profile.user.last_name
+        coach_img = p.Profile.image
 
         session.append(
-            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating}
+            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating,"coach_first_name":coach_first_name,"coach_last_name":coach_last_name,"coach_img":coach_img}
         )
     return session
 

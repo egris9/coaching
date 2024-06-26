@@ -14,7 +14,7 @@ def session(request):
         if form.is_valid():
             price_range = form.cleaned_data.get('price_range')
             sort_by = form.cleaned_data.get('sort_by')
-            category = form.cleaned_data.get('category')
+            category = request.GET.get('category')
             session_type = form.cleaned_data.get('session_type')
             
             if price_range:
@@ -26,8 +26,9 @@ def session(request):
                     sessions = sessions.filter(price__gte=50, price__lte=100)
                 if 'over_100' in price_range:
                     sessions = sessions.filter(price__gt=100)
+
             if category:
-                sessions = sessions.filter(category=category)
+                sessions = sessions.filter(categorie=category)
 
             if session_type:
                 sessions = sessions.filter(type__iexact=session_type)
