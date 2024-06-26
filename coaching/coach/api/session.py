@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from coach.models import Training_session
+from coach.models import Training_session,categorie
 from coach.forms import FilterForm
 from coach.api.queries.sessions.index import  format_sessions_response
 from django.db.models import Count
@@ -30,7 +30,7 @@ def session(request):
                 sessions = sessions.filter(category=category)
 
             if session_type:
-                sessions = sessions.filter(type=session_type)
+                sessions = sessions.filter(type__iexact=session_type)
                     
             if sort_by:
                 if sort_by == 'popularity':
@@ -39,9 +39,13 @@ def session(request):
                     sessions = sessions.order_by('-price')
                 elif sort_by == 'low_to_high':
                     sessions = sessions.order_by('price')
-    
+    categories = []
+    for c in categorie.objects.all():
+        categories.append({'name':c.name})
     context = {
         'sessions': format_sessions_response(sessions),
+        'categories' : categories,
+
     }
     return render(
         request,

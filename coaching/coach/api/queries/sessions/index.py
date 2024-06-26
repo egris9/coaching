@@ -81,7 +81,7 @@ def get_all_sessions_by_profile_client(profile: Profile):
     for order in orders:
         for item in order.ordertoproduct_set.all():
             if item.type == "session":
-                    print(item.training_session)
+                    print(item.order_id)
                     session = session_meta_data(item.training_session)
             
                     ordered_sessions.append(

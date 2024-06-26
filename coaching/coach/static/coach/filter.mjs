@@ -51,6 +51,16 @@ const filters = [
 		radioBtnSelector: ".filter-sort-radio",
 		name: "sort_by",
 	},
+	{
+		nodeList: document.querySelectorAll(".filter-categorie-radio"),
+		radioBtnSelector: ".filter-categorie-radio",
+		name: "category",
+	},
+	{
+		nodeList: document.querySelectorAll(".filter-type-radio"),
+		radioBtnSelector: ".filter-type-radio",
+		name: "session_type",
+	},
 ];
 
 for (let i = 0; i < filters.length; i++) {
