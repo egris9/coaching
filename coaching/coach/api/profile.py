@@ -45,7 +45,7 @@ def profile(request):
         return redirect(
             '/dashboard'
         )
-    orders = Order.objects.all().prefetch_related("ordertoproduct_set")
+    orders = Order.objects.filter(user=request.user).prefetch_related("ordertoproduct_set")
     order_data = []
     full_name= request.user.first_name+' '+request.user.last_name
     img=Profile.objects.filter(user=request.user).first().image.url   
