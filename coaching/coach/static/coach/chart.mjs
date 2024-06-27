@@ -16,7 +16,7 @@ fetch('http://127.0.0.1:8000/stats/participent_by_coach').then(async function (v
     chart: {
     foreColor: '#a7f3d0',
     height: 370,
-    width:600,
+    width:1150,
     type: 'line',
     zoom: {
       enabled: false
@@ -158,70 +158,3 @@ var chart2 = new ApexCharts(document.querySelector("#chart2"), options_mult_bars
   
 })
 
-
-
-
-
-fetch('http://127.0.0.1:8000/stats/top_sessions').then(async function (v) {
-  const res=await v.json()
-  let month=[]
-  let revenues=[]
-  let participent=[]
- 
-  console.log(res)
-  var pie_options = {
-    series: res.payload.map((el)=>el.participent_count),
-
-    chart: {
-    foreColor: '#a7f3d0',
-
-    height: 500,
-    width: 500,
-    type: 'pie',
-   
-  },
-   stroke: {
-      colors: ['transparent']
-    },
-  dataLabels: {
-    style: {
-      colors: ['#a7f3d0']
-    }
-  },
-  labels: res.payload.map((el)=>el.name),
-  
-  tooltip: {
-    custom: function({series, seriesIndex, dataPointIndex, w}) {
-      console.log(w)
-
-      return `<div class="">
-      <span> revenues: ${res.payload[seriesIndex].revenues}$</span><br> 
-
-      <span>participent: ${res.payload[seriesIndex].participent_count}</span><br>
-      
-      <span class="name">${w.config.labels[seriesIndex]}</span><br>
-     
-      </div>`
-    }
-  },
-  responsive: [{
-    breakpoint: 480,
-    options: {
-      chart: {
-        height: 500,
-        width: 500,
-      },
-      legend: {  
-        labels: {
-          colors: ['#a7f3d0'],
-          useSeriesColors: false
-      },
-        position: 'bottom'
-      },
-     
-    }
-  }]
-  };
-  var chart3 = new ApexCharts(document.querySelector("#chart3"), pie_options);
-  chart3.render();
-})

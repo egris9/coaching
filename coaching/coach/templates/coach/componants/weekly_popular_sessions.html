@@ -31,7 +31,7 @@
   </div>
   <div class="min-h-6 flex-grow flex gap-x-40 items-center justify-center">
     {% for session in sessions %}
-    <div
+    <a href="{% url 'coach:session' %}"
       class="w-full max-w-[320px] bg-emerald-900 rounded-[36px] flex flex-col items-center p-3"
     >
       <img
@@ -84,7 +84,7 @@
       >
         {{session.categorie}}
       </p>
-    </div>
+    </a>
     {% endfor %}
   </div>
 </div>

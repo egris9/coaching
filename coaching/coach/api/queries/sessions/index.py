@@ -21,7 +21,7 @@ def format_sessions_response(sessions):
         coach_img = p.Profile.image
 
         session.append(
-            {"id":p.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating,"coach_first_name":coach_first_name,"coach_last_name":coach_last_name,"coach_img":coach_img}
+            {"id":p.id,"profile_id":p.Profile.id,"first_date": first_date, "last_date": last_date,'name':p.name,'small_sum':p.small_sum, 'categorie':p.categorie,'img':p.img ,'type':p.type,'price':p.price,'location':p.location.location,'participant_limit':p.participant_limit,"start_time": p.start_time, "end_time": p.end_time,"duration":int_duration_hours,"star_rating":star_rating,"coach_first_name":coach_first_name,"coach_last_name":coach_last_name,"coach_img":coach_img}
         )
     return session
 
@@ -31,7 +31,7 @@ def get_all_sessions_by_profile(profile: Profile):
 
 def get_sessions_by_date(profile: Profile, date_filter_start: datetime, date_filter_end: datetime):
     conditions = Q(session__id=OuterRef('id')) & Q(date__gte=date_filter_start) & Q(date__lte=date_filter_end)
-    sessions = Training_session.objects.filter(Exists(session_date.objects.filter(conditions),Profile=profile))
+    sessions = Training_session.objects.filter(Exists(session_date.objects.filter(conditions)),Profile=profile)
     return format_sessions_response(sessions)
 
 

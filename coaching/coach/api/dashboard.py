@@ -16,26 +16,13 @@ def dashboard(request):
     profile= Profile.objects.get(user=request.user)
     if profile.type=='client':
         return redirect("/")
-    
-    date_filter_start_str = request.GET.get('filter-by-period-start', None)
-    date_filter_end_str = request.GET.get('filter-by-period-end', None)
-
-    if date_filter_start_str and date_filter_end_str:
-
-        date_filter_start = timezone.make_aware(datetime.strptime(date_filter_start_str, '%Y-%m-%d'))
-        date_filter_end = timezone.make_aware(datetime.strptime(date_filter_end_str, '%Y-%m-%d'))
-        sessions = get_sessions_by_date(profile=profile, date_filter_start=date_filter_start, date_filter_end=date_filter_end)
-
-        return render(
-        request,
-        'coach/dashboard.html'
-        ,{'sessions': sessions, "filter_trigger": request.GET.get('filter-trigger', None)}
-    )
-  
     session = get_all_sessions_by_profile(profile)
     full_name= request.user.first_name+' '+request.user.last_name
     img=Profile.objects.filter(user=request.user).first().image.url   
-    exp= CoachRequest.objects.filter(Profile=request.user.profile).first().exp
+    has_coach_request= CoachRequest.objects.filter(Profile=request.user.profile)
+    exp=1
+    if has_coach_request.count():
+        exp=has_coach_request.first().exp
     stars_count=0
     stars_average=1
     sum_stars=0
@@ -53,6 +40,24 @@ def dashboard(request):
             
     if stars_count != 0 :
         stars_average= sum_stars/stars_count
+
+    date_filter_start_str = request.GET.get('filter-by-period-start', None)
+    date_filter_end_str = request.GET.get('filter-by-period-end', None)
+
+    if date_filter_start_str and date_filter_end_str:
+
+        date_filter_start = timezone.make_aware(datetime.strptime(date_filter_start_str, '%Y-%m-%d'))
+        date_filter_end = timezone.make_aware(datetime.strptime(date_filter_end_str, '%Y-%m-%d'))
+        sessions = get_sessions_by_date(profile=profile, date_filter_start=date_filter_start, date_filter_end=date_filter_end)
+
+        return render(
+        request,
+        'coach/dashboard.html'
+        ,{'sessions': sessions, "filter_trigger": request.GET.get('filter-trigger', None) , "experience":exp, "full_name":full_name , "img":img , "stars": stars_average, "stars_count" : stars_count,"count_sessions": count_sessions }
+    )
+  
+    
+    
 
     
     

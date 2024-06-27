@@ -42,6 +42,7 @@
           </h1>
         </div>
         <div class="flex mx-auto gap-x-6 mt-11 justify-center items-start">
+          
           <div class="hs-accordion-group min-w-[290px]">
             <div class="hs-accordion" id="hs-basic-with-arrow-heading-two">
               <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-two">
@@ -74,7 +75,7 @@
                 </div>
               </div>
             </div>
-  
+            
             <div class="hs-accordion" id="hs-basic-with-arrow-heading-three">
               <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-black rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:focus:outline-none" aria-controls="hs-basic-with-arrow-collapse-three">
                 <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -149,7 +150,11 @@
               </div>
               
             </div>
-  
+            <a href="http://127.0.0.1:8000/session">
+              <button class="font-semibold w-fit mx-auto bg-gray-400  py-3 px-6 rounded-lg block text-gray-200 hover:bg-gray-300 hover:text-gray-800 duration-300 ">
+                Reset all filters
+              </button>
+            </a>
           </div>
 
 
@@ -202,7 +207,7 @@
                   class="text-emerald-300 flex items-center justify-center gap-x-2 bg-emerald-800 rounded-full self-start px-2 font-medium capitalize"
                 >
                   <span class="material-symbols-outlined"> star </span>
-                  <span>{{item.star_rating}}</span>
+                  <span>{{item.star_rating|floatformat:"0"}}</span>
                 </p>
               </div>
 
