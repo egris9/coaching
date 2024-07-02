@@ -15,7 +15,7 @@ def stats(request):
     return render(request,"coach/stats.html")
 def participent_by_coach(request):
     
-    training_session = OrderToProduct.objects.filter(order_id__user__id=request.user.id).annotate(month=TruncMonth('date')).values('month').annotate(count=Count('id')).order_by('month')
+    training_session = OrderToProduct.objects.filter(training_session__Profile=request.user.profile).annotate(month=TruncMonth('date')).values('month').annotate(count=Count('id')).order_by('month')
     #training_session = OrderToProduct.objects
     print(training_session.count())
     participent_by_month=[]
@@ -33,9 +33,9 @@ def participent_by_coach(request):
     
 def revenue_by_session(request):
     
-    training_session = OrderToProduct.objects.filter(order_id__user__id=request.user.id,product=None).annotate(month=TruncMonth('date')).values(
+    training_session = OrderToProduct.objects.filter(training_session__Profile=request.user.profile,product=None).annotate(month=TruncMonth('date')).values(
         "training_session__id","training_session__name" ,'month').annotate(total_amount=Sum('price')).annotate(count=Count('id')).order_by('month')
-    total_sum_price = OrderToProduct.objects.filter(order_id__user__id=request.user.id,product=None).annotate(
+    total_sum_price = OrderToProduct.objects.filter(training_session__Profile=request.user.profile,product=None).annotate(
     month=TruncMonth('date')
             ).values(
      'month'
@@ -84,14 +84,11 @@ def top_sessions(request):
     # Get the start and end dates for the current week
     start_of_week, end_of_week = get_current_week()
     # Annotate and order the sessions based on the number of orders in the current week
-    sessions = (OrderToProduct.objects.values('training_session__id','training_session__name').annotate(
-          total_amount=Sum('price'),  num_orders=Count('training_session', filter=Q(date__range=(
-            start_of_week, end_of_week))&Q(order_id__user__id=request.user.id,product=None))
-    ).filter(num_orders__gt=0).order_by('-num_orders')[:5])
-    sql_query = str(sessions.query)  
+    sessions = OrderToProduct.objects.filter(training_session__Profile=request.user.profile,product=None,date__range=(
+            start_of_week, end_of_week)).values('training_session__id','training_session__name').annotate(
+            total_amount=Sum('price'),  num_orders=Count('training_session')).filter(num_orders__gt=0).order_by('-num_orders')[:5]
 
 
-    print(sql_query)
     session_meta = []
     for s in sessions:
         session_meta.append({'revenues':s['total_amount'],'participent_count':s['num_orders'],'name':s['training_session__name']})
